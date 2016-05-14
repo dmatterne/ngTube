@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Video, NgTubeStore } from '../shared';
@@ -15,6 +15,18 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   videos: Video[];
   subscriptions: any[] = [];
+  
+  overflowHidden: boolean = true;
+  
+  @HostListener('mouseenter')
+  showOverflow() {
+    this.overflowHidden = false;
+  }
+  
+  @HostListener('mouseleave')
+  hideOverflow() {
+    this.overflowHidden = true;
+  }
   
   constructor(private store: Store<NgTubeStore>) {
     this.subscriptions.push(
