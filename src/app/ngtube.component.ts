@@ -1,5 +1,8 @@
-import { Component, OnInit, provide } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
+import { Component, OnInit, provide } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import {Store} from '@ngrx/store';
+import { NgTubeStore, config, APP_CONFIG } from './shared';
 import { NavbarComponent } from './navbar';
 import { NavbarFooterComponent } from './navbar-footer';
 import { SidenavComponent } from './sidenav';
@@ -8,7 +11,6 @@ import { Video } from './shared';
 import { YoutubePlayerComponent } from './youtube-player';
 import { YoutubePlayerService } from './youtube-player.service';
 import { YoutubeSearchService } from './youtube-search.service';
-import { config, APP_CONFIG } from './shared';
 
 @Component({
   moduleId: module.id,
@@ -29,7 +31,13 @@ import { config, APP_CONFIG } from './shared';
 })
 export class NgtubeAppComponent implements OnInit {
     research: Video[];
-
+    playlist: Observable<any[]>;
+    
+    constructor(private store: Store<NgTubeStore>) {
+        console.log(store);
+        //playlist = store.select('playlist');
+    }
+    
     ngOnInit() {
         
         this.research = [

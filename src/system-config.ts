@@ -40,6 +40,8 @@ const barrels: string[] = [
   'app/thumbnail-list',
   'app/youtube-player',
   'app/navbar-footer',
+  'app/reducers',
+  'app/actions'
   /** @cli-barrel */
 ];
 
