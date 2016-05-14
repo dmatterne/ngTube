@@ -4,9 +4,8 @@ import 'rxjs/add/operator/filter';
 import { YoutubePlayerComponent } from '../youtube-player';
 
 import { Store } from '@ngrx/store';
-import { NgTubeStore, Video } from '../shared';
+import { NgTubeStore, Video, nextVideo } from '../shared';
 import { RepeatState, PlayState, SizeState } from '../reducers';
-
  
 @Component({
   moduleId: module.id,
@@ -28,6 +27,7 @@ export class PlayerContainerComponent implements OnInit {
     width: number = this.maximizeWidth;
     height: number = this.maximizeHeight;
     video: Video = null;
+    playlist: Video[];
     
     repeat: RepeatState;
     cinemaMode: Observable<boolean>;
@@ -76,6 +76,10 @@ export class PlayerContainerComponent implements OnInit {
             
             this.store.select('repeat').subscribe((x: RepeatState) => {
                 this.repeat = x;  
+            }),
+            
+            this.store.select('playlist').subscribe((x: Video[]) => {
+                this.playlist = x;
             })
         );
         
@@ -84,9 +88,16 @@ export class PlayerContainerComponent implements OnInit {
        
     }
     
-    stateChange (state: number) {
+    private changeVideo (video: Video) {
         
-        console.log(state);
+        this.store.dispatch({ type: 'PLAY_VIDEO', payload: {
+            video: video
+        }});
+        
+        this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: video.id }});
+    }
+    
+    stateChange (state: number) {
         
         switch (state) {
             case 0:
@@ -95,8 +106,8 @@ export class PlayerContainerComponent implements OnInit {
                 }
                 
                 if (this.repeat === RepeatState.ALL) {
-                    this.player.play();
-                    // next video or same
+                    const next = nextVideo(this.video, this.playlist);
+                    this.changeVideo(next);
                 }
                 
                 if (this.repeat === RepeatState.ONE) {

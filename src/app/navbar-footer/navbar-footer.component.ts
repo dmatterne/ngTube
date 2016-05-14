@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
-import { NgTubeStore, Video } from '../shared';
+import { NgTubeStore, Video, nextVideo, previousVideo } from '../shared';
 
 import { PlayState, RepeatState, SizeState } from '../reducers';
 
@@ -74,54 +74,13 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
   
     onPrevious () {
         
-        if (this.playlist.length === 0) {
-            return;
-        }
-        
-        const length = this.playlist.length;
-        const ids = this.playlist.map((x) => x.id);
-        const index = ids.indexOf(this.currentVideo.id);
-        
-        if (index === -1) {
-            this.changeVideo(this.playlist[0]);
-        }
-        
-        const first = (index === 0);
-        let previous;
-        if (first) {
-            previous = this.playlist[length - 1];
-        }
-        else {
-            previous = this.playlist[index - 1];
-        }
-        
+        const previous = previousVideo(this.currentVideo, this.playlist);
         this.changeVideo(previous);
     }
     
     onNext () {
                 
-        if (this.playlist.length === 0) {
-            return;
-        }
-        
-        const length = this.playlist.length;
-        const ids = this.playlist.map((x) => x.id);
-        const index = ids.indexOf(this.currentVideo.id);
-        
-        if (index === -1) {
-            this.changeVideo(this.playlist[0]);
-            return;
-        }
-        
-        const last = (index === length - 1);
-        let next;
-        if (last) {
-            next = this.playlist[0];
-        }
-        else {
-            next = this.playlist[index + 1];
-        }
-        
+        const next = nextVideo(this.currentVideo, this.playlist);
         this.changeVideo(next);
     }
     
