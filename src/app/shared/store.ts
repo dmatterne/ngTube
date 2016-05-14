@@ -1,4 +1,5 @@
 import { SizeState, PlayState, RepeatState } from '../reducers';
+import { Video } from './video';
 
 export interface NgTubeStore {
     history: any[];     
@@ -7,7 +8,7 @@ export interface NgTubeStore {
     playlist: any[];    // to save
     repeat: RepeatState; // to save
     search: string; // to save
-    currentVideo: string; // to save,
+    currentVideo: Video; // to save,
     cinemaMode: boolean;
 }
 
@@ -15,7 +16,7 @@ export interface NgTubeStorage {
     playlist: any[];
     repeat: RepeatState;
     search: string;
-    currentVideo: string;
+    currentVideo: Video;
     cinemaMode: boolean;
 }
 

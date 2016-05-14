@@ -21,27 +21,67 @@ export class YoutubeSearchService {
 
   constructor (@Inject(APP_CONFIG) private config: AppConfiguration, private http: Http) {}
 
-  
-  findAll (query: string, options: YoutubeSearchOptions = {}) {
+  findIds (query: string, options: YoutubeSearchOptions = {}) {
       
       const search = new URLSearchParams();
-      search.append('part', 'snippet');
+      search.append('part', 'id');
+      
+      this.setOptions(search, query, options);
+      
+      if (typeof options.videoOnly === 'undefined') {
+          options.videoOnly = true;
+      }
+      
+      if (options.videoOnly) {
+          search.append('fields', 'items(id/videoId)');
+      }
+      else {
+          search.append('fields', 'items(id)');
+      }
+      
+      const url = `${this.config.apiEndpoint}/search`;
+      
+      return this.http.get(url, { search });
+  }
+  
+  findByIds (ids: string[]) {
+      
+      const search = new URLSearchParams();
+      search.append('id', ids.join(','));
+      search.append('part', 'contentDetails,snippet');
+      search.append('key', this.config.apiKey);
+      search.append('fields', 'items(id,snippet/title,snippet/description,snippet/thumbnails,contentDetails/duration)');
+      
+      const url = `${this.config.apiEndpoint}/videos`;
+      return this.http.get(url, { search });
+  }
+  
+  private setOptions (search: URLSearchParams, query: string, options: YoutubeSearchOptions) {
+      
       search.append('key', this.config.apiKey);
       
-      options.videoOnly = typeof options.videoOnly === 'undefined' || true;
-      if (options.videoOnly)
-        search.append('type', 'video');
       search.append('q', query);
-      
       options.maxResults = options.maxResults || '15';
       search.append('maxResults', options.maxResults);
-
+      
       if (options.duration) {
           search.append('videoDuration', this.getDuration(options.duration));
       }
       
       if (options.pageToken) {
         search.append('pageToken', options.pageToken);
+      }
+  }
+  
+  findAll (query: string, options: YoutubeSearchOptions = {}) {
+      
+      const search = new URLSearchParams();
+      this.setOptions(search, query, options);
+      search.append('part', 'snippet');
+      
+      options.videoOnly = typeof options.videoOnly === 'undefined' || true;
+      if (options.videoOnly) {
+        search.append('type', 'video');
       }
       
       const url = `${this.config.apiEndpoint}/search`;

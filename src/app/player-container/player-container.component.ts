@@ -4,7 +4,7 @@ import 'rxjs/add/operator/filter';
 import { YoutubePlayerComponent } from '../youtube-player';
 
 import { Store } from '@ngrx/store';
-import { NgTubeStore } from '../shared';
+import { NgTubeStore, Video } from '../shared';
 import { RepeatState, PlayState, SizeState } from '../reducers';
 
  
@@ -27,8 +27,9 @@ export class PlayerContainerComponent implements OnInit {
     
     width: number = this.maximizeWidth;
     height: number = this.maximizeHeight;
-    video: string = null;
+    video: Video = null;
     
+    cinemaMode: Observable<boolean>;
     
 
     private subscriptions: any[] = [];
@@ -36,9 +37,7 @@ export class PlayerContainerComponent implements OnInit {
     constructor (private store: Store<NgTubeStore>) {
         
         this.subscriptions.push(
-            this.store.select('currentVideo').subscribe((x: string) => {
-                
-                console.log(x);
+            this.store.select('currentVideo').subscribe((x: Video) => {
                 this.video = x;
             }),
             
@@ -75,12 +74,13 @@ export class PlayerContainerComponent implements OnInit {
             })
         );
         
+        this.cinemaMode = this.store.select('cinemaMode');
+        
        
     }
     
     stateChange (state: number) {
         
-        console.log(state);
         switch (state) {
             case 1: 
                 this.store.dispatch({ type: 'PLAY' });

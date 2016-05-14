@@ -1,6 +1,7 @@
 import {Reducer, Action} from '@ngrx/store';
+import { Video } from '../shared';
 
-export const currentVideo: Reducer<string> = (state: string = null,  action) => {
+export const currentVideo: Reducer<Video> = (state: Video = null,  action) => {
     
     switch (action.type) {
         
