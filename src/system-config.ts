@@ -42,6 +42,7 @@ const barrels: string[] = [
   'app/navbar-footer',
   'app/reducers',
   'app/actions'
+  'app/player-container',
   /** @cli-barrel */
 ];
 

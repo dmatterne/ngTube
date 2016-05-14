@@ -4,6 +4,7 @@ import { FormBuilder, Control, ControlGroup } from '@angular/common';
 import { YoutubeSearchService } from '../youtube-search.service';
 import { NgTubeStore } from '../shared';
 
+declare var $: any;
 
 @Component({
   moduleId: module.id,
@@ -28,6 +29,7 @@ export class NavbarComponent implements OnInit {
   onSearch () {
       
       this.store.dispatch({ type: 'SEARCHED', payload: { search: this.search.value }});
+      this.store.dispatch({ type: 'MINIMIZE' });
   }
   
   resetSearch () {
@@ -38,5 +40,5 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
 }
