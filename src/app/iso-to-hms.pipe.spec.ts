@@ -5,8 +5,8 @@ import {
   inject,
   beforeEachProviders
 } from '@angular/core/testing';
-import { IsoToHMS } from './iso-to-hms.pipe';
+import { IsoToHMSPipe } from './iso-to-hms.pipe';
 
 describe('IsoToHMS Pipe', () => {
-  beforeEachProviders(() => [IsoToHMS]);
+  beforeEachProviders(() => [IsoToHMSPipe]);
 });
