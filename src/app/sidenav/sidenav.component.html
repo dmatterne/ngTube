@@ -11,17 +11,9 @@
         Playlist
     </div>
   </li>
-  <li class="sidenav-item">
-    Video 1
-  </li>
-  <li class="sidenav-item active">
-    Video 2
-  </li>
-  <li class="sidenav-item">
-    Video 3
-  </li>
-  <li class="sidenav-item">
-    Video 4
+  
+  <li class="sidenav-item" *ngFor="let video of videos">
+    <sidenav-tile [title]="video.title" [thumbnailUrl]="" [duration]=""></sidenav-tile>
   </li>
 </ul>
 
