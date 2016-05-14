@@ -5,6 +5,8 @@ import { YoutubeSearchService } from '../youtube-search.service';
 import { NgTubeStore } from '../shared';
 
 import 'rxjs/add/operator/finally';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 declare var $: any;
 
@@ -33,6 +35,8 @@ export class NavbarComponent implements OnInit {
     }).subscribe((search) => {
         this.search.updateValue(search);
     })
+
+    this.search.valueChanges.debounceTime(1000).distinctUntilChanged().subscribe(() => this.onSearch());
   }
   
   onSearch () {
