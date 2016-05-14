@@ -39,6 +39,11 @@
 .sidenav-category {
     color: white;
     border-right: 8px solid #4db6ac ;
+    margin-left: 10px;
+}
+
+.sidenav-category-icon {
+    margin-right: 10px;
 }
 
 .sidenav-item {
@@ -59,10 +64,10 @@
 
 .sidenav-category > *, .sidenav-item > * {
     display: inline-block;
-    margin-left: 10px;
+    /*margin-left: 10px;*/
  }
  
- .sidenav-item {
+ /*.sidenav-item {
      font-size: 17px;
      text-align: center;
  }
@@ -70,4 +75,8 @@
  .sidenav-category-text {
     font-size: 20px;
     text-align: center;
- }
+ }*/
+ 
+ sidenav-tile {
+    width: 100%;
+}
