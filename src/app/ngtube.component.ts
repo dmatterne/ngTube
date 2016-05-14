@@ -1,6 +1,7 @@
 import { Component, OnInit, provide } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { NavbarComponent } from './navbar';
+import { NavbarFooterComponent } from './navbar-footer';
 import { SidenavComponent } from './sidenav';
 import { ThumbnailListComponent } from './thumbnail-list';
 import { Video } from './shared';
@@ -19,7 +20,12 @@ import { config, APP_CONFIG } from './shared';
       YoutubeSearchService
   ],
   styleUrls: ['ngtube.component.css'],
-  directives: [NavbarComponent, SidenavComponent, YoutubePlayerComponent, ThumbnailListComponent]
+  directives: [NavbarComponent, 
+               SidenavComponent,
+               NavbarFooterComponent,
+               YoutubePlayerComponent,
+               ThumbnailListComponent
+  ]
 })
 export class NgtubeAppComponent implements OnInit {
     research: Video[];
