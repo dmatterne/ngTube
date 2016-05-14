@@ -20,6 +20,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.store.select('playlist').subscribe((videos: any[]) => {
         this.videos = videos || [];
+        console.log(this.videos);
       })
     );
   }
@@ -28,8 +29,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
   }
   
   onClick (video: Video) {
+        this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: video.id }});
         this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: video } });
-        // this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: id } });
   }
   
   clear_playlist() {
