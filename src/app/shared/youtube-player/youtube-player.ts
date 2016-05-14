@@ -44,6 +44,11 @@ export class YoutubePlayer {
         this.ytPlayer.setSize(width, height);
     }
     
+    loadVideoById (id: string) {
+        
+        this.ytPlayer.loadVideoById(id);
+    }
+    
     private _emit (event: string, value: any) {
         
         if (this._subjects[event]) {

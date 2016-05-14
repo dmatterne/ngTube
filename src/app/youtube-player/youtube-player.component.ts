@@ -15,6 +15,9 @@ export class YoutubePlayerComponent implements AfterViewInit, OnInit {
     
     private _width: number = 390;
     private _height: number = 180;
+    private _videoId: string = null;
+    private viewInit = false;
+    
     
     @Input() set width (value) {
         
@@ -43,7 +46,22 @@ export class YoutubePlayerComponent implements AfterViewInit, OnInit {
         return this._height;
     }
     
-    @Input() videoId: string;
+    @Input() set videoId (videoId: string) {
+        
+        this._videoId = videoId;
+        
+        if (this.viewInit && !this.player) {
+            this.initPlayer();
+        }
+        else if (this.viewInit && this.player) {
+            this.player.loadVideoById(videoId);
+        }
+    }
+    
+    get videoId (): string {
+        
+        return this._videoId;
+    }
     
     @Input()
     playerId: string = 'player';
@@ -71,7 +89,7 @@ export class YoutubePlayerComponent implements AfterViewInit, OnInit {
     
     private player: YoutubePlayer;
     
-    private _subscriptions: any[] = [];
+    private subscriptions: any[] = [];
     
     constructor (private ytPlayerService: YoutubePlayerService) {}
    
@@ -83,6 +101,15 @@ export class YoutubePlayerComponent implements AfterViewInit, OnInit {
     }
     
     ngAfterViewInit () {
+        
+        this.viewInit = true;
+        
+        if (this.videoId) {
+            this.initPlayer();
+        }
+    }
+    
+    initPlayer () {
         
         this.player = this.ytPlayerService.create(this.playerId, {
             width: this.width,
@@ -96,7 +123,7 @@ export class YoutubePlayerComponent implements AfterViewInit, OnInit {
         
         YoutubePlayer.events.forEach((event) => {
             
-            this._subscriptions.push(
+            this.subscriptions.push(
                 this.player.on[event].subscribe((value) => {
                     this[event].emit(value); 
                 })
@@ -104,14 +131,20 @@ export class YoutubePlayerComponent implements AfterViewInit, OnInit {
         });
     }
     
-    ngOnDestroy () {
+    unsubscribe () {
         
-        this._subscriptions.forEach((subscription) => {
+        
+        this.subscriptions.forEach((subscription) => {
             
             if (subscription) {
                 subscription.unsubscribe();
             }
         })
+    }
+    
+    ngOnDestroy () {
+        
+        this.unsubscribe();
     }
 }
 

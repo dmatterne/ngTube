@@ -1,51 +1,29 @@
 export class SearchResult {
     
-    public get videoId() {
-        return this._videoId;
-    }
+    videoId: string;
+    videoTitle: string;
+    channelTitle: string;
+    description: string;
+    uploadedDate: string;
+    urlThumbnail: string;
     
-    public get videoTitle() {
-        return this._videoTitle;
-    }
-    
-    public get channelTitle() {
-        return this._channelTitle;
-    }
-    
-    public get description() {
-        return this._description;
-    }
-    
-    public get uploadedDate() {
-        return this._uploadedDate;
-    }
-    
-    public get urlThumbnail() {
-        return this._urlThumbnail;
-    }
-    
-    constructor(private jsonResult: any) {
-        if (jsonResult) {
-            if (jsonResult.id)
-                this._videoId = jsonResult.id.videoId;
+    constructor(private item: any) {
+        
+        if (item) {
             
-            let snippet: any = jsonResult.snippet;
-            if(jsonResult.snippet) {
-                this._videoTitle = snippet.title;
-                this._channelTitle = snippet.channelTitle;
-                this._description = snippet.description;
-                this._uploadedDate = snippet.publishedAt;
+            this.videoId = item.id.videoId;
+            let snippet: any = item.snippet;
+            if (item.snippet) {
+                this.videoTitle = snippet.title;
+                this.channelTitle = snippet.channelTitle;
+                this.description = snippet.description;
+                this.uploadedDate = snippet.publishedAt;
                 
-                if (snippet.thumbnails && snippet.thumbnails.high)
-                    this._urlThumbnail = snippet.thumbnails.high.url;
+                if (snippet.thumbnails && snippet.thumbnails.high) {
+                    this.urlThumbnail = snippet.thumbnails.high.url;
+                }
             }
         }
     }
     
-    private _videoId: string;
-    private _videoTitle: string;
-    private _channelTitle: string;
-    private _description: string;
-    private _uploadedDate: string;
-    private _urlThumbnail: string;
 }

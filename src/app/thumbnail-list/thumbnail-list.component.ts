@@ -16,7 +16,6 @@ import { YoutubeSearchService } from '../youtube-search.service';
 
 export class ThumbnailListComponent {
     
-    @HostBinding('class.hidden') hidden = true;
     
     subscriptions: any[] = [];
     searchResults: SearchResult[] = [];
@@ -27,7 +26,6 @@ export class ThumbnailListComponent {
             this.store.select('search').subscribe((search: string) => {
                 search = search || 'Angular 2';
                 this.subscriptions.push(this.search(search));
-                this.hidden = false;
             })
         );
     }
@@ -49,6 +47,11 @@ export class ThumbnailListComponent {
   
     ngOnDestroy() {
         this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+    }
+  
+    onClick (videoId: string) {
+      
+        this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video : videoId } });
     }
   
 }

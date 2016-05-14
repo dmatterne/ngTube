@@ -1,8 +1,3 @@
-:host {
-    /*position: absolute;*/
-}
-
-
 :host.minimize {
     position: fixed;
     bottom: 75px;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
 import { YoutubePlayerComponent } from '../youtube-player';
@@ -16,25 +16,53 @@ import { RepeatState, PlayState, SizeState } from '../reducers';
 })
 export class PlayerContainerComponent implements OnInit {
   
+    @HostBinding('class.minimize') minimize = false;
   
-    width: number = 960;
-    height: number = 585;
+    maximizeWidth: number = 960;
+    maximizeHeight: number = 585;
+    minimizeWidth: number = 240;
+    minimizeHeight: number = 146.25;
     
+    width: number = this.maximizeWidth;
+    height: number = this.maximizeHeight;
     video: string = null;
+    
+    
 
     private subscriptions: any[] = [];
 
     constructor (private store: Store<NgTubeStore>) {
         
-        const subscription = this.store.select('currentVideo').subscribe((x: string) => {
+        this.subscriptions.push(
+            this.store.select('currentVideo').subscribe((x: string) => {
+                
+                console.log(x);
+                this.video = x;
+            }),
             
-            this.video = x;
-        });
+            this.store.select('minimize').subscribe((x: SizeState) => {
+                
+                this.minimize = (x === SizeState.MINIMIZE);
+                if (this.minimize) {
+                    this.width = this.minimizeWidth;
+                    this.height = this.minimizeHeight;
+                }
+                else {
+                    this.width = this.maximizeWidth;
+                    this.height = this.maximizeHeight;
+                }
+            })
+        );
         
-        this.subscriptions.push(subscription);
+       
     }
 
     ngOnInit() {
         
+    }
+    
+    ngOnDestroy () {
+        
+        this.subscriptions.forEach((x) => x.unsubscribe());
     }
 }

@@ -62,7 +62,7 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
             this.store.dispatch({ type: 'PAUSE' });
         }
         else {
-            this.store.dispatch({ type: 'PLAY', })
+            this.store.dispatch({ type: 'PLAY', });
         }
     }
     
@@ -91,7 +91,7 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
                 break;
         }
         
-        this.store.dispatch({ type: action, payload: payload })
+        this.store.dispatch({ type: action, payload: payload });
     }
     
     onMinimize () {
