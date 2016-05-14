@@ -1,5 +1,5 @@
-<ul id="nav-mobile" class="left side-nav fixed" [style.overflow]="overflowHidden ? 'hidden': 'scroll'">
-  <li class="brand center-align">
+<ul id="nav-mobile" class="left side-nav fixed" [style.overflow-y]="'auto'">
+  <li class="brand center-align" >
     <i class="ion-social-youtube brand-logo"></i>
     <span class="brand-title center-align">NgTube</span>
   </li>
@@ -11,7 +11,7 @@
         Playlist
     </div>
     <div [style.width]="'100%'" >
-      <button class="btn btn-small btn-del waves-effect waves-light red" (click)="clear_playlist()" [class.disabled]="videos.length === 0">
+      <button class="btn btn-small btn-del waves-effect waves-light red" (click)="clearPlaylist()" [class.disabled]="videos.length === 0">
         <i class="material-icons">delete_forever</i>
       </button>
     </div>

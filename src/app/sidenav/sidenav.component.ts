@@ -16,23 +16,10 @@ export class SidenavComponent implements OnInit, OnDestroy {
   videos: Video[];
   subscriptions: any[] = [];
   
-  overflowHidden: boolean = true;
-  
-  @HostListener('mouseenter')
-  showOverflow() {
-    this.overflowHidden = false;
-  }
-  
-  @HostListener('mouseleave')
-  hideOverflow() {
-    this.overflowHidden = true;
-  }
-  
   constructor(private store: Store<NgTubeStore>) {
     this.subscriptions.push(
       this.store.select('playlist').subscribe((videos: any[]) => {
         this.videos = videos || [];
-        console.log(this.videos);
       })
     );
   }
@@ -45,7 +32,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
         this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: video } });
   }
   
-  clear_playlist() {
+  clearPlaylist() {
         this.store.dispatch({ type: 'CLEAR_PLAYLIST', payload: {} });
   }
   

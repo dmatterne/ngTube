@@ -36,6 +36,7 @@
     background-color: #323538;
 }
 
+
 .sidenav-category {
     color: white;
     border-right: 8px solid #4db6ac ;
@@ -49,6 +50,7 @@
 .sidenav-item {
     background-color: #212121;
     color: white;
+    cursor: pointer;
 }
 
 .sidenav-item.active, .sidenav-item:hover {
