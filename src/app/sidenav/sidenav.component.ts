@@ -13,7 +13,7 @@ import { SidenavTileComponent } from '../sidenav-tile';
 })
 export class SidenavComponent implements OnInit, OnDestroy {
 
-  videos: any[];
+  videos: Video[];
   subscriptions: any[] = [];
   
   constructor(private store: Store<NgTubeStore>) {
@@ -27,14 +27,16 @@ export class SidenavComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.videos = [
       {
+        id: "oBbHo8b4FDc",
         title: "title1",
         thumbnailUrl: "https://i.ytimg.com/vi/oBbHo8b4FDc/default.jpg",
-        duration: "3:32"
+        duration: 212
       },
       {
-        title: "title1",
-        thumbnailUrl: "https://i.ytimg.com/vi/oBbHo8b4FDc/default.jpg",
-        duration: "3:32"
+        id: "SWEYLpG70AI",
+        title: "PNL - Oh Lala [Clip Officiel]",
+        thumbnailUrl: "https://i.ytimg.com/vi/SWEYLpG70AI/default.jpg",
+        duration: 212
       }
     ]
   }

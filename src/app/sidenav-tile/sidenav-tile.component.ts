@@ -1,4 +1,4 @@
-import { Component, Input, HostListener  } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   moduleId: module.id,
@@ -11,10 +11,5 @@ export class SidenavTileComponent {
   @Input() title: string;
   @Input() thumbnailUrl: string;
   @Input() duration: string;
-  @Input() videoId: string;
-  
-  @HostListener('mouseclick') onMouseClick() {
-    //dispatch({SELECT_ITEM});
-    //dispatch({PLAY});
-  }
+  @Input() id: string;
 }

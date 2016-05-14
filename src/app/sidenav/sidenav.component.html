@@ -17,7 +17,8 @@
       [title]="video.title" 
       [thumbnailUrl]="video.thumbnailUrl" 
       [duration]="video.duration"
-      (click)="onClick(video.videoId)">
+      [id]="video.id"
+      (click)="onClick(video.id)">
     </sidenav-tile>
   </li>
 </ul>
