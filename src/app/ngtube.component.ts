@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, provide } from '@angular/core';
+import { Component, OnInit, OnDestroy, provide, HostBinding  } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
