@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Control, ControlGroup } from '@angular/common';
+import { YoutubeSearchService } from '../youtube-search.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class NavbarComponent implements OnInit {
   form: ControlGroup;
   search: Control = new Control('');  
 
-  constructor (fb: FormBuilder) {
+  constructor (fb: FormBuilder, private youtubeSearchService: YoutubeSearchService) {
       
     this.form = fb.group({
         search: this.search
@@ -22,7 +23,11 @@ export class NavbarComponent implements OnInit {
   
   onSearch () {
       
-      console.log(this.search.value);
+      this.youtubeSearchService.findAll(this.search.value).subscribe(
+          (response) => {
+              console.log(response.json());
+          }
+      )
   }
   
   resetSearch () {
