@@ -1,5 +1,5 @@
-<ul id="nav-mobile" class="left side-nav fixed">
-  <li class="brand center-align">
+<ul id="nav-mobile" class="left side-nav fixed" [style.overflow-y]="'auto'">
+  <li class="brand center-align" >
     <i class="ion-social-youtube brand-logo"></i>
     <span class="brand-title center-align">NgTube</span>
   </li>
@@ -10,13 +10,18 @@
     <div class="sidenav-category-text center-align">
         Playlist
     </div>
-    <a class="btn-floating red"><i class="material-icons">insert_chart</i></a>
+    <div [style.width]="'100%'" >
+      <button class="btn btn-small btn-del waves-effect waves-light red" (click)="clearPlaylist()" [class.disabled]="videos.length === 0">
+        <i class="material-icons">delete_forever</i>
+      </button>
+    </div>
   </li>
   
   <li class="sidenav-item" *ngFor="let video of videos" [class.active]="video.selected">
     <sidenav-tile 
       [video]="video"
-      (click)="onClick(video)">
+      (clickDelete)="onClickDelete(video)"
+      (clickTile)="onClickTile(video)">
     </sidenav-tile>
   </li>
 </ul>

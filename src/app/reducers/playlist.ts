@@ -6,7 +6,7 @@ export const playlist: Reducer<Video[]> = (state = [], action) => {
     switch (action.type) {
         
         case 'SELECT_ITEM':
-            return state.map((video) => Object.assign({}, video, { selected: video.id === action.payload.id }));
+            return state.map((video) => Object.assign({}, video, { selected: video.id === action.payload.video }));
             
         case 'ADD_TO_PLAYLIST':
             return addIfUnique(state, action.payload.video);

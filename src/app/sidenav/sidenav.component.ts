@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Video, NgTubeStore } from '../shared';
@@ -27,12 +27,16 @@ export class SidenavComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
   
-  onClick (video: Video) {
+  onClickTile(video: Video) {
+        this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: video.id }});
         this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: video } });
-        // this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: id } });
   }
   
-  clear_playlist() {
+  onClickDelete(video: Video) {
+        this.store.dispatch({ type: 'REMOVE_FROM_PLAYLIST', payload: { video: video } });
+  }
+  
+  clearPlaylist() {
         this.store.dispatch({ type: 'CLEAR_PLAYLIST', payload: {} });
   }
   

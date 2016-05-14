@@ -36,6 +36,7 @@
     background-color: #323538;
 }
 
+
 .sidenav-category {
     color: white;
     border-right: 8px solid #4db6ac ;
@@ -49,6 +50,7 @@
 .sidenav-item {
     background-color: #212121;
     color: white;
+    cursor: pointer;
 }
 
 .sidenav-item.active, .sidenav-item:hover {
@@ -67,6 +69,15 @@
     /*margin-left: 10px;*/
  }
  
+ .btn-small {
+     width: 80px;
+     height: 35px !important;
+     float: right;
+     margin-right: 25px;
+ }
+
+ 
+ 
  /*.sidenav-item {
      font-size: 17px;
      text-align: center;
@@ -79,4 +90,10 @@
  
  sidenav-tile {
     width: 100%;
+}
+
+.side-nav a {     
+    color: #444;     
+    display: block;     
+    font-size: 1rem;
 }
