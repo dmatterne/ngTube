@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Video } from '../shared';
 
 @Component({
   moduleId: module.id,
@@ -8,8 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SidenavTileComponent {
   
-  @Input() title: string;
-  @Input() thumbnailUrl: string;
-  @Input() duration: string;
-  @Input() id: string;
+  @Input() video: Video;
 }

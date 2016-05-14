@@ -1,19 +1,36 @@
 <div class="thumbNail">
     <div class="thumb">
-        <img [src]="url" 
-            [style.opacity]="hover ? 0.6 : 1" 
-            [style.position]="relative" 
-            [style.z-index]="0"
-            class="z-depth-1 responsive-img"
-        />
+        <div 
+            (mouseenter)="onThumbnailEnter()"
+            (mouseleave)="onThumbnailLeave()"
+            (click)="onThumbnailClick()"
+        >
+            <img [src]="video.thumbnailUrl" 
+                [style.opacity]="hover ? 0.6 : 1" 
+                [style.position]="relative" 
+                [style.z-index]="0"
+                class="z-depth-1 responsive-img"
+            />
 
-        <div class="playArrow">
-            <i [hidden]="!hover" 
-            [style.z-index]="1" 
-            class="material-icons medium icon-demo">
-                play_circle_outline
-            </i>
+            <div class="playArrow">
+                <i [hidden]="!hover" 
+                [style.z-index]="1" 
+                class="material-icons medium icon-demo">
+                    play_circle_outline
+                </i>
+            </div>
         </div>
     </div>
-    <h6>{{title}}</h6>
+    <h6 
+        (mouseenter)="onTitleMouseEnter()"
+        (mouseleave)="onTitleMouseLeave()"
+        (click)="onTitleClick()">
+    
+        <span [hidden]="!title">
+            {{video.title}}
+        </span>
+        <span [hidden]="title">
+            Add to playlist
+        </span>
+    </h6>
 </div>

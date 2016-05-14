@@ -25,24 +25,11 @@ export class SidenavComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.videos = [
-      {
-        id: "oBbHo8b4FDc",
-        title: "title1",
-        thumbnailUrl: "https://i.ytimg.com/vi/oBbHo8b4FDc/default.jpg",
-        duration: 212
-      },
-      {
-        id: "SWEYLpG70AI",
-        title: "PNL - Oh Lala [Clip Officiel]",
-        thumbnailUrl: "https://i.ytimg.com/vi/SWEYLpG70AI/default.jpg",
-        duration: 212
-      }
-    ]
   }
   
-  onClick(videoId: string) {
-        this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: videoId } });
+  onClick (video: Video) {
+        this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: video } });
+        // this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: id } });
   }
   
   ngOnDestroy() {

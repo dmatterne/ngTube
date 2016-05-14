@@ -14,11 +14,8 @@
   
   <li class="sidenav-item" *ngFor="let video of videos" [class.active]="video.selected">
     <sidenav-tile 
-      [title]="video.title" 
-      [thumbnailUrl]="video.thumbnailUrl" 
-      [duration]="video.duration"
-      [id]="video.id"
-      (click)="onClick(video.id)">
+      [video]="video"
+      (click)="onClick(video)">
     </sidenav-tile>
   </li>
 </ul>

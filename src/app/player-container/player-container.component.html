@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row" *ngIf="video">
     <youtube-player class="col s12"
-        *ngIf="video"
+        
         playerId="player"
         [autoplay]="false"
         [videoId]="video.id"
@@ -8,5 +8,5 @@
         [height]="height"
         (stateChange)="stateChange($event.data)">
     </youtube-player>
-    <h4 class="col offset-s2 s8" [hidden]="cinemaMode | async">{{video.title}}</h4>
+    <h4 class="col offset-s2 s8" [hidden]="(cinemaMode | async) || minimize">{{video.title}}</h4>
 </div>
