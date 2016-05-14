@@ -21,6 +21,15 @@ export class YoutubeSearchService {
 
   constructor (@Inject(APP_CONFIG) private config: AppConfiguration, private http: Http) {}
 
+  findIds (query: string, options: YoutubeSearchOptions = {}) {
+      
+      const search = new URLSearchParams();
+      search.append('part', 'id');
+      search.append('key', this.config.apiKey);
+      if (typeof options.videoOnly === 'undefined') {
+          
+      }
+  }
   
   findAll (query: string, options: YoutubeSearchOptions = {}) {
       
