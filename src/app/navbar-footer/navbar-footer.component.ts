@@ -17,11 +17,20 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
     repeat: RepeatState;
     minimize: SizeState;
     
+    disabled: boolean = true;
+    
     subscriptions: any[] = [];
   
     constructor (private store: Store<NgTubeStore>) {
       
         this.subscriptions.push(
+            
+            store.select('currentVideo').subscribe((video: string) => {
+                
+                if (video) {
+                    this.disabled = false;
+                }
+            }),
             
             store.select('play').subscribe((play: PlayState) => {
                 
@@ -112,6 +121,11 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
     isPlay () {
         
         return this.play === PlayState.PLAY;
+    }
+    
+    isStop () {
+        
+        return this.play === PlayState.STOP;
     }
     
     isRepeatNone () {

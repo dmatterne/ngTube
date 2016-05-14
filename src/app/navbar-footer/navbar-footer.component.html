@@ -1,7 +1,7 @@
 <div class="navbar-fixed">
     <nav class="black">
         <div class="nav-wrapper">
-            <ul class="left">
+            <ul class="left" [class.disabled]="disabled">
                 <li>
                     <a class="navbar-icon" (click)="onPrevious()">
                         <i class="material-icons">skip_previous</i>
@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="navbar-icon" (click)="onStop()">
+                    <a class="navbar-icon" [class.disabled]="isStop()" (click)="onStop()">
                         <i class="material-icons">stop</i>
                     </a>
                 </li>

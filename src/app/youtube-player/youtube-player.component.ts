@@ -18,6 +18,7 @@ export class YoutubePlayerComponent implements AfterViewInit, OnInit {
     private _videoId: string = null;
     private viewInit = false;
     
+    private player: YoutubePlayer;
     
     @Input() set width (value) {
         
@@ -87,11 +88,32 @@ export class YoutubePlayerComponent implements AfterViewInit, OnInit {
     @Output()
     apiChange = new EventEmitter<any>();
     
-    private player: YoutubePlayer;
+    
     
     private subscriptions: any[] = [];
     
     constructor (private ytPlayerService: YoutubePlayerService) {}
+    
+    public play () {
+        
+        if (this.player) {
+            this.player.play();
+        }
+    }
+    
+    public pause () {
+        
+        if (this.player) {
+            this.player.pause();
+        }
+    }
+    
+    public stop () {
+        
+        if (this.player) {
+            this.player.stop();
+        }
+    }
    
     ngOnInit () {
         

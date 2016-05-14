@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
 import { YoutubePlayerComponent } from '../youtube-player';
@@ -6,6 +6,7 @@ import { YoutubePlayerComponent } from '../youtube-player';
 import { Store } from '@ngrx/store';
 import { NgTubeStore } from '../shared';
 import { RepeatState, PlayState, SizeState } from '../reducers';
+
  
 @Component({
   moduleId: module.id,
@@ -17,7 +18,8 @@ import { RepeatState, PlayState, SizeState } from '../reducers';
 export class PlayerContainerComponent implements OnInit {
   
     @HostBinding('class.minimize') minimize = false;
-  
+    @ViewChild(YoutubePlayerComponent) player: YoutubePlayerComponent;
+    
     maximizeWidth: number = 960;
     maximizeHeight: number = 585;
     minimizeWidth: number = 240;
@@ -51,10 +53,45 @@ export class PlayerContainerComponent implements OnInit {
                     this.width = this.maximizeWidth;
                     this.height = this.maximizeHeight;
                 }
+            }),
+            
+            this.store.select('play').subscribe((x: PlayState) => {
+               
+                if (!this.player) {
+                    return;
+                }
+                
+                switch (x) {
+                    case PlayState.PLAY:
+                        this.player.play();
+                        break;
+                    case PlayState.PAUSE:
+                        this.player.pause();
+                        break;
+                    case PlayState.STOP:
+                        this.player.stop();
+                        break;
+                } 
             })
         );
         
        
+    }
+    
+    stateChange (state: number) {
+        
+        console.log(state);
+        switch (state) {
+            case 1: 
+                this.store.dispatch({ type: 'PLAY' });
+                break;
+            case 2: 
+                this.store.dispatch({ type: 'PAUSE' });
+                break;
+            case 0:
+                this.store.dispatch({ type: 'STOP' });
+                break;
+        }
     }
 
     ngOnInit() {
