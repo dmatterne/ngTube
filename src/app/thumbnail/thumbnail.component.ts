@@ -21,7 +21,7 @@ export class ThumbnailComponent {
         this.hover = false;
     }
     
-    constructor(private store: Store<NgTubeStore>) {
+    constructor() {
         
     }
 }
