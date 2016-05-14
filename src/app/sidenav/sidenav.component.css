@@ -9,6 +9,65 @@
     margin-bottom: 32px;
 }
 
+.brand {
+    background-color: #212121;
+    height: 64px;
+    color: white;
+}
+
+.brand-logo {
+    color: #d84315;
+}
+
+.brand > * {
+    display: inline-block;
+}
+
 .brand-title {
+    margin-left: 6px;
+    font-size: 30px;
+}
+
+.brand-logo {
     font-size: 35px;
 }
+
+.side-nav {
+    background-color: #323538;
+}
+
+.sidenav-category {
+    color: white;
+    border-right: 8px solid #4db6ac ;
+}
+
+.sidenav-item {
+    background-color: #212121;
+    color: white;
+}
+
+.sidenav-item.active, .sidenav-item:hover {
+    border-right: 8px solid #b3e5fc ;
+}
+
+.sidenav-item:hover {
+    opacity: 0.7;
+    color: white;
+    /*background-color: rgba(0,0,0,0.00);*/
+}
+
+
+.sidenav-category > *, .sidenav-item > * {
+    display: inline-block;
+    margin-left: 10px;
+ }
+ 
+ .sidenav-item {
+     font-size: 17px;
+     text-align: center;
+ }
+ 
+ .sidenav-category-text {
+    font-size: 20px;
+    text-align: center;
+ }
