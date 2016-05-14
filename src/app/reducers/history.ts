@@ -1,12 +1,13 @@
 import {Reducer, Action} from '@ngrx/store';
+import { Video } from '../shared';
 
-export const history: Reducer<any[]> = (state = [], action) => {
+export const history: Reducer<Video[]> = (state = [], action) => {
     switch (action.type) {
-        case 'ADD_PLAYLIST':
+        case 'ADD_HISTORY':
             return [action.payload.video, ...state];
-        case 'REMOVE_PLAYLIST':
+        case 'REMOVE_HISTORY':
             return state.filter(video => video.id != action.payload.id);
-        case 'PURGE_PLAYLIST':
+        case 'CLEAR_HISTORY':
             return [];
         default:
             return state;
