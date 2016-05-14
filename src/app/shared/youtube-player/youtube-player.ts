@@ -49,6 +49,21 @@ export class YoutubePlayer {
         this.ytPlayer.loadVideoById(id);
     }
     
+    play () {
+        
+        this.ytPlayer.playVideo();
+    }
+    
+    pause () {
+        
+        this.ytPlayer.pauseVideo();
+    }
+    
+    stop () {
+        
+        this.ytPlayer.stopVideo();
+    }
+    
     private _emit (event: string, value: any) {
         
         if (this._subjects[event]) {
