@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Control, ControlGroup } from '@angular/common';
+
 
 @Component({
   moduleId: module.id,
@@ -8,7 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() {}
+  form: ControlGroup;
+  search: Control = new Control('');  
+
+  constructor (fb: FormBuilder) {
+      
+    this.form = fb.group({
+        search: this.search
+    });
+  }
+  
+  onSearch () {
+      
+      console.log(this.search.value);
+  }
 
   ngOnInit() {
   }
