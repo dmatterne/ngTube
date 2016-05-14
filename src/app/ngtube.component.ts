@@ -26,6 +26,22 @@ export class NgtubeAppComponent implements OnInit {
           {
               title: "Booba feat Kaaris - Kalash",
               url: "http://img.youtube.com/vi/bQVoAWSP7k4/0.jpg"
+          },
+          {
+              title: "Booba feat Kaaris - Kalash & roses & volkswagen",
+              url: "http://img.youtube.com/vi/bQVoAWSP7k4/0.jpg"
+          },
+          {
+              title: "Kaaris - Le bruit de mon âme",
+              url: "http://img.youtube.com/vi/bQVoAWSP7k4/0.jpg"
+          },
+          {
+              title: "Booba feat Kaaris - Kalash",
+              url: "http://img.youtube.com/vi/bQVoAWSP7k4/0.jpg"
+          },
+          {
+              title: "Booba feat Kaaris - Kalash & roses & volkswagen",
+              url: "http://img.youtube.com/vi/bQVoAWSP7k4/0.jpg"
           }
         ];
     }

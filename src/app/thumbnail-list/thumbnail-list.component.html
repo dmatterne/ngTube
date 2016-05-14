@@ -1,6 +1,6 @@
 <div>
-    <ul>
-        <li *ngFor="let video of videos">
+    <ul class="row">
+        <li *ngFor="let video of videos" class="col s4">
             <thumbnail [title]="video.title" [url]="video.url"></thumbnail>
         </li>
     </ul>
