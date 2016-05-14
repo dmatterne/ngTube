@@ -39,6 +39,8 @@ const barrels: string[] = [
   'app/sidenav',
   'app/thumbnail-list',
   'app/youtube-player',
+  'app/reducers',
+  'app/actions'
   /** @cli-barrel */
 ];
 
