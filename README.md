@@ -12,7 +12,7 @@ Ngtube is a simplified youtube browser application made for [Angular attack](htt
 
 ### @Angular2
 
-## Materialize
+### Materialize
 
 ## 3rd party libs
 
