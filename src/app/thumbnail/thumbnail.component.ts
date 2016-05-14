@@ -1,9 +1,10 @@
 import { Component, Input, OnInit, HostListener, HostBinding } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'thumbnail',
-  templateUrl: 'app/thumbnail/thumbnail.component.html',
-  styleUrls: ['app/thumbnail/thumbnail.component.css']
+  templateUrl: 'thumbnail.component.html',
+  styleUrls: ['thumbnail.component.css']
 })
 export class ThumbnailComponent {
     @Input() title: string;
