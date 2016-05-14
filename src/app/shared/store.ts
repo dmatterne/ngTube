@@ -4,5 +4,5 @@ export interface NgTubeStore {
     play:       string,
     playlist:   any[],
     repeat:     string,
-    research:   string[]
+    search:   string[]
 }
