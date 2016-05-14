@@ -21,6 +21,7 @@ export class ThumbnailListComponent {
     this.subscriptions.push(
 
       store.select('search').subscribe((search: string) => {
+        search = search || 'Angular 2';
         this.youtubeSearchService.findAll(search).subscribe(
           (response) => {
             this.searchResults = [];
