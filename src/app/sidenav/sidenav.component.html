@@ -20,7 +20,8 @@
   <li class="sidenav-item" *ngFor="let video of videos" [class.active]="video.selected">
     <sidenav-tile 
       [video]="video"
-      (click)="onClick(video)">
+      (clickDelete)="onClickDelete(video)"
+      (clickTile)="onClickTile(video)">
     </sidenav-tile>
   </li>
 </ul>

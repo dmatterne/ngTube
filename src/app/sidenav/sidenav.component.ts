@@ -27,9 +27,13 @@ export class SidenavComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
   
-  onClick (video: Video) {
+  onClickTile(video: Video) {
         this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: video.id }});
         this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: video } });
+  }
+  
+  onClickDelete(video: Video) {
+        this.store.dispatch({ type: 'REMOVE_FROM_PLAYLIST', payload: { video: video } });
   }
   
   clearPlaylist() {

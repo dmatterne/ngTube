@@ -10,9 +10,6 @@ import { Video } from '../shared';
 export class ThumbnailComponent implements OnInit {
     
     @Input() video: Video;
-    // @Input() id: string;
-    // @Input() title: string;
-    // @Input() url: string;
     
     title: boolean = true;
     

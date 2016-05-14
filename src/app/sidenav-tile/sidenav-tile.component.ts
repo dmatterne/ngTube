@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Video } from '../shared';
 
 @Component({
@@ -10,4 +10,16 @@ import { Video } from '../shared';
 export class SidenavTileComponent {
   
   @Input() video: Video;
+  
+  @Output() clickDelete: EventEmitter<Video> = new EventEmitter();
+  @Output() clickTile: EventEmitter<Video> = new EventEmitter();
+
+
+  onClickTile() {
+    this.clickTile.emit(this.video);
+  }
+  
+  onClickDelete() {
+    this.clickDelete.emit(this.video);
+  }
 }
