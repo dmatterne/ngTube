@@ -36,8 +36,8 @@ export class SearchResult {
                 this._description = snippet.description;
                 this._uploadedDate = snippet.publishedAt;
                 
-                if (snippet.thumbnails && snippet.thumbnails.default)
-                    this._urlThumbnail = snippet.thumbnails.default.url;
+                if (snippet.thumbnails && snippet.thumbnails.high)
+                    this._urlThumbnail = snippet.thumbnails.high.url;
             }
         }
     }
