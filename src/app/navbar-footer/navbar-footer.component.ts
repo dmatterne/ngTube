@@ -9,6 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarFooterComponent implements OnInit {
 
     constructor () {}
+    
+    public get playing() {
+      return this._isPlaying;
+    }
 
     ngOnInit () {
     }
@@ -22,7 +26,11 @@ export class NavbarFooterComponent implements OnInit {
     }
   
     onPlay () {
-        
+      this._isPlaying = true;
+    }
+    
+    onPause() {
+      this._isPlaying = false;
     }
     
     onVolume () {
@@ -33,5 +41,6 @@ export class NavbarFooterComponent implements OnInit {
         
     }
   
+  private _isPlaying: boolean = false;
 
 }

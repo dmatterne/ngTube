@@ -7,9 +7,14 @@
                         <i class="material-icons">skip_previous</i>
                     </a>
                 </li>
-                <li>
+                <li [hidden]="playing">
                     <a class="navbar-icon" (click)="onPlay()">
                         <i class="material-icons">play_arrow</i>
+                    </a>
+                </li>
+               <li [hidden]="!playing">
+                    <a class="navbar-icon" (click)="onPause()">
+                        <i class="material-icons">pause</i>
                     </a>
                 </li>
                 <li>
