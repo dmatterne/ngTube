@@ -33,6 +33,7 @@ const barrels: string[] = [
   'app/navbar',
   'app/sidenav',
   'app/thumbnail-list',
+  'app/youtube-player',
   /** @cli-barrel */
 ];
 
