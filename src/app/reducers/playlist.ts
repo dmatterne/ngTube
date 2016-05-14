@@ -1,4 +1,6 @@
  import {Reducer, Action} from '@ngrx/store';
+ 
+ import { Video } from '../shared/video';
 
 export const playlist: Reducer<any[]> = (state = [], action) => {
     switch (action.type) {
