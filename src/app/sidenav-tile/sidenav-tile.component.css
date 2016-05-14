@@ -1,0 +1,19 @@
+.title {
+    line-height: 24px;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    
+    width: 70%;
+    white-space: nowrap;
+}
+
+.image {
+    margin-left: 10px;
+}
+
+h6 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+

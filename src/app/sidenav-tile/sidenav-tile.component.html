@@ -1,5 +1,9 @@
-<div >
-  <h6 [style.display]="'inline-block'">{{video.title}}</h6>
-  <img [style.display]="'inline-block'" class="z-depth-1 responsive-img" [src]="video.thumbnailUrl" width="40px" height="40px"/>
-  <p [style.display]="'inline-block'">{{video.duration}}</p>
-</div> 
+<div>
+  <div [style.display]="'inline-block'" class="image">
+    <img class="z-depth-1 responsive-img" [src]="video.thumbnailUrl" width="40px" height="40px" />
+  </div>
+  <div [style.display]="'inline-block'" class="title">
+    <h6 >{{video.title}}</h6>
+    <label>{{video.duration}}</label>
+  </div>
+</div>
