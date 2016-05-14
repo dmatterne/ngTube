@@ -4,21 +4,20 @@
     <a class="button-collapse top-nav full hide-on-large-only" data-activates="nav-mobile">
       <i class="material-icons">menu</i>
     </a>
-    <thumbnail-list [videos]="research"></thumbnail-list>
   </div>
   <app-sidenav></app-sidenav>
 </header>
 
 <div class="section no-pad-bot">
   <div class="container">
-    <youtube-player
-      playerId="player"
-      [autoplay]="false"
-      [videoId]="'1cRQ8pS21-4'"
-      [width]="720"
-      [height]="480">
-    </youtube-player>
-      
+    <thumbnail-list [videos]="research"></thumbnail-list>
+      <youtube-player
+        playerId="player"
+        [autoplay]="false"
+        [videoId]="'1cRQ8pS21-4'"
+        [width]="720"
+        [height]="480">
+      </youtube-player>
   </div>
 </div>
 

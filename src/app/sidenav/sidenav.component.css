@@ -3,3 +3,12 @@
     margin-right: 120px;
     width: 200px;
 }*/
+
+#logo-container {
+    height: 57px;
+    margin-bottom: 32px;
+}
+
+.brand-title {
+    font-size: 35px;
+}

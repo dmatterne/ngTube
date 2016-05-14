@@ -1,0 +1,17 @@
+#search, .search-wrapper, .search-form {
+    height: 100%;
+}
+
+.material-icons {
+    color: black !important;
+}
+
+#search {
+    color: black !important;
+}
+
+.input-field {
+    margin-left: 15px;
+    width: 100%;
+}
+
