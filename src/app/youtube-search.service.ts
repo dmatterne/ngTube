@@ -26,7 +26,10 @@ export class YoutubeSearchService {
       const search = new URLSearchParams();
       search.append('part', 'snippet');
       search.append('key', this.config.apiKey);
-      search.append('type', options.videoOnly ? 'true' : 'false');
+      
+      options.videoOnly = typeof options.videoOnly === 'undefined' || true;
+      if (options.videoOnly)
+        search.append('type', 'video');
       search.append('q', query);
       
       if (options.duration) {
