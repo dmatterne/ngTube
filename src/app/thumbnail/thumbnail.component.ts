@@ -7,18 +7,16 @@ import { Component, Input, OnInit, HostListener, HostBinding } from '@angular/co
         <h5>{{title}}</h5>
         <img 
             [src]="url"
+            [style.opacity]="hover ? 0.4 : 1"
             class="responsive-img"
-        >
-        </img>
+        />
       </div>
-    `,
-   styles: ['.hover { opacity: 0:4 }']
+    `
 })
 export class ThumbnailComponent {
     @Input() title: string;
     @Input() url: string;
 
-    @HostBinding('class.hover')
     hover: boolean = false;
     
     @HostListener('mouseenter') onMouseEnter() {
