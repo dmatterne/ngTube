@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { NgTubeStore } from '../shared';
+import 'rxjs/add/observable/combineLatest';
+import { NgTubeStore, Video } from '../shared';
 
 import { PlayState, RepeatState, SizeState } from '../reducers';
 
@@ -17,16 +18,19 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
     repeat: RepeatState;
     minimize: SizeState;
     cinemaMode: Observable<boolean>;
+    currentVideo: Video;
+    playlist: any[];
     
     disabled: boolean = true;
-    
     subscriptions: any[] = [];
   
     constructor (private store: Store<NgTubeStore>) {
       
         this.subscriptions.push(
             
-            store.select('currentVideo').subscribe((video: string) => {
+            store.select('currentVideo').subscribe((video: Video) => {
+                
+                this.currentVideo = video;
                 
                 if (video) {
                     this.disabled = false;
@@ -46,6 +50,11 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
             store.select('minimize').subscribe((minimize: SizeState) => {
                 
                 this.minimize = minimize;
+            }),
+            
+            store.select('playlist').subscribe((playlist: any[]) => {
+                
+                this.playlist = playlist;  
             })
             
         );
@@ -65,10 +74,64 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
   
     onPrevious () {
         
+        if (this.playlist.length === 0) {
+            return;
+        }
+        
+        const length = this.playlist.length;
+        const ids = this.playlist.map((x) => x.id);
+        const index = ids.indexOf(this.currentVideo.id);
+        
+        if (index === -1) {
+            this.changeVideo(this.playlist[0]);
+        }
+        
+        const first = (index === 0);
+        let previous;
+        if (first) {
+            previous = this.playlist[length - 1];
+        }
+        else {
+            previous = this.playlist[index - 1];
+        }
+        
+        this.changeVideo(previous);
     }
     
     onNext () {
+                
+        if (this.playlist.length === 0) {
+            return;
+        }
         
+        const length = this.playlist.length;
+        const ids = this.playlist.map((x) => x.id);
+        const index = ids.indexOf(this.currentVideo.id);
+        
+        if (index === -1) {
+            this.changeVideo(this.playlist[0]);
+            return;
+        }
+        
+        const last = (index === length - 1);
+        let next;
+        if (last) {
+            next = this.playlist[0];
+        }
+        else {
+            next = this.playlist[index + 1];
+        }
+        
+        this.changeVideo(next);
+    }
+    
+    private changeVideo (video: Video) {
+        
+        this.store.dispatch({ type: 'PLAY_VIDEO', payload: {
+            video: video
+        }});
+        
+        this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: video.id }});
     }
     
     onCinemaMode () {
@@ -122,6 +185,12 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
         else {
             this.store.dispatch({ type: 'MINIMIZE' });
         }
+    }
+    
+    // Zero or one is not a "real" playlist
+    isRealPlaylist() {
+        
+        return this.playlist && this.playlist.length > 1;
     }
     
     isMinimize () {

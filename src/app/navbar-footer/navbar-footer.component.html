@@ -17,7 +17,7 @@
                 </li>
                 <li class="icon-divider"></li>
                 <li>
-                    <a class="navbar-icon" (click)="onPrevious()">
+                    <a class="navbar-icon" [class.disabled]="!isRealPlaylist()" (click)="onPrevious()">
                         <i class="material-icons">skip_previous</i>
                     </a>
                 </li>
@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="navbar-icon" (click)="onNext()">
+                    <a class="navbar-icon" [class.disabled]="!isRealPlaylist()" (click)="onNext()">
                         <i class="material-icons">skip_next</i>
                     </a>
                 </li>
