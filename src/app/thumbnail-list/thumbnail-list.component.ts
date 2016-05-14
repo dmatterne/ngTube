@@ -39,27 +39,16 @@ export class ThumbnailListComponent {
         
         
         this.show = Observable.combineLatest(this.store.select('minimize'),
-                                             this.store.select('currentVideo'), (minimize, currentVideo) => {
+                                             this.store.select('currentVideo'), 
+                                             (minimize, currentVideo) => {
             
-            
-            const isMaximized = minimize === SizeState.MAXIMIZE;
             const hasVideo = currentVideo !== null;
             
-            if (hasVideo && isMaximized) {
-                return false;
-            }
-            else if (hasVideo && !isMaximized) {
+            if ((hasVideo && minimize) || (!hasVideo)) {
                 return true;
             }
-            else if (!hasVideo) {
-                return true;
-            }
-            else if (isMaximized) {
-                return false;
-            }
-            else {
-                return false;
-            }            
+            
+            return false;
         });
     }
 
