@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, HostListener } from '@angular/core';
 import { Video } from '../shared';
 
 @Component({
@@ -13,6 +13,16 @@ export class SidenavTileComponent {
   
   @Output() clickDelete: EventEmitter<Video> = new EventEmitter();
   @Output() clickTile: EventEmitter<Video> = new EventEmitter();
+  
+  private hover: boolean = false;
+  
+  @HostListener('mouseenter') onMouseEnter() {
+    this.hover = true;
+  }
+  
+  @HostListener('mouseleave') onMouseLeave() {
+    this.hover = false;
+  }
 
 
   onClickTile() {

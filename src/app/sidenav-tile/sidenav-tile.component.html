@@ -1,5 +1,5 @@
 <div>
-  <div class="removeVideoFromPlaylist" (click)="onClickDelete()">
+  <div class="removeVideoFromPlaylist" [hidden]="!hover" (click)="onClickDelete()">
     <i class="material-icons">clear</i>
   </div>
   <div (click)="onClickTile()">
