@@ -8,7 +8,17 @@ if (environment.production) {
   enableProdMode();
 }
 
+
+// Security if the schema of the local storage changes
+if (!localStorage.getItem('ngtube.storage-v1')) {
+  localStorage.clear();
+}
+
+
+localStorage.setItem('ngtube.storage-v1', 'true');
+
 let initialStore;
+
 if (localStorage.getItem('ngtube')) {
   initialStore = JSON.parse(localStorage.getItem('ngtube'));
 }
