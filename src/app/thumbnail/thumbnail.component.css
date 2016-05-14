@@ -6,4 +6,5 @@
 
 .thumbNail {
     position: relative;
+    display: inline-block;
 }
