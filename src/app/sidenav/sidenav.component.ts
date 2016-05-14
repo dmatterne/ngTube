@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Dragula, DragulaService } from 'ng2-dragula/ng2-dragula';
 
 import { Video, NgTubeStore } from '../shared';
 import { SidenavTileComponent } from '../sidenav-tile';
@@ -9,7 +10,8 @@ import { SidenavTileComponent } from '../sidenav-tile';
   selector: 'sidenav',
   templateUrl: 'sidenav.component.html',
   styleUrls: ['sidenav.component.css'],
-  directives: [SidenavTileComponent]
+  viewProviders: [DragulaService],
+  directives: [SidenavTileComponent, Dragula]
 })
 export class SidenavComponent implements OnInit, OnDestroy {
 

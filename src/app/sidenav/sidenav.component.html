@@ -17,7 +17,7 @@
     </div>
   </li>
   
-  <li class="sidenav-item" *ngFor="let video of videos" [class.active]="video.selected">
+  <li class="sidenav-item" *ngFor="let video of videos" [class.active]="video.selected" [dragula]='"bag-one"' [dragulaModel]='items'>
     <sidenav-tile 
       [video]="video"
       (clickDelete)="onClickDelete(video)"

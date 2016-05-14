@@ -13,7 +13,9 @@ module.exports = function(defaults) {
       'rxjs/**/*.js',
       '@angular/**/*.js',
       '@ngrx/store/**/*.js',
-      'moment/moment.js'
+      'moment/moment.js',
+      'dragula/dist/dragula.js',
+      'ng2-dragula/**/*.js'
     ]
   });
 };

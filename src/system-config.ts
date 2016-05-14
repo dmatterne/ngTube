@@ -4,13 +4,19 @@
 /** Map relative paths to URLs. */
 const map: any = {
   '@ngrx/store': 'vendor/@ngrx/store',
-  'moment': 'vendor/moment/moment.js'
+  'moment': 'vendor/moment/moment.js',
+  'dragula': 'vendor/dragula/dist/dragula.js',
+  'ng2-dragula': 'vendor/ng2-dragula'
 };
 
 /** User packages configuration. */
 const packages: any = {
   '@ngrx/store': {
     main: 'index.js',
+    defaultExtension: 'js'
+  },
+  'ng2-dragula': {
+    main: 'ng2-dragula.js',
     defaultExtension: 'js'
   }
 };
