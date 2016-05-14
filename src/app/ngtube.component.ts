@@ -8,7 +8,7 @@ import { NavbarFooterComponent } from './navbar-footer';
 import { SidenavComponent } from './sidenav';
 import { ThumbnailListComponent } from './thumbnail-list';
 import { Video } from './shared';
-import { YoutubePlayerComponent } from './youtube-player';
+import { PlayerContainerComponent } from './player-container';
 import { YoutubePlayerService } from './youtube-player.service';
 import { YoutubeSearchService } from './youtube-search.service';
 
@@ -25,7 +25,7 @@ import { YoutubeSearchService } from './youtube-search.service';
   directives: [NavbarComponent, 
                SidenavComponent,
                NavbarFooterComponent,
-               YoutubePlayerComponent,
+               PlayerContainerComponent,
                ThumbnailListComponent
   ]
 })
