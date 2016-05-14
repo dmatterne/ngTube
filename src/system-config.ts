@@ -3,6 +3,7 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
+  '@ngrx/store': 'vendor/@ngrx'
 };
 
 /** User packages configuration. */

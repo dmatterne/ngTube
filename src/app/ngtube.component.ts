@@ -6,6 +6,8 @@ import { Video } from './shared';
 import { YoutubePlayerComponent } from './youtube-player';
 import { YoutubePlayerService } from './youtube-player.service';
 
+import { Reducer } from '@ngrx/store';
+
 @Component({
   moduleId: module.id,
   selector: 'ngtube-app',
