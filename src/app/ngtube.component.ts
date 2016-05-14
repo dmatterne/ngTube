@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, provide } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import {Store} from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { NgTubeStore, mapToStorage, config, APP_CONFIG } from './shared';
 import { NavbarComponent } from './navbar';
 import { NavbarFooterComponent } from './navbar-footer';
@@ -11,6 +11,7 @@ import { PlayerContainerComponent } from './player-container';
 import { YoutubePlayerService } from './youtube-player.service';
 import { YoutubeSearchService } from './youtube-search.service';
 import { LocalStorageService } from './local-storage.service';
+import { SizeState } from './reducers/minimize';
 
 @Component({
   moduleId: module.id,
@@ -32,20 +33,28 @@ import { LocalStorageService } from './local-storage.service';
 })
 export class NgtubeAppComponent implements OnInit, OnDestroy {
     
-    private storeSubscription;
+    private subscriptions: any[] = [];
+    private isCinemaMode: boolean;
     
     constructor(private store: Store<NgTubeStore>, private localStorageService: LocalStorageService) {
         
-        this.storeSubscription = this.store.map((state: NgTubeStore) => mapToStorage(state)).subscribe((state) => {
-            this.localStorageService.set('ngtube', state);
-        });
+        this.subscriptions.push(
+            this.store.map((state: NgTubeStore) => mapToStorage(state)).subscribe((state) => {
+                this.localStorageService.set('ngtube', state);
+            }),
+        
+            this.store.select('minimize').subscribe((minimize: SizeState) => {
+                minimize = minimize || SizeState.MINIMIZE;
+                this.isCinemaMode = minimize === SizeState.MAXIMIZE;
+            })
+        );
     }
     
     ngOnInit() {
     }
     
-    ngOnDestroy () {
+    ngOnDestroy() {
         
-        this.storeSubscription.unsubscribe();
+        this.subscriptions.forEach((subscription) => subscription.unsubscribe());
     }
 }

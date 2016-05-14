@@ -16,6 +16,9 @@ player-container {
     text-align: center;
 }
 
+.cinema {
+    background-color: black;
+}
 
 @media only screen and (max-width : 992px) {
     header, .section, footer {
