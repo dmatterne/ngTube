@@ -17,13 +17,17 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   videos: Video[];
   subscriptions: any[] = [];
-  
-  constructor(private store: Store<NgTubeStore>) {
+ 
+  constructor(private store: Store<NgTubeStore>, private dragulaService: DragulaService) {
     this.subscriptions.push(
       this.store.select('playlist').subscribe((videos: any[]) => {
         this.videos = videos || [];
       })
     );
+    
+    dragulaService.setOptions('bag-one', {
+      removeOnSpill: true
+    });
   }
 
   ngOnInit() {
