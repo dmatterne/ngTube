@@ -1,4 +1,5 @@
 ul {
-    position: relative !important;
-    height: 100vh;
+    margin-top: 64px;
+    margin-right: 120px;
+    width: 200px;
 }
