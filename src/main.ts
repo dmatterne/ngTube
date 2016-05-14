@@ -10,5 +10,5 @@ if (environment.production) {
 
 bootstrap(NgtubeAppComponent, [
   youtubePlayerProvider(),
-  provideStore({history, minimize, play, playlist, repeat, research})
+  provideStore({history, minimize, play, playlist, repeat, search})
 ]);

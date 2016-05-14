@@ -1,6 +1,6 @@
 import {Reducer, Action} from '@ngrx/store';
 
-export const search: Reducer<string> = (state = string, action) => {
+export const search: Reducer<string> = (state: string = '', action) => {
     
     switch(action.type) {
         case 'SEARCHED':
