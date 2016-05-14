@@ -28,19 +28,24 @@
                         <i class="material-icons">skip_next</i>
                     </a>
                 </li>
+                <li class="icon-divider"></li>
                 <li>
                     <a class="navbar-icon" (click)="onRepeat()">
                         <i class="material-icons" *ngIf="isRepeatNone()" [style.color]="'white'">repeat</i>
                         <i class="material-icons" *ngIf="isRepeatAll()">repeat</i>
                         <i class="material-icons" *ngIf="isRepeatOne()">repeat_one</i>
-                        
-                        <!-- repeat_one -->
                     </a>
                 </li>
                 <li>
                     <a class="navbar-icon" (click)="onVolume()">
                         <i class="material-icons">volume_up</i>
-                        <!-- volume_mute -->
+                    </a>
+                </li>
+                <li class="icon-divider"></li>
+                <li>
+                    <a class="navbar-icon" (click)="onMinimize()">
+                        <i class="ion-arrow-expand" *ngIf="isMinimize()"></i>
+                        <i class="ion-arrow-shrink" *ngIf="!isMinimize()"></i>
                     </a>
                 </li>
             </ul>

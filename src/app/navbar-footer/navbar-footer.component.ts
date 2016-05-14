@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { NgTubeStore } from '../shared';
 
-import { PlayState, RepeatState } from '../reducers';
+import { PlayState, RepeatState, SizeState } from '../reducers';
 
 @Component({
   moduleId: module.id,
@@ -15,6 +15,7 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
 
     play: PlayState;
     repeat: RepeatState;
+    minimize: SizeState;
     
     subscriptions: any[] = [];
   
@@ -30,6 +31,11 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
             store.select('repeat').subscribe((repeat: RepeatState) => {
                 
                 this.repeat = repeat;
+            }),
+            
+            store.select('minimize').subscribe((minimize: SizeState) => {
+                
+                this.minimize = minimize;
             })
         )
     }
@@ -86,6 +92,21 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
         }
         
         this.store.dispatch({ type: action, payload: payload })
+    }
+    
+    onMinimize () {
+        
+        if (this.minimize === SizeState.MINIMIZE) {
+            this.store.dispatch({ type: 'MAXIMIZE' });
+        }
+        else {
+            this.store.dispatch({ type: 'MINIMIZE' });
+        }
+    }
+    
+    isMinimize () {
+        
+        return this.minimize === SizeState.MINIMIZE;
     }
     
     isPlay () {
