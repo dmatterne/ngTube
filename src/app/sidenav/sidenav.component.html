@@ -10,7 +10,11 @@
     <div class="sidenav-category-text center-align">
         Playlist
     </div>
-    <a class="btn-floating red"><i class="material-icons">insert_chart</i></a>
+    <div [style.width]="'100%'" >
+      <button class="btn btn-small btn-del waves-effect waves-light red">
+        <i class="material-icons">delete_forever</i>
+      </button>
+    </div>
   </li>
   
   <li class="sidenav-item" *ngFor="let video of videos" [class.active]="video.selected">
