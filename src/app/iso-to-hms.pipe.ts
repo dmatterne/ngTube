@@ -3,7 +3,7 @@ import * as moment from 'moment';
 @Pipe({
   name: 'isoToHMS'
 })
-export class IsoToHMS implements PipeTransform {
+export class IsoToHMSPipe implements PipeTransform {
 
   transform(value: string, args?: any): string {
     const duration: moment.Duration = moment.duration(value);

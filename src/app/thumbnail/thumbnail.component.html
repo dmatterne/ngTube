@@ -11,6 +11,11 @@
                 [style.z-index]="0"
                 class="z-depth-1 responsive-img"
             />
+            
+            <div class="duration">
+                 {{ video.duration | isoToHMS }}
+            </div>
+            
 
             <div class="playArrow">
                 <i [hidden]="!hover" 
@@ -21,16 +26,18 @@
             </div>
         </div>
     </div>
-    <h6 (mouseenter)="onTitleMouseEnter()"
-        (mouseleave)="onTitleMouseLeave()"
-        (click)="onTitleClick()">
-        <span [hidden]="!title">
-            {{video.title}}
-        </span>
-        <span [hidden]="title">
-             <i [style.z-index]="1" class="material-icons tiny icon-demo">
-                    view_list
-             </i> Add to playlist
-        </span>
-    </h6>
+    <div>
+        <h6 class="title" (mouseenter)="onTitleMouseEnter()"
+            (mouseleave)="onTitleMouseLeave()"
+            (click)="onTitleClick()">
+            <span [hidden]="!title">
+                {{video.title}}
+            </span>
+            <span [hidden]="title">
+                <i [style.z-index]="1" class="material-icons tiny icon-demo">
+                        view_list
+                </i> Add to playlist
+            </span>
+        </h6>
+    </div>
 </div>

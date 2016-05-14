@@ -6,6 +6,11 @@
     transform: translateY(-50%);
 }
 
+.duration {
+    position: absolute;
+    right: 0;    
+}
+
 .thumb {
     position: relative;
     display: inline-block;
@@ -14,4 +19,9 @@
 .thumbNail {
     width: 200px;
     cursor: pointer;
+}
+
+.title {
+    position: relative;
+    top: 10px;
 }
