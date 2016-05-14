@@ -51,7 +51,7 @@ export class ThumbnailListComponent implements OnDestroy {
     }
 
     search (search: string, thumbnailQuality: string = 'medium') {
-        
+        this.videos = [];
         this.youtubeSearchService.findIds(search).map((res) => res.json())
                     .pluck('items').subscribe(
                 
