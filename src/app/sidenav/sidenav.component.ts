@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { Store } from '@ngrx/store';
 
+import { Observable } from 'rxjs/Observable';
+
 import { Video, NgTubeStore } from '../shared';
 import { SidenavTileComponent } from '../sidenav-tile';
 
@@ -14,6 +16,7 @@ import { SidenavTileComponent } from '../sidenav-tile';
 export class SidenavComponent implements OnInit, OnDestroy {
 
   videos: Video[];
+  currentVideo: Observable<Video>;
   subscriptions: any[] = [];
   
   constructor(private store: Store<NgTubeStore>) {
@@ -22,6 +25,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
         this.videos = videos || [];
       })
     );
+    
+    this.currentVideo = this.store.select('currentVideo');
   }
 
   ngOnInit() {

@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
         this.search.updateValue(search);
     })
 
-    this.search.valueChanges.debounceTime(1000).distinctUntilChanged().subscribe(() => this.onSearch());
+    this.search.valueChanges.debounceTime(400).distinctUntilChanged().subscribe(() => this.onSearch());
   }
   
   onSearch () {
