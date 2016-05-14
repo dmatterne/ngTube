@@ -43,6 +43,7 @@ const barrels: string[] = [
   'app/reducers',
   'app/actions',
   'app/player-container',
+  'app/sidenav-tile',
   /** @cli-barrel */
 ];
 
