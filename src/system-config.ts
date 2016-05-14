@@ -3,7 +3,8 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-  '@ngrx/store': 'vendor/@ngrx/store'
+  '@ngrx/store': 'vendor/@ngrx/store',
+  'moment': 'vendor/moment/moment.js'
 };
 
 /** User packages configuration. */
