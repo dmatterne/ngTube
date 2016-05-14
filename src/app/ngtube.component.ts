@@ -21,11 +21,11 @@ export class NgtubeAppComponent implements OnInit {
         this.research = [
           {
               title: "Kaaris - Le bruit de mon âme",
-              url: "https://i.ytimg.com/vi/LBr3HjsUZBg/default.jpg"
+              url: "http://img.youtube.com/vi/bQVoAWSP7k4/0.jpg"
           },
           {
               title: "Booba feat Kaaris - Kalash",
-              url: "https://i.ytimg.com/vi/oBbHo8b4FDc/default.jpg"
+              url: "http://img.youtube.com/vi/bQVoAWSP7k4/0.jpg"
           }
         ];
     }
