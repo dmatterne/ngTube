@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, OnDestroy, HostBinding } from '@angular/core';
 import { Store } from '@ngrx/store';
-
 import { SearchResult, NgTubeStore } from '../shared';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/combinelatest';
+
 import { ThumbnailComponent } from '../thumbnail';
 import { YoutubeSearchService } from '../youtube-search.service';
 import { PlayState } from '../reducers/play';
@@ -21,7 +23,7 @@ export class ThumbnailListComponent implements OnDestroy {
 
     subscriptions: any[] = [];
     searchResults: SearchResult[] = [];
-    isMaximized: boolean = false;
+    show: Observable<boolean>;
 
     constructor(private store: Store<NgTubeStore>, private youtubeSearchService: YoutubeSearchService) {
         this.subscriptions.push(
@@ -29,13 +31,35 @@ export class ThumbnailListComponent implements OnDestroy {
             this.store.select('search').subscribe((search: string) => {
                 search = search || 'Angular 2';
                 this.subscriptions.push(this.search(search));
-            }),
-            
-            this.store.select('minimize').subscribe((minimize: SizeState) => {
-                minimize = minimize || SizeState.MINIMIZE;
-                this.isMaximized = minimize === SizeState.MAXIMIZE;
             })
+            
         );
+        
+        
+        
+        this.show = Observable.combineLatest(this.store.select('minimize'),
+                                             this.store.select('currentVideo'), (minimize, currentVideo) => {
+            
+            
+            const isMaximized = minimize === SizeState.MAXIMIZE;
+            const hasVideo = currentVideo !== null;
+            
+            if (hasVideo && isMaximized) {
+                return false;
+            }
+            else if (hasVideo && !isMaximized) {
+                return true;
+            }
+            else if (!hasVideo) {
+                return true;
+            }
+            else if (isMaximized) {
+                return false;
+            }
+            else {
+                return false;
+            }            
+        });
     }
 
     search(search: string) {
