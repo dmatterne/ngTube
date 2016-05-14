@@ -6,6 +6,7 @@ import { Component, Input, OnInit, HostListener, HostBinding } from '@angular/co
   templateUrl: 'thumbnail.component.html',
   styleUrls: ['thumbnail.component.css']
 })
+
 export class ThumbnailComponent {
     @Input() title: string;
     @Input() url: string;
@@ -20,7 +21,7 @@ export class ThumbnailComponent {
         this.hover = false;
     }
     
-    @HostListener('mouseClick') onMouseClick() {
-        // TODO
+    constructor(private store: Store<NgTubeStore>) {
+        
     }
 }

@@ -43,5 +43,9 @@ export class ThumbnailListComponent {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
   
+  onClick(videoId: string) {
+    this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video : videoId } });
+  }
+  
   public searchResults: SearchResult[];
 }
