@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnDestroy, HostBinding } from '@angular/core'
 import { Store } from '@ngrx/store';
 import { SearchResult, NgTubeStore } from '../shared';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/combinelatest';
+import 'rxjs/add/observable/combineLatest';
 
 import { ThumbnailComponent } from '../thumbnail';
 import { YoutubeSearchService } from '../youtube-search.service';
