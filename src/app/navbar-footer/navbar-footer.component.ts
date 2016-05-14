@@ -123,6 +123,11 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
         return this.play === PlayState.PLAY;
     }
     
+    isStop () {
+        
+        return this.play === PlayState.STOP;
+    }
+    
     isRepeatNone () {
         
         return this.repeat === RepeatState.NONE;
