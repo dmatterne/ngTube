@@ -3,10 +3,15 @@
 }
 
 .material-icons {
-    color: black;
+    color: black !important;
+}
+
+#search {
+    color: black !important;
 }
 
 .input-field {
     margin-left: 15px;
     width: 100%;
 }
+

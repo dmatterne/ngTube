@@ -10,7 +10,7 @@
                         <label for="search">
                             <i class="material-icons">search</i>
                         </label>
-                            <i class="material-icons">close</i>
+                        <i *ngIf="search.value" class="material-icons" (click)="resetSearch()">close</i>
                     </div>
                 </form>
             </div>

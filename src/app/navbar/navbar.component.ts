@@ -24,6 +24,11 @@ export class NavbarComponent implements OnInit {
       
       console.log(this.search.value);
   }
+  
+  resetSearch () {
+      
+      this.search.updateValue('');
+  }
 
   ngOnInit() {
   }
