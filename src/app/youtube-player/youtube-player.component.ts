@@ -1,4 +1,4 @@
-import { Component, Input, Output, Inject, AfterViewInit, EventEmitter } from '@angular/core';
+import { Component, Input, Output, Inject, AfterViewInit, EventEmitter, OnInit } from '@angular/core';
 import { YoutubePlayerService } from '../youtube-player.service';
 import { YoutubePlayer } from '../shared'; 
 
@@ -11,7 +11,7 @@ import { YoutubePlayer } from '../shared';
     `,
     providers: [YoutubePlayerService]
 })
-export class YoutubePlayerComponent implements AfterViewInit {
+export class YoutubePlayerComponent implements AfterViewInit, OnInit {
     
     private _width: number = 390;
     private _height: number = 180;
@@ -43,6 +43,8 @@ export class YoutubePlayerComponent implements AfterViewInit {
         return this._height;
     }
     
+    @Input() videoId: string;
+    
     @Input()
     playerId: string = 'player';
     
@@ -73,13 +75,19 @@ export class YoutubePlayerComponent implements AfterViewInit {
     
     constructor (private ytPlayerService: YoutubePlayerService) {}
    
+    ngOnInit () {
+        
+        if (!this.videoId) {
+            throw new Error('Missing video id');
+        }
+    }
     
     ngAfterViewInit () {
         
         this.player = this.ytPlayerService.create(this.playerId, {
             width: this.width,
             height: this.height,
-            videoId: 'M7lc1UVf-VE',
+            videoId: this.videoId,
             playerVars: {
                 autoplay: this.autoplay ? 1 : 0,
                 frameborder: 0
