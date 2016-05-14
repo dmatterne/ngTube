@@ -1,6 +1,13 @@
 import {Reducer, Action} from '@ngrx/store';
 
-export const repeat: Reducer<string> = (state = 'NONE', action) => {
+export enum RepeatState {
+    NONE,
+    ONE,
+    ALL
+}
+
+export const repeat: Reducer<RepeatState> = (state = RepeatState.ALL, action) => {
+    
     switch (action.type) {
         case 'SET_REPEAT':
             return action.payload.repeat;

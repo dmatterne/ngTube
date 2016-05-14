@@ -1,6 +1,6 @@
-export { minimize } from './minimize';
-export { repeat } from './repeat';
-export { play } from './play';
-export { playlist } from './playlist';
-export { history } from './history';
-export { research } from './research';
+export * from './minimize';
+export * from './repeat';
+export * from './play';
+export * from './playlist';
+export * from './history';
+export * from './research';

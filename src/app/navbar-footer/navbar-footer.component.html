@@ -9,18 +9,27 @@
                 </li>
                 <li>
                     <a class="navbar-icon" (click)="onPlay()">
-                        <i class="material-icons">play_arrow</i>
+                        <i class="material-icons" *ngIf="!isPlay()">play_arrow</i>
+                        <i class="material-icons" *ngIf="isPlay()">pause</i>
                     </a>
                 </li>
                 <li>
-                    <a class="navbar-icon" (click)="onRepeat()">
-                        <i class="material-icons">repeat</i>
-                        <!-- repeat_one -->
+                    <a class="navbar-icon" (click)="onStop()">
+                        <i class="material-icons">stop</i>
                     </a>
                 </li>
                 <li>
                     <a class="navbar-icon" (click)="onNext()">
                         <i class="material-icons">skip_next</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="navbar-icon" (click)="onRepeat()">
+                        <i class="material-icons" *ngIf="isRepeatNone()" [style.color]="'white'">repeat</i>
+                        <i class="material-icons" *ngIf="isRepeatAll()">repeat</i>
+                        <i class="material-icons" *ngIf="isRepeatOne()">repeat_one</i>
+                        
+                        <!-- repeat_one -->
                     </a>
                 </li>
                 <li>
