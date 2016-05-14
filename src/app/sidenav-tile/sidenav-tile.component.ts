@@ -13,10 +13,8 @@ export class SidenavTileComponent {
   @Input() duration: string;
   @Input() videoId: string;
   
-  selected: boolean = false;
-
   @HostListener('mouseclick') onMouseClick() {
-    this.selected = true;
+    //dispatch({SELECT_ITEM});
     //dispatch({PLAY});
   }
 }

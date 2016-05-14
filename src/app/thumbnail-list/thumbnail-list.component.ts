@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy, HostBinding } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { Video, SearchResult, NgTubeStore } from '../shared';
+import { SearchResult, NgTubeStore } from '../shared';
 import { ThumbnailComponent } from '../thumbnail';
 import { YoutubeSearchService } from '../youtube-search.service';
 import { PlayState } from '../reducers/play';
@@ -57,7 +57,6 @@ export class ThumbnailListComponent {
     }
 
     onClick(videoId: string) {
-
         this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: videoId } });
     }
 

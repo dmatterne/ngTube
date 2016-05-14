@@ -12,8 +12,13 @@
     </div>
   </li>
   
-  <li class="sidenav-item" *ngFor="let video of videos">
-    <sidenav-tile [title]="video.title" [thumbnailUrl]="" [duration]=""></sidenav-tile>
+  <li class="sidenav-item" *ngFor="let video of videos" [class.active]="video.selected">
+    <sidenav-tile 
+      [title]="video.title" 
+      [thumbnailUrl]="video.thumbnailUrl" 
+      [duration]="video.duration"
+      (click)="onClick(video.videoId)">
+    </sidenav-tile>
   </li>
 </ul>
 
