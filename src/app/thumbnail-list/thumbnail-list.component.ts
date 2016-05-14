@@ -24,6 +24,7 @@ export class ThumbnailListComponent implements OnDestroy {
 
     subscriptions: any[] = [];
     videos: Video[] = [];
+    current: Video;
     show: Observable<boolean>;
 
     constructor(private store: Store<NgTubeStore>, private youtubeSearchService: YoutubeSearchService) {
@@ -32,6 +33,9 @@ export class ThumbnailListComponent implements OnDestroy {
             this.store.select('search').subscribe((search: string) => {
                 search = search || 'Angular 2';
                 this.subscriptions.push(this.search(search));
+            }),
+            this.store.select('currentVideo').subscribe((video: Video) => {
+                this.current = video;
             })
             
         );
@@ -101,12 +105,13 @@ export class ThumbnailListComponent implements OnDestroy {
         
         
     onThumbnailClick (video: Video) {
+        this.store.dispatch({ type: 'ADD_HISTORY', payload: { video: video } });
         this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: video } });
         this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: video.id } });
     }
     
     onTitleClick (video: Video) {
         this.store.dispatch({ type: 'ADD_TO_PLAYLIST', payload: { video: video } });
-        this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: video.id } });
+        this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: this.current.id } });
     }
 }

@@ -1,11 +1,13 @@
 import { Component, Input, EventEmitter, Output, HostListener } from '@angular/core';
 import { Video } from '../shared';
+import { IsoToHMS } from '../iso-to-hms.pipe';
 
 @Component({
   moduleId: module.id,
   selector: 'sidenav-tile',
   templateUrl: 'sidenav-tile.component.html',
-  styleUrls: ['sidenav-tile.component.css']
+  styleUrls: ['sidenav-tile.component.css'],
+  pipes: [IsoToHMS]
 })
 export class SidenavTileComponent {
   

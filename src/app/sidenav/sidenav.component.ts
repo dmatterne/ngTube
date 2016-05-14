@@ -28,7 +28,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   }
   
   onClickTile(video: Video) {
-        this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: video.id }});
+        this.videos = this.videos.map(v => Object.assign({}, v, {selected: v.id === video.id}));
         this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: video } });
   }
   

@@ -8,7 +8,7 @@
     </div>
     <div [style.display]="'inline-block'" class="title">
       <h6>{{video.title}}</h6>
-      <label>{{video.duration}}</label>
+      <label>{{video.duration | isoToHMS}}</label>
     </div>
   </div>
 </div>

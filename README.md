@@ -1,48 +1,25 @@
-# This is your [AngularAttack](https://www.angularattack.com) 2016 Repo
+# Ngtube
 
-This repo is the start of your AngularAttack 2016 entry. It contains the simple [Angular2 starter](https://angular.io/docs/ts/latest/quickstart.html) files.
+[**Try me here !**](http://ngtube.2016.angularattack.io/)
 
-**DO NOT MAKE ANY CODE CHECKINS TO THIS REPOSITORY BEFORE THE COMPETITION OFFICIALLY BEGINS.**
+## About 
 
-**DOING SO COULD DISQUALIFY YOU.**
+Ngtube is a simplified youtube browser application made for [Angular attack](https://www.angularattack.com)
 
+![Angularattack](https://rumblex-angularattack.s3.amazonaws.com/images/knight.png)
 
-However, before the competition starts, there are some things we encourage you to do to get prepared for the competition.
+## Frameworks
 
+### @Angular2
 
-### Step 1) Get Your Local Environment setup
+### Materialize
 
-Clone this repo locally, and make sure all your team members have access to it.
+## 3rd party libs
 
-* Install the latest [Node / NPM](https://nodejs.org).
+* [ngrx/store](https://github.com/ngrx/store): State managment with RxJS
 
-* `git clone git@github.com:rumblex/angularattack2016-ngtube.git`
+## Team contact
 
-* `cd angularattack2016-ngtube`
-
-* `npm install`
-
-* `npm start` will start the server locally to test that everything is running correctly
-
-
-### Step 2) Deploy Your App
-
-While you can't make any checkins before the comp, what you **can** do right now is deploy this sample app to [Surge](https://surge.sh) (our competition hosting provider).
-
-* `npm install -g surge`
-
-* `surge .`
-
-Note: please do not remove the `CNAME` file, as that tells it where to deploy to.
-
-If receive the error message `"You do not have permission to publish to ngtube.2016.angularattack.io"`, it might mean another team member has already deployed your project to Surge. Ask them to run the next step to give you access.
-
-### Step 3) Add Your Team Members to Surge
-
-* `surge . --add 39171@heb.be,gatien.bovyn@gmail.com,39631@heb.be,florian_knop@hotmail.com`
-
-
-### Step 4) Wait til competition starts
-
-It begins at exactly [May 14 at 00:00 UTC](https://www.wolframalpha.com/input/?i=May+14,+2016+0:00+UTC). Once the competition starts,   you can write over this project.
-
+* Gatien Bovyn - [Astalaseven@github](https://github.com/astalaseven) - [gatien.bovyn@gmail.com](mailto:gatien.bovyn@gmail.com)
+* Florian Knop - [fknop@github](https://github.com/fknop) - [florian_knop@hotmail.com](mailto:florian_knop@hotmail.com)
+* Simon Placentino - [splacentino@github](https://github.com/splacentino) - [placentino.simon@gmail.com](mailto:placentino.simon@gmail.com)
