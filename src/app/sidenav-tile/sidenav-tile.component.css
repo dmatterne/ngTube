@@ -17,3 +17,10 @@ h6 {
     text-overflow: ellipsis;
 }
 
+.removeVideoFromPlaylist {
+    position: absolute;
+    margin-top: -8px;
+    margin-left: 5px;
+    color: brown;
+    cursor: pointer;
+}

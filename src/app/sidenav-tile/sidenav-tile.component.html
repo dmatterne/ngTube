@@ -1,9 +1,14 @@
 <div>
-  <div [style.display]="'inline-block'" class="image">
-    <img class="z-depth-1 responsive-img" [src]="video.thumbnailUrl" width="40px" height="40px" />
+  <div class="removeVideoFromPlaylist" (click)="onClickDelete()">
+    <i class="material-icons">clear</i>
   </div>
-  <div [style.display]="'inline-block'" class="title">
-    <h6 >{{video.title}}</h6>
-    <label>{{video.duration}}</label>
+  <div (click)="onClickTile()">
+    <div [style.display]="'inline-block'" class="image">
+      <img class="z-depth-1 responsive-img" [src]="video.thumbnailUrl" width="40px" height="40px" />
+    </div>
+    <div [style.display]="'inline-block'" class="title">
+      <h6>{{video.title}}</h6>
+      <label>{{video.duration}}</label>
+    </div>
   </div>
 </div>
