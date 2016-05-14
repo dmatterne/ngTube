@@ -29,6 +29,7 @@ export class PlayerContainerComponent implements OnInit {
     height: number = this.maximizeHeight;
     video: Video = null;
     
+    cinemaMode: Observable<boolean>;
     
 
     private subscriptions: any[] = [];
@@ -73,12 +74,13 @@ export class PlayerContainerComponent implements OnInit {
             })
         );
         
+        this.cinemaMode = this.store.select('cinemaMode');
+        
        
     }
     
     stateChange (state: number) {
         
-        console.log(state);
         switch (state) {
             case 1: 
                 this.store.dispatch({ type: 'PLAY' });
