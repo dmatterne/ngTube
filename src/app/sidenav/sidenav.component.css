@@ -67,6 +67,15 @@
     /*margin-left: 10px;*/
  }
  
+ .btn-small {
+     width: 80px;
+     height: 35px !important;
+     float: right;
+     margin-right: 25px;
+ }
+
+ 
+ 
  /*.sidenav-item {
      font-size: 17px;
      text-align: center;
