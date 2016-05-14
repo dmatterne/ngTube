@@ -1,7 +1,12 @@
 <div *ngIf="show | async">
     <ul class="row">
         <li *ngFor="let result of searchResults" class="col s12 l3 m4">
-            <thumbnail (click)="onClick(result.videoId)" [title]="result.videoTitle" [url]="result.urlThumbnail"></thumbnail>
+            <thumbnail 
+                (clickThumbnail)="onThumbnailClick($event)"
+                (clickTitle)="onTitleClick($event)"
+                [title]="result.videoTitle" 
+                [url]="result.urlThumbnail">
+            </thumbnail>
         </li>
     </ul>
 </div>
