@@ -32,6 +32,10 @@ export class SidenavComponent implements OnInit, OnDestroy {
         // this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: id } });
   }
   
+  clear_playlist() {
+        this.store.dispatch({ type: 'CLEAR_PLAYLIST', payload: {} });
+  }
+  
   ngOnDestroy() {
       this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   } 
