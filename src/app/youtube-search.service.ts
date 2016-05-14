@@ -13,6 +13,7 @@ export interface YoutubeSearchOptions {
     pageToken?: string;
     videoOnly?: boolean;
     duration?: YoutubeVideoDuration | string;
+    maxResults?: string;
 }
 
 @Injectable()
@@ -32,6 +33,9 @@ export class YoutubeSearchService {
         search.append('type', 'video');
       search.append('q', query);
       
+      options.maxResults = options.maxResults || '15';
+      search.append('maxResults', options.maxResults);
+
       if (options.duration) {
           search.append('videoDuration', this.getDuration(options.duration));
       }
