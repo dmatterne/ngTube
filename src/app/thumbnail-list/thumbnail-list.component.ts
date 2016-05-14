@@ -43,8 +43,8 @@ export class ThumbnailListComponent {
                                              (minimize, currentVideo) => {
             
             const hasVideo = currentVideo !== null;
-            
-            if ((hasVideo && minimize) || (!hasVideo)) {
+
+            if ((hasVideo && minimize === SizeState.MINIMIZE) || (!hasVideo)) {
                 return true;
             }
             
@@ -52,7 +52,7 @@ export class ThumbnailListComponent {
         });
     }
 
-    search(search: string) {
+    search (search: string) {
 
         this.youtubeSearchService.findAll(search).subscribe(
             (response: any) => {

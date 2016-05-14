@@ -43,6 +43,12 @@
                 </li>
                 <li class="icon-divider"></li>
                 <li>
+                    <a class="navbar-icon" (click)="onCinemaMode()">
+                        <i class="material-icons" [class.white-icon]="cinemaMode | async">local_movies</i>
+                    </a>
+                </li>
+                <li class="icon-divider"></li>
+                <li>
                     <a class="navbar-icon" (click)="onMinimize()">
                         <i class="ion-arrow-expand" *ngIf="isMinimize()"></i>
                         <i class="ion-arrow-shrink" *ngIf="!isMinimize()"></i>
