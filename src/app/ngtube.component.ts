@@ -1,16 +1,16 @@
+import { Component, OnInit, OnDestroy, provide } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
-import { Component, OnInit, provide } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
-import { NgTubeStore, config, APP_CONFIG } from './shared';
+import { NgTubeStore, mapToStorage, config, APP_CONFIG } from './shared';
 import { NavbarComponent } from './navbar';
 import { NavbarFooterComponent } from './navbar-footer';
 import { SidenavComponent } from './sidenav';
 import { ThumbnailListComponent } from './thumbnail-list';
-import { Video } from './shared';
 import { PlayerContainerComponent } from './player-container';
 import { YoutubePlayerService } from './youtube-player.service';
 import { YoutubeSearchService } from './youtube-search.service';
+import { LocalStorageService } from './local-storage.service';
 
 @Component({
   moduleId: module.id,
@@ -19,7 +19,8 @@ import { YoutubeSearchService } from './youtube-search.service';
   providers: [
       provide(APP_CONFIG, { useValue: config }),
       HTTP_PROVIDERS,
-      YoutubeSearchService
+      YoutubeSearchService,
+      LocalStorageService
   ],
   styleUrls: ['ngtube.component.css'],
   directives: [NavbarComponent, 
@@ -29,14 +30,22 @@ import { YoutubeSearchService } from './youtube-search.service';
                ThumbnailListComponent
   ]
 })
-export class NgtubeAppComponent implements OnInit {
-    research: Video[];
-    playlist: Observable<any[]>;
+export class NgtubeAppComponent implements OnInit, OnDestroy {
     
-    constructor(private store: Store<NgTubeStore>) {
+    private storeSubscription;
+    
+    constructor(private store: Store<NgTubeStore>, private localStorageService: LocalStorageService) {
+        
+        this.storeSubscription = this.store.map((state: NgTubeStore) => mapToStorage(state)).subscribe((state) => {
+            this.localStorageService.set('ngtube', state);
+        });
     }
     
     ngOnInit() {
+    }
+    
+    ngOnDestroy () {
         
+        this.storeSubscription.unsubscribe();
     }
 }
