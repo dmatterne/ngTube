@@ -1,0 +1,1 @@
+export { YoutubePlayer } from './youtube-player/youtube-player';
