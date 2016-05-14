@@ -4,6 +4,8 @@ import { FormBuilder, Control, ControlGroup } from '@angular/common';
 import { YoutubeSearchService } from '../youtube-search.service';
 import { NgTubeStore } from '../shared';
 
+import 'rxjs/add/operator/finally';
+
 declare var $: any;
 
 @Component({
@@ -24,6 +26,13 @@ export class NavbarComponent implements OnInit {
     this.form = fb.group({
         search: this.search
     });
+    
+    const subscription = this.store.select('search').finally(() => {
+        
+        subscription.unsubscribe();
+    }).subscribe((search) => {
+        this.search.updateValue(search);
+    })
   }
   
   onSearch () {
