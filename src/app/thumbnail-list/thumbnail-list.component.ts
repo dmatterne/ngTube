@@ -1,11 +1,10 @@
 import { Component, OnInit, Input, OnDestroy, HostBinding } from '@angular/core';
 import { Store } from '@ngrx/store';
-
+import { SearchResult, Video, NgTubeStore } from '../shared';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/pluck';
 
-import { Video, SearchResult, NgTubeStore } from '../shared';
 import { ThumbnailComponent } from '../thumbnail';
 import { YoutubeSearchService } from '../youtube-search.service';
 import { PlayState } from '../reducers/play';
@@ -20,7 +19,7 @@ import { SizeState } from '../reducers/minimize';
     directives: [ThumbnailComponent]
 })
 
-export class ThumbnailListComponent {
+export class ThumbnailListComponent implements OnDestroy {
 
 
     subscriptions: any[] = [];
@@ -53,8 +52,11 @@ export class ThumbnailListComponent {
 
     search (search: string, thumbnailQuality: string = 'medium') {
         
-        this.youtubeSearchService.findIds(search).map((res) => res.json()).pluck('id', 'videoId').subscribe(
-            (ids: string[]) => {
+        this.youtubeSearchService.findIds(search).map((res) => res.json())
+                    .pluck('items').subscribe(
+                
+            (items: any) => {
+                const ids = items.map((x: any) => x.id.videoId);
                 if (ids.length === 0) {
                     return;
                 }
@@ -62,19 +64,16 @@ export class ThumbnailListComponent {
                 this.youtubeSearchService.findByIds(ids)
                             .map((res) => res.json())
                             .pluck('items')
-                            .map((res: any) => {
-                                return {
-                                    id: res.id,
-                                    title: res.snippet.title,
-                                    thumbnailUrl: res.snippet.thumbnails[thumbnailQuality].url,
-                                    duration: res.contentDetails.duration
-                                }
-                            })
                             .subscribe(
-                    (response: any) => {
-                        
-                        this.videos = response;
-                        
+                    (items: any) => {
+                        this.videos = items.map((x) => {
+                                return {
+                                    id: x.id,
+                                    title: x.snippet.title,
+                                    thumbnailUrl: x.snippet.thumbnails[thumbnailQuality].url,
+                                    duration: x.contentDetails.duration
+                                }
+                        });
                     }
                 )
             }
@@ -96,9 +95,8 @@ export class ThumbnailListComponent {
         this.subscriptions.forEach((subscription) => subscription.unsubscribe());
     }
 
-    onClick(videoId: string) {
-
-        this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: videoId } });
+    onClick (video: Video) {
+        this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: video } });
     }
 
 }

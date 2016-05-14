@@ -2,7 +2,7 @@
     *ngIf="video"
     playerId="player"
     [autoplay]="false"
-    [videoId]="video"
+    [videoId]="video.id"
     [width]="width"
     [height]="height"
     (stateChange)="stateChange($event.data)">

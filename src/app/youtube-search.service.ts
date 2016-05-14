@@ -33,10 +33,10 @@ export class YoutubeSearchService {
       }
       
       if (options.videoOnly) {
-          search.append('fields', 'fields=items(id/videoId)');
+          search.append('fields', 'items(id/videoId)');
       }
       else {
-          search.append('fields', 'fields=items(id)');
+          search.append('fields', 'items(id)');
       }
       
       const url = `${this.config.apiEndpoint}/search`;
@@ -48,8 +48,9 @@ export class YoutubeSearchService {
       
       const search = new URLSearchParams();
       search.append('id', ids.join(','));
-      search.append('part', 'contentDetails');
+      search.append('part', 'contentDetails,snippet');
       search.append('key', this.config.apiKey);
+      search.append('fields', 'items(id,snippet/title,snippet/description,snippet/thumbnails,contentDetails/duration)');
       
       const url = `${this.config.apiEndpoint}/videos`;
       return this.http.get(url, { search });
