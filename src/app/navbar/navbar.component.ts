@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
 
   constructor (fb: FormBuilder, 
                private youtubeSearchService: YoutubeSearchService,
-               store: Store<NgTubeStore>) {
+               private store: Store<NgTubeStore>) {
       
     this.form = fb.group({
         search: this.search
