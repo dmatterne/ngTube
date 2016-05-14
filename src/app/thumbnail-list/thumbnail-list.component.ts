@@ -16,7 +16,7 @@ import { SizeState } from '../reducers/minimize';
     directives: [ThumbnailComponent]
 })
 
-export class ThumbnailListComponent {
+export class ThumbnailListComponent implements OnDestroy {
 
 
     subscriptions: any[] = [];

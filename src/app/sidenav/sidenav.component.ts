@@ -1,7 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Video, NgTubeStore } from '../shared';
 
+import { Video, NgTubeStore } from '../shared';
 import { SidenavTileComponent } from '../sidenav-tile';
 
 @Component({
@@ -11,11 +11,18 @@ import { SidenavTileComponent } from '../sidenav-tile';
   styleUrls: ['sidenav.component.css'],
   directives: [SidenavTileComponent]
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent implements OnInit, OnDestroy {
 
   videos: any[];
+  subscriptions: any[] = [];
   
-  constructor(private store: Store<NgTubeStore>) {}
+  constructor(private store: Store<NgTubeStore>) {
+    this.subscriptions.push(
+      this.store.select('playlist').subscribe((videos: any[]) => {
+        this.videos = videos || [];
+      })
+    );
+  }
 
   ngOnInit() {
     this.videos = [
@@ -36,5 +43,7 @@ export class SidenavComponent implements OnInit {
         this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: videoId } });
   }
   
-  
+  ngOnDestroy() {
+      this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+  } 
 }
