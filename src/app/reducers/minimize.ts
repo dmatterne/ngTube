@@ -1,9 +1,20 @@
 import {Reducer, Action} from '@ngrx/store';
 
-export const minimize: Reducer<boolean> = (state = false,  action) => {
+export enum SizeState {
+    MINIMIZE,
+    MAXIMIZE
+}
+
+export const minimize: Reducer<SizeState> = (state: SizeState = SizeState.MAXIMIZE,  action) => {
+    
     switch (action.type) {
-        case "SET_MINIMIZE":
-            return action.payload.minimize;
+        
+        case 'MINIMIZE':
+            return SizeState.MINIMIZE;
+            
+        case 'MAXIMIZE':
+            return SizeState.MAXIMIZE;
+            
         default:
             return state;
     }
