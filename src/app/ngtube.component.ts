@@ -34,8 +34,6 @@ export class NgtubeAppComponent implements OnInit {
     playlist: Observable<any[]>;
     
     constructor(private store: Store<NgTubeStore>) {
-        console.log(store);
-        //playlist = store.select('playlist');
     }
     
     ngOnInit() {

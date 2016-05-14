@@ -5,3 +5,11 @@ li {
 thumbnail {
     margin: 20px;
 }
+
+.row .col {
+    float: none;
+}
+
+:host.hidden {
+    display: none;
+}

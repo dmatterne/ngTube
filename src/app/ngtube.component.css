@@ -1,5 +1,5 @@
 .section {
-    padding-left: 200px;
+    padding-left: 160px;
     padding-bottom: 150px;
 }
 
@@ -10,6 +10,10 @@ header, footer {
 footer {
     position: absolute;
     bottom: 0;
+}
+
+player-container {
+    text-align: center;
 }
 
 

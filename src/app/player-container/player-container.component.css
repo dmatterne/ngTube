@@ -1,5 +1,10 @@
 :host {
+    /*position: absolute;*/
+}
+
+
+:host.minimize {
     position: fixed;
     bottom: 75px;
-    right: 25px;
+    right: 20px;
 }

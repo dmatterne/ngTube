@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, HostBinding } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Video, SearchResult, NgTubeStore } from '../shared';
@@ -15,33 +15,40 @@ import { YoutubeSearchService } from '../youtube-search.service';
 })
 
 export class ThumbnailListComponent {
-  subscriptions: any[] = [];
+    
+    @HostBinding('class.hidden') hidden = true;
+    
+    subscriptions: any[] = [];
+    searchResults: SearchResult[] = [];
+    
+    constructor(private store: Store<NgTubeStore>, private youtubeSearchService: YoutubeSearchService) {
+        this.subscriptions.push(
 
-  constructor(public store: Store<NgTubeStore>, public youtubeSearchService: YoutubeSearchService) {
-    this.subscriptions.push(
-
-      store.select('search').subscribe((search: string) => {
-        search = search || 'Angular 2';
+            this.store.select('search').subscribe((search: string) => {
+                search = search || 'Angular 2';
+                this.subscriptions.push(this.search(search));
+                this.hidden = false;
+            })
+        );
+    }
+  
+    search (search: string) {
+      
         this.youtubeSearchService.findAll(search).subscribe(
-          (response) => {
+          (response: any) => {
+              
             this.searchResults = [];
-            let json = response.json();
+            const json = response.json();
             if (json && json.items) {
-              json.items.forEach(item => {
-                let searchResult = new SearchResult(item);
-                this.searchResults.push(searchResult);
-              });
+                this.searchResults = json.items.map((item) => new SearchResult(item));
             }
           }
-        )
-      })
-      
-    );
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
-  }
+        );
+    }
   
-  public searchResults: SearchResult[];
+  
+    ngOnDestroy() {
+        this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+    }
+  
 }

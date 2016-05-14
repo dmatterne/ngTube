@@ -1,7 +1,8 @@
 <youtube-player
+    *ngIf="video"
     playerId="player"
     [autoplay]="false"
-    [videoId]="'1cRQ8pS21-4'"
-    [width]="290"
-    [height]="192">
+    [videoId]="video"
+    [width]="width"
+    [height]="height">
 </youtube-player>

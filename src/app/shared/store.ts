@@ -5,4 +5,5 @@ export interface NgTubeStore {
     playlist:   any[];
     repeat:     string;
     search:   string;
+    currentVideo: string;
 }
