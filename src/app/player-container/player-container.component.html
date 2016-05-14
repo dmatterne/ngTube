@@ -4,5 +4,6 @@
     [autoplay]="false"
     [videoId]="video"
     [width]="width"
-    [height]="height">
+    [height]="height"
+    (stateChange)="stateChange($event.data)">
 </youtube-player>

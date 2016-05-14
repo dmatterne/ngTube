@@ -6,6 +6,7 @@ import { YoutubePlayerComponent } from '../youtube-player';
 import { Store } from '@ngrx/store';
 import { NgTubeStore } from '../shared';
 import { RepeatState, PlayState, SizeState } from '../reducers';
+
  
 @Component({
   moduleId: module.id,
@@ -75,6 +76,22 @@ export class PlayerContainerComponent implements OnInit {
         );
         
        
+    }
+    
+    stateChange (state: number) {
+        
+        console.log(state);
+        switch (state) {
+            case 1: 
+                this.store.dispatch({ type: 'PLAY' });
+                break;
+            case 2: 
+                this.store.dispatch({ type: 'PAUSE' });
+                break;
+            case 0:
+                this.store.dispatch({ type: 'STOP' });
+                break;
+        }
     }
 
     ngOnInit() {
