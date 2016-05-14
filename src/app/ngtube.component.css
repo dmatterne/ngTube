@@ -3,6 +3,11 @@
     padding-bottom: 150px;
 }
 
+.section.cinema {
+    padding-top: 100px;
+    height: auto;
+}
+
 header, footer {
     padding-left: 240px;
 }
@@ -16,9 +21,11 @@ player-container {
     text-align: center;
 }
 
-.cinema {
+.cinema, :host.cinema {
     background-color: black;
 }
+
+
 
 @media only screen and (max-width : 992px) {
     header, .section, footer {
