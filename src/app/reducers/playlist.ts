@@ -6,10 +6,10 @@ export const playlist: Reducer<Video[]> = (state = [], action) => {
     switch (action.type) {
         
         case 'SELECT_ITEM':
-            return state.map((video) => selectItem(video, action.payload.id));
+            return state.map((video) => Object.assign({}, video, { selected: video.id === action.payload.id }));
             
         case 'ADD_TO_PLAYLIST':
-            return [...state, action.payload.video];
+            return addIfUnique(state, action.payload.video);
             
         case 'REMOVE_FROM_PLAYLIST':
             if (action.payload.video) {
@@ -27,11 +27,12 @@ export const playlist: Reducer<Video[]> = (state = [], action) => {
     }
 }
 
-const selectItem = (state: Video, id: string) => {
+const addIfUnique = (state = [], video) => {
+    const existingVideo = state.filter(v => v.id === video.id);
     
-    if (state.id === id) {
-        return Object.assign({}, state, { selected: true });
-    } else {
+    if (existingVideo.length) {
         return state;
+    } else {
+        return [...state, video];
     }
 }
