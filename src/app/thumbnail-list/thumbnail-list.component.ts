@@ -102,6 +102,7 @@ export class ThumbnailListComponent implements OnDestroy {
         
     onThumbnailClick (video: Video) {
         this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: video } });
+        this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: video.id } });
     }
     
     onTitleClick (video: Video) {
