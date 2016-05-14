@@ -1,7 +1,7 @@
 <div>
     <ul class="row">
-        <li *ngFor="let video of videos" class="col s4">
-            <thumbnail [title]="video.title" [url]="video.url"></thumbnail>
+        <li *ngFor="let result of searchResults" class="col s4">
+            <thumbnail [title]="result.videoTitle" [url]="result.urlThumbnail"></thumbnail>
         </li>
     </ul>
 </div>
