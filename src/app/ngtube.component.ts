@@ -1,19 +1,14 @@
 import { Component } from '@angular/core';
-import { ThumbnailComponent } from './thumbnail';
+import { NavbarComponent } from './navbar';
+import { SidenavComponent } from './sidenav';
+
 @Component({
   moduleId: module.id,
   selector: 'ngtube-app',
-  template: `<h1>
-    {{title}}
-    </h1>
-    <thumbnail 
-        title="Kaaris - Le bruit de mon âme" 
-        url="https://i.ytimg.com/vi/LBr3HjsUZBg/default.jpg">
-    </thumbnail>
-    `,
+  templateUrl: 'ngtube.component.html',
   styleUrls: ['ngtube.component.css'],
-  directives: [ThumbnailComponent]
+  directives: [NavbarComponent, SidenavComponent]
 })
 export class NgtubeAppComponent {
-  title = 'ngtube works!';
+  
 }

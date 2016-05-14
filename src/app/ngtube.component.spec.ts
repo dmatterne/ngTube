@@ -14,9 +14,4 @@ describe('App: Ngtube', () => {
       inject([NgtubeAppComponent], (app: NgtubeAppComponent) => {
     expect(app).toBeTruthy();
   }));
-
-  it('should have as title \'ngtube works!\'',
-      inject([NgtubeAppComponent], (app: NgtubeAppComponent) => {
-    expect(app.title).toEqual('ngtube works!');
-  }));
 });
