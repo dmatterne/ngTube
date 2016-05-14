@@ -18,8 +18,7 @@ import { ThumbnailComponent } from '../thumbnail';
         </ul>
     </div>
   `,
-  directives: [ThumbnailComponent],
-  styleUrls: ['thumbnail-list.component.css']
+  directives: [ThumbnailComponent]
 })
 export class ThumbnailListComponent {
   @Input() videos: Video[]
