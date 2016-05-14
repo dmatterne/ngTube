@@ -1,4 +1,4 @@
- import {Reducer, Action} from '@ngrx/store';
+import {Reducer, Action} from '@ngrx/store';
 
 export const history: Reducer<any[]> = (state = [], action) => {
     switch (action.type) {
