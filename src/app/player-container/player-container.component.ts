@@ -29,6 +29,7 @@ export class PlayerContainerComponent implements OnInit {
     height: number = this.maximizeHeight;
     video: Video = null;
     
+    repeat: RepeatState;
     cinemaMode: Observable<boolean>;
     
 
@@ -71,6 +72,10 @@ export class PlayerContainerComponent implements OnInit {
                         this.player.stop();
                         break;
                 } 
+            }),
+            
+            this.store.select('repeat').subscribe((x: RepeatState) => {
+                this.repeat = x;  
             })
         );
         
@@ -81,15 +86,29 @@ export class PlayerContainerComponent implements OnInit {
     
     stateChange (state: number) {
         
+        console.log(state);
+        
         switch (state) {
+            case 0:
+                if (this.repeat === RepeatState.NONE) {
+                    this.store.dispatch({ type: 'STOP' });
+                }
+                
+                if (this.repeat === RepeatState.ALL) {
+                    this.player.play();
+                    // next video or same
+                }
+                
+                if (this.repeat === RepeatState.ONE) {
+                    this.player.play();
+                }
+                
+                break;
             case 1: 
                 this.store.dispatch({ type: 'PLAY' });
                 break;
             case 2: 
                 this.store.dispatch({ type: 'PAUSE' });
-                break;
-            case 0:
-                this.store.dispatch({ type: 'STOP' });
                 break;
         }
     }
