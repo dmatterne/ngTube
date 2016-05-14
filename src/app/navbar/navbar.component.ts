@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FormBuilder, Control, ControlGroup } from '@angular/common';
 import { YoutubeSearchService } from '../youtube-search.service';
+import { NgTubeStore } from '../shared';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class NavbarComponent implements OnInit {
   search: Control = new Control('');  
 
   constructor (fb: FormBuilder, 
-               private youtubeSearchService: YoutubeSearchService) {
+               private youtubeSearchService: YoutubeSearchService,
+               private store: Store<NgTubeStore>) {
       
     this.form = fb.group({
         search: this.search
@@ -25,16 +27,13 @@ export class NavbarComponent implements OnInit {
   
   onSearch () {
       
-      this.youtubeSearchService.findAll(this.search.value).subscribe(
-          (response) => {
-              console.log(response.json());
-          }
-      )
+      this.store.dispatch({ type: 'SEARCHED', payload: { search: this.search.value }});
   }
   
   resetSearch () {
       
       this.search.updateValue('');
+      this.store.dispatch({ type: 'CLEARED_SEARCH' });
   }
 
   ngOnInit() {

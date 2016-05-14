@@ -1,7 +1,21 @@
 {
   "name": "ngtube",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
+  "contributors": [
+	  { 
+	  	"name": "Gatien Bovyn",
+	  	"email": "gatien.bovyn@gmail.com"
+	  },
+	  { 
+	  	"name": "Florian Knop",
+	  	"email": "florian_knop@hotmail.com"
+	  },
+	  { 
+	  	"name": "Simon Placentino",
+	  	"email": "placentino.simon@gmail.com"
+	  }
+  ],
   "angular-cli": {},
   "scripts": {
     "start": "ng server",
