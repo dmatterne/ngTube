@@ -21,8 +21,7 @@
             </div>
         </div>
     </div>
-    <h6 
-        (mouseenter)="onTitleMouseEnter()"
+    <h6 (mouseenter)="onTitleMouseEnter()"
         (mouseleave)="onTitleMouseLeave()"
         (click)="onTitleClick()">
     
@@ -30,10 +29,9 @@
             {{video.title}}
         </span>
         <span [hidden]="title">
-             <i [style.z-index]="1" 
-                class="material-icons tiny icon-demo">
+             <i [style.z-index]="1" class="material-icons tiny icon-demo">
                     view_list
-                </i> Add to playlist
+             </i> Add to playlist
         </span>
     </h6>
 </div>
