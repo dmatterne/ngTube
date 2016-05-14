@@ -1,11 +1,10 @@
 <div class="thumbNail">
-    <a href="#/"><h6>{{title}}</h6></a>
     <div class="thumb">
         <img [src]="url" 
             [style.opacity]="hover ? 0.6 : 1" 
             [style.position]="relative" 
             [style.z-index]="0"
-            class="z-depth-3 responsive-img"
+            class="z-depth-1 responsive-img"
         />
 
         <div class="playArrow">
@@ -16,4 +15,6 @@
             </i>
         </div>
     </div>
+    <a href="#/"><h6>{{title}}</h6></a>
+    
 </div>
