@@ -16,6 +16,7 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
     play: PlayState;
     repeat: RepeatState;
     minimize: SizeState;
+    cinemaMode: Observable<boolean>;
     
     disabled: boolean = true;
     
@@ -46,7 +47,12 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
                 
                 this.minimize = minimize;
             })
-        )
+            
+        );
+        
+        this.cinemaMode = this.store.select('cinemaMode');
+        
+        
     }
 
     ngOnInit () {
@@ -63,6 +69,11 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
     
     onNext () {
         
+    }
+    
+    onCinemaMode () {
+        
+        this.store.dispatch({ type: 'TOGGLE_CINEMA_MODE' });
     }
   
     onPlay () {

@@ -7,7 +7,8 @@ export interface NgTubeStore {
     playlist: any[];    // to save
     repeat: RepeatState; // to save
     search: string; // to save
-    currentVideo: string; // to save
+    currentVideo: string; // to save,
+    cinemaMode: boolean;
 }
 
 export interface NgTubeStorage {
@@ -15,6 +16,7 @@ export interface NgTubeStorage {
     repeat: RepeatState;
     search: string;
     currentVideo: string;
+    cinemaMode: boolean;
 }
 
 export function mapToStorage (store: NgTubeStore): NgTubeStorage {
@@ -23,6 +25,7 @@ export function mapToStorage (store: NgTubeStore): NgTubeStorage {
         playlist: store.playlist,
         repeat: store.repeat,
         search: store.search,
-        currentVideo: store.currentVideo
+        currentVideo: store.currentVideo,
+        cinemaMode: store.cinemaMode
     };
 }

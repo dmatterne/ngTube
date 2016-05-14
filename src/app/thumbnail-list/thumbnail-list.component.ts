@@ -38,31 +38,20 @@ export class ThumbnailListComponent implements OnDestroy {
         
         
         this.show = Observable.combineLatest(this.store.select('minimize'),
-                                             this.store.select('currentVideo'), (minimize, currentVideo) => {
+                                             this.store.select('currentVideo'), 
+                                             (minimize, currentVideo) => {
             
-            
-            const isMaximized = minimize === SizeState.MAXIMIZE;
             const hasVideo = currentVideo !== null;
+
+            if ((hasVideo && minimize === SizeState.MINIMIZE) || (!hasVideo)) {
+                return true;
+            }
             
-            if (hasVideo && isMaximized) {
-                return false;
-            }
-            else if (hasVideo && !isMaximized) {
-                return true;
-            }
-            else if (!hasVideo) {
-                return true;
-            }
-            else if (isMaximized) {
-                return false;
-            }
-            else {
-                return false;
-            }            
+            return false;
         });
     }
 
-    search(search: string) {
+    search (search: string) {
 
         this.youtubeSearchService.findAll(search).subscribe(
             (response: any) => {
