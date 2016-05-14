@@ -3,11 +3,15 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-  '@ngrx/store': 'vendor/@ngrx'
+  '@ngrx/store': 'vendor/@ngrx/store'
 };
 
 /** User packages configuration. */
 const packages: any = {
+  '@ngrx/store': {
+    main: 'index.js',
+    defaultExtension: 'js'
+  }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
