@@ -5,7 +5,7 @@ import { YoutubePlayer } from '../shared';
 @Component({
     selector: 'youtube-player',
     template: `
-        <div class="video-contaner">
+        <div class="video-container">
             <div [id]="playerId"></div>
         </div>
     `,
