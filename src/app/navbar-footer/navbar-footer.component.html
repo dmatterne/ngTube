@@ -59,7 +59,7 @@
                     </p>
                 </li>
                 <li>
-                    <select class="browser-default" [(ngModel)]="currentQuality" (change)="onQuality($event.target.value)">
+                    <select class="browser-default" [ngModel]="currentQuality" (ngModelChange)="onQuality($event)">
                         <option *ngFor="let quality of qualities" [value]="quality" [attr.selected]="quality === currentQuality">{{quality}}</option>
                     </select>
                  </li>
