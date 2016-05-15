@@ -2,6 +2,10 @@
   <div class="removeVideoFromPlaylist" [hidden]="!hover" (click)="onClickDelete()">
     <i class="material-icons">clear</i>
   </div>
+  <div class="upDownArrows">
+      <i class="material-icons ion-arrow-up-a" [class.disable]="first" (click)="moveBackward()"></i>
+      <i class="material-icons ion-arrow-down-a" [class.disable]="last" (click)="moveForward()"></i>
+  </div>
   <div (click)="onClickTile()">
     <div [style.display]="'inline-block'" class="image">
       <img class="z-depth-1 responsive-img" [src]="video.thumbnailUrl" width="40px" height="40px" />

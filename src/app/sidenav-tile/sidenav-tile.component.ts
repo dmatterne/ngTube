@@ -12,9 +12,13 @@ import { IsoToHMSPipe } from '../iso-to-hms.pipe';
 export class SidenavTileComponent {
   
   @Input() video: Video;
+  @Input() first: boolean = false;
+  @Input() last: boolean = false;
+  
   
   @Output() clickDelete: EventEmitter<Video> = new EventEmitter();
   @Output() clickTile: EventEmitter<Video> = new EventEmitter();
+  @Output() clickArrow: EventEmitter<any> = new EventEmitter();
   
   private hover: boolean = false;
   
@@ -33,5 +37,19 @@ export class SidenavTileComponent {
   
   onClickDelete() {
     this.clickDelete.emit(this.video);
+  }
+  
+  moveForward() {
+    this.clickArrow.emit({
+      video: this.video,
+      arrow: 'down'
+    });
+  }
+  
+  moveBackward() {
+    this.clickArrow.emit({
+      video: this.video,
+      arrow: 'up'
+    });
   }
 }
