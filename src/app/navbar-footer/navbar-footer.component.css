@@ -59,3 +59,8 @@ input[type="range"] {
     -moz-appearance: none;
     border: none;
 }
+
+.playlist-icon {
+    color: indianred;
+    font-size: 30px;
+}
