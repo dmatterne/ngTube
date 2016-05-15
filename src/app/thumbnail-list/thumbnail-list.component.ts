@@ -70,15 +70,15 @@ export class ThumbnailListComponent implements OnDestroy {
         
         if (this.nextPageToken) {
             this.searchChange = false;
-            this.search(this.nextPageToken);
+            this.search({ pageToken: this.nextPageToken, maxResult: 15 });
         }
     }
 
 
-    search (pageToken?: string, thumbnailQuality: string = 'medium') {
+    search (options?: any, thumbnailQuality: string = 'medium') {
         
         this.store.dispatch({ type: 'SET_LOADING', payload: { value: true } });
-        this.youtubeSearchService.findIds(this.searchField, { pageToken: pageToken })
+        this.youtubeSearchService.findIds(this.searchField, options)
                     .map((res) => res.json())
                     .do((res) => {
                         if (res.nextPageToken) {

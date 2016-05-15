@@ -62,7 +62,7 @@ export class YoutubeSearchService {
       
       search.append('q', query);
       options.maxResults = options.maxResults || '25';
-      search.append('maxResults', options.maxResults);
+      search.append('maxResults', `${options.maxResults}`);
       
       if (options.duration) {
           search.append('videoDuration', this.getDuration(options.duration));
