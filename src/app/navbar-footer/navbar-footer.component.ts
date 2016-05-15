@@ -6,6 +6,9 @@ import { NgTubeStore, Video, nextVideo, previousVideo } from '../shared';
 
 import { PlayState, RepeatState, SizeState } from '../reducers';
 
+declare var $: any;
+
+
 @Component({
   moduleId: module.id,
   selector: 'navbar-footer',
@@ -197,5 +200,10 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
     isRepeatAll () {
         
         return this.repeat === RepeatState.ALL;
+    }
+    
+    
+    sidebar () {
+        $('.button-collapse').sideNav();
     }
 }

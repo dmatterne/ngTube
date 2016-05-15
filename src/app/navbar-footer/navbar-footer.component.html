@@ -3,6 +3,11 @@
         <div class="nav-wrapper blue-grey darken-4">
             <ul class="left" [class.disabled]="disabled">
                 <li>
+                    <a class="navbar-icon button-collapse" data-activates="nav-mobile" (click)="sidebar()">
+                        <i class="material-icons">keyboard_arrow_right</i>
+                    </a>
+                </li>
+                <li>
                     <a class="navbar-icon" [class.disabled]="isStop()" (click)="onStop()">
                         <i class="material-icons">stop</i>
                     </a>
