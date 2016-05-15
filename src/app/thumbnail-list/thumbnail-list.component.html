@@ -3,7 +3,7 @@
         <li *ngFor="let video of videos" class="col s12 l3 m4">
             <thumbnail 
                 (clickThumbnail)="onThumbnailClick(video)"
-                (clickTitle)="onTitleClick(video)"
+                (clickTitle)="addToPlaylist(video)"
                 [video]="video">
             </thumbnail>
         </li>

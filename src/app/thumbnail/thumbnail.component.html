@@ -27,13 +27,11 @@
             <h6 class="title">{{video.title}}</h6>
         </span>
         
+        
         <div [hidden]="showTitle">
-            <button class="btn" (click)="addToPlaylist()">
-                <i class="material-icons tiny icon-demo">
-                        view_list
-                </i> 
-                Add to playlist
-            </button>
+            <a class="btn-floating" (click)="addToPlaylist()" title="Add to playlist">
+                <i class="material-icons">add</i>
+            </a>
         </div>
     </div>
 </div>
