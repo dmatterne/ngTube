@@ -1,4 +1,4 @@
-<ul id="nav-mobile" class="left side-nav fixed z-depth-5" [style.overflow-y]="hover ? 'auto' : 'hidden'">
+<ul id="nav-mobile" class="left side-nav fixed z-depth-5">
   <li class="brand center-align" >
     <i class="ion-social-youtube brand-logo"></i>
     <span class="brand-title center-align">NgTube</span>
@@ -10,7 +10,7 @@
     <div class="sidenav-category-text center-align">
         <h5>Playlist</h5>
     </div>
-    <div [style.width]="'100%'" *ngIf="hover">
+    <div [style.width]="'100%'">
       <button class="btn btn-small btn-del waves-effect waves-light red" (click)="clearPlaylist()" [class.disabled]="videos.length === 0">
         <i class="material-icons">delete_forever</i>
       </button>

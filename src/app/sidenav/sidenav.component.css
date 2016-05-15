@@ -1,4 +1,6 @@
-
+#nav-mobile {
+    overflow-y: auto;
+}
 
 #logo-container {
     height: 57px;
@@ -22,6 +24,8 @@
     font-size: 30px;
     font-weight: bold;
 }
+
+
 
 .brand-logo {
     color: #4db6ac;
