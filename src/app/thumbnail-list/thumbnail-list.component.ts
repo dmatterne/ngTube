@@ -116,7 +116,8 @@ export class ThumbnailListComponent implements OnDestroy {
                                         id: x.id,
                                         title: x.snippet.title,
                                         thumbnailUrl: x.snippet.thumbnails[thumbnailQuality].url,
-                                        duration: x.contentDetails.duration
+                                        duration: x.contentDetails.duration,
+                                        description: x.snippet.description
                                     }
                             })
                         );

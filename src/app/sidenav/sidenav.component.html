@@ -17,8 +17,9 @@
     </div>
   </li>
   
-  <li class="sidenav-item" *ngFor="let video of videos; let i = index" [class.active]="(currentVideo | async)?.id === video.id">
+  <li class="sidenav-item z-depth-1" *ngFor="let video of videos; let i = index" [class.active]="(currentVideo | async)?.id === video.id">
     <sidenav-tile 
+      [class.half-transparent]="i % 2 === 0"
       [video]="video"
       [first]="i === 0"
       [last]="i === videos.length - 1"

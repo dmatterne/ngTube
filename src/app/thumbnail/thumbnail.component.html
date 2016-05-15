@@ -1,36 +1,36 @@
-<div class="thumbnail">
+<div class="thumbnail card hoverable">
     <div class="thumb">
-        <div (click)="onThumbnailClick()">
+        <div (click)="onThumbnailClick()" class="card-image">
             <img [src]="video.thumbnailUrl" 
                 [style.position]="relative" 
                 [style.z-index]="0"
-                class="z-depth-1 responsive-img"
+                class="z-depth-1 hoverable responsive-img waves-light"
             />
             
-            <div class="duration">
-                 <span>{{ video.duration | isoToHMS }}</span>
+            <div class="duration valign-wrapper">
+                 <i class="material-icons valign">schedule</i>
+                 <span class="valign">{{ video.duration | isoToHMS }}</span>
             </div>
             
-
-            <!--<div class="playArrow">
-                <i [hidden]="!hover" 
-                [style.z-index]="1" 
-                class="material-icons medium icon-demo">
-                    play_circle_outline
-                </i>
-            </div>-->
         </div>
     </div>
-    <div>
-        <span [hidden]="!showTitle">
-            <h6>{{video.title}}</h6>
+    <div class="card-content">
+        <span class="activator grey-text text-darken-4 truncate"> 
+            <h6>{{ video.title }}</h6>
         </span>
-        
-        
-        <div [hidden]="showTitle">
-            <a class="btn-floating" (click)="addToPlaylist()" title="Add to playlist">
-                <i class="material-icons">add</i>
-            </a>
-        </div>
+    </div>
+    <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">
+            {{ video.title }}
+            <i class="material-icons right">close</i>
+        </span>
+        <p [style.overflow]="'hidden'">
+            {{ video.description }}
+        </p>
+    </div>
+    <div class="card-action">
+        <a (click)="addToPlaylist()">
+            <i class="material-icons">add</i> Add to playlist
+        </a>
     </div>
 </div>
