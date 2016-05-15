@@ -32,7 +32,6 @@ export function mapToStorage (store: NgTubeStore): NgTubeStorage {
         playlist: store.playlist,
         repeat: store.repeat,
         search: store.search,
-        currentVideo: store.currentVideo,
         cinemaMode: store.cinemaMode,
         mute: store.mute,
         volume: store.volume
