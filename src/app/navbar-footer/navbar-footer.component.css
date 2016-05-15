@@ -52,3 +52,8 @@ select {
     height: 100%;
     margin-top: 15px;
 }
+
+input[type="range"] {
+    -moz-appearance: none;
+    border: none;
+}

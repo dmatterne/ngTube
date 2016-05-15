@@ -50,7 +50,6 @@ export class YoutubePlayerComponent implements AfterViewInit, OnInit {
     @Input() set videoId (videoId: string) {
         
         this._videoId = videoId;
-        
         if (this.viewInit && !this.player) {
             this.initPlayer();
         }
