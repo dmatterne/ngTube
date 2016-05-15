@@ -188,6 +188,19 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
             this.store.dispatch({ type: 'MINIMIZE' });
         }
     }
+        
+    onPlaylist() {
+        if (!this.isInPlaylist()) {
+            this.store.dispatch({ type: 'ADD_TO_PLAYLIST', payload: { video: this.currentVideo } });
+        }        
+    }
+    
+    isInPlaylist() {
+        return this.currentVideo 
+            && this.playlist
+                .filter(video => video.id === this.currentVideo.id)
+                .length;
+    }
     
     // Zero or one is not a "real" playlist
     isRealPlaylist() {
@@ -224,8 +237,7 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
         
         return this.repeat === RepeatState.ALL;
     }
-    
-    
+
     sidebar () {
         $('.button-collapse').sideNav();
     }

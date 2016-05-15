@@ -76,6 +76,12 @@
                         <i class="ion-arrow-shrink" *ngIf="!isMinimize()"></i>
                     </a>
                 </li>
+                <li class="icon-divider"></li>
+                <li>
+                    <a class="navbar-icon" (click)="onPlaylist()" [class.disabled]="isInPlaylist()">
+                        <i class="material-icons valign">add</i> 
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
