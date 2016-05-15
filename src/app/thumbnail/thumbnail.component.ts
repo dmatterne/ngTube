@@ -25,8 +25,10 @@ export class ThumbnailComponent implements OnInit {
     ngOnInit() {
     }
     
-    onThumbnailLeave() {
-        this.hover = false;
+   
+    onThumbnailClick () {
+        
+        this.clickThumbnail.emit(this.video);
     }
     
     addToPlaylist () {

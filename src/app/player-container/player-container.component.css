@@ -3,3 +3,27 @@
     bottom: 75px;
     right: 20px;
 }
+
+@keyframes mini {
+    from {
+        position: static;
+    }
+    
+    to {
+        position: fixed;
+        bottom: 75px;
+        right: 20px;
+    }
+}
+
+
+@keyframes maxi {
+    0% {
+        position: fixed;
+        bottom: 75px;
+        right: 20px;
+    }
+    
+    100% {
+    }
+}

@@ -96,14 +96,11 @@ export class ThumbnailListComponent implements OnDestroy {
         this.subscriptions.forEach((subscription) => subscription.unsubscribe());
     }
 
-    onClick (video: Video) {
-        this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: video } });
-    }
-        
-        
     onThumbnailClick (video: Video) {
+        
         this.store.dispatch({ type: 'ADD_HISTORY', payload: { video: video } });
         this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: video } });
+        this.store.dispatch({ type: 'MAXIMIZE' });
     }
     
     addToPlaylist (video: Video) {

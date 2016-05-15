@@ -1,6 +1,6 @@
 <div *ngIf="(show | async)">
     <ul class="row" *ngIf="!(loading | async)">
-        <li *ngFor="let video of videos" class="col s12 l3 m4">
+        <li *ngFor="let video of videos" class="col s12 l3 m6">
             <thumbnail 
                 (clickThumbnail)="onThumbnailClick(video)"
                 (clickTitle)="addToPlaylist(video)"
