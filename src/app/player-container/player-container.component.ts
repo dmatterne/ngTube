@@ -93,8 +93,6 @@ export class PlayerContainerComponent implements OnInit {
         this.store.dispatch({ type: 'PLAY_VIDEO', payload: {
             video: video
         }});
-        
-        this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: video.id }});
     }
     
     stateChange (state: number) {

@@ -107,11 +107,9 @@ export class ThumbnailListComponent implements OnDestroy {
     onThumbnailClick (video: Video) {
         this.store.dispatch({ type: 'ADD_HISTORY', payload: { video: video } });
         this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: video } });
-        this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: video.id } });
     }
     
     onTitleClick (video: Video) {
         this.store.dispatch({ type: 'ADD_TO_PLAYLIST', payload: { video: video } });
-        this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: this.current.id } });
     }
 }
