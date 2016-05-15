@@ -41,7 +41,7 @@ export class ThumbnailListComponent implements OnDestroy {
                 this.searchField = search || 'Angular 2';
                 this.searchChange = true;
                 this.nextPageToken = null;
-                this.search();
+                this.search({}, 'high');
             }),
             
             this.store.select('currentVideo').subscribe((video: Video) => {
@@ -75,7 +75,7 @@ export class ThumbnailListComponent implements OnDestroy {
         
         if (this.nextPageToken) {
             this.searchChange = false;
-            this.search({ pageToken: this.nextPageToken, maxResult: 15 });
+            this.search({ pageToken: this.nextPageToken, maxResult: 15 }, 'high');
         }
     }
 
