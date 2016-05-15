@@ -39,17 +39,21 @@ export class SidenavTileComponent {
     this.clickDelete.emit(this.video);
   }
   
-  moveForward() {
-    this.clickArrow.emit({
-      video: this.video,
-      arrow: 'down'
-    });
+  moveForward($event: Event) {
+    $event.stopPropagation();
+    this.emitArrow(this.video, 'down');
   }
   
-  moveBackward() {
+  moveBackward($event: Event) {
+    $event.stopPropagation();
+    this.emitArrow(this.video, 'up');
+    
+  }
+  
+  emitArrow(video: Video, arrow: string) {
     this.clickArrow.emit({
-      video: this.video,
-      arrow: 'up'
+      video,
+      arrow
     });
   }
 }
