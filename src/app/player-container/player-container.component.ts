@@ -87,8 +87,6 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
         );
         
         this.cinemaMode = this.store.select('cinemaMode');
-        
-       
     }
     
     ngAfterViewInit () {
