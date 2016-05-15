@@ -58,6 +58,17 @@
                         <input type="range" [value]="volume" (change)="setVolume($event.target.value)" min="0" max="100" />
                     </p>
                 </li>
+                <li>
+                    <select class="browser-default" (change)="onQuality($event.target.value)">
+                        <!--<option *ngFor="#i of devices">{{i}}</option>-->
+                        <option>1080p</option>
+                        <option>720p</option>
+                        <option>480p</option>
+                        <option>360p</option>
+                        <option>240p</option>
+                        <option selected>default</option>
+                    </select>
+                 </li>
                 <li class="icon-divider"></li>
                 <li>
                     <a class="navbar-icon" (click)="onCinemaMode()">

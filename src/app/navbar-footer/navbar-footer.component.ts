@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
 import { NgTubeStore, Video, nextVideo, previousVideo } from '../shared';
 
-import { PlayState, RepeatState, SizeState } from '../reducers';
+import { PlayState, RepeatState, SizeState, QualityState } from '../reducers';
 
 declare var $: any;
 
@@ -20,6 +20,7 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
     play: PlayState;
     repeat: RepeatState;
     minimize: SizeState;
+    quality: QualityState;
     cinemaMode: Observable<boolean>;
     mute: boolean;
     volume: number;
@@ -62,6 +63,11 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
                 this.playlist = playlist;  
             }),
             
+            store.select('quality').subscribe((quality: QualityState) => {
+                
+                this.quality = quality;
+            }),
+
             store.select('mute').subscribe((x: boolean) => {
                 this.mute = x;
             }),
@@ -154,6 +160,36 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
         }
         
         this.store.dispatch({ type: action, payload: payload });
+    }
+    
+    onQuality (quality: string) {
+        console.log(quality);
+        
+        switch (quality) {
+            case 'default':
+                this.quality = QualityState.DEFAULT;
+                break;
+            case '240p':
+                this.quality = QualityState.SMALL;
+                break;
+            case '360p':
+                this.quality = QualityState.MEDIUM;
+                break;
+            case '480p':
+                this.quality = QualityState.LARGE;
+                break;
+            case '720p':
+                this.quality = QualityState.HD720;
+                break;
+            case '1080p':
+                this.quality = QualityState.HD1080;
+                break;
+            case '4K':
+                this.quality = QualityState.HIGHRES;
+                break;
+        }
+        console.log(this.quality);
+        this.store.dispatch({ type: 'SET_QUALITY', payload: { quality: this.quality } });
     }
     
     onMinimize () {
