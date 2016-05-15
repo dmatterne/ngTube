@@ -3,7 +3,9 @@
 }
 
 .navbar-icon {
-    color: #80cbc4
+    color: #80cbc4;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .navbar-icon:hover {

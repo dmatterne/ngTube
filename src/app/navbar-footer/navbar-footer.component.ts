@@ -29,6 +29,18 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
     
     disabled: boolean = true;
     subscriptions: any[] = [];
+    
+    
+     qualities = [
+            { value: QualityState.DEFAULT, text: 'Default' },
+            { value: QualityState.SMALL, text: '240p' },
+            { value: QualityState.MEDIUM, text: '360p' },
+            { value: QualityState.LARGE, text: '480p' },
+            { value: QualityState.HD720, text: '720p' },
+            { value: QualityState.HD1080, text: '1080p' },
+            { value: QualityState.HIGHRES, text: '4K' }
+     ];
+        
   
     constructor (private store: Store<NgTubeStore>) {
       
@@ -162,34 +174,9 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
         this.store.dispatch({ type: action, payload: payload });
     }
     
-    onQuality (quality: string) {
-        console.log(quality);
-        
-        switch (quality) {
-            case 'default':
-                this.quality = QualityState.DEFAULT;
-                break;
-            case '240p':
-                this.quality = QualityState.SMALL;
-                break;
-            case '360p':
-                this.quality = QualityState.MEDIUM;
-                break;
-            case '480p':
-                this.quality = QualityState.LARGE;
-                break;
-            case '720p':
-                this.quality = QualityState.HD720;
-                break;
-            case '1080p':
-                this.quality = QualityState.HD1080;
-                break;
-            case '4K':
-                this.quality = QualityState.HIGHRES;
-                break;
-        }
-        console.log(this.quality);
-        this.store.dispatch({ type: 'SET_QUALITY', payload: { quality: this.quality } });
+    onQuality (quality: QualityState) {
+       
+        this.store.dispatch({ type: 'SET_QUALITY', payload: { quality: quality } });
     }
     
     onMinimize () {

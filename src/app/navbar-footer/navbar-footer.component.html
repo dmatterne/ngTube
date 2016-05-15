@@ -60,13 +60,7 @@
                 </li>
                 <li>
                     <select class="browser-default" (change)="onQuality($event.target.value)">
-                        <!--<option *ngFor="#i of devices">{{i}}</option>-->
-                        <option>1080p</option>
-                        <option>720p</option>
-                        <option>480p</option>
-                        <option>360p</option>
-                        <option>240p</option>
-                        <option selected>default</option>
+                        <option *ngFor="let quality of qualities" [value]="quality.value">{{quality.text}}</option>
                     </select>
                  </li>
                 <li class="icon-divider"></li>

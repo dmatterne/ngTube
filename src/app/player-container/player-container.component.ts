@@ -121,8 +121,7 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
                 this.store.select('quality'),
                 this.store.select('play'),
                 (quality: QualityState, play: PlayState) => {
-                    console.log(QualityState[quality].toLowerCase());
-
+                    
                     if (play !== PlayState.STOP)
                         this.player.setPlaybackQuality(QualityState[quality].toLowerCase());
                 }
