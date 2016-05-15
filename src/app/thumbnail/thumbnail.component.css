@@ -1,9 +1,9 @@
 .playArrow {
     position: absolute;
-    width: 200px;
     text-align: center;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 33%;
+    left: 38%;
+    opacity: 0.5;
 }
 
 .duration {
@@ -17,7 +17,7 @@
 }
 
 .thumbNail {
-    width: 200px;
+    /*width: 200px;*/
     cursor: pointer;
 }
 

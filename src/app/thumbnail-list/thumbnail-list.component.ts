@@ -90,17 +90,6 @@ export class ThumbnailListComponent implements OnDestroy {
                 )
             }
         )
-
-        // this.youtubeSearchService.findAll(search).subscribe(
-        //     (response: any) => {
-
-        //         this.searchResults = [];
-        //         const json = response.json();
-        //         if (json && json.items) {
-        //             this.searchResults = json.items.map((item) => new SearchResult(item));
-        //         }
-        //     }
-        // );
     }
 
     ngOnDestroy() {

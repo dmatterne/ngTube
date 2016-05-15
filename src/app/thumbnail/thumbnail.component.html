@@ -1,10 +1,6 @@
 <div class="thumbNail">
     <div class="thumb">
-        <div 
-            (mouseenter)="onThumbnailEnter()"
-            (mouseleave)="onThumbnailLeave()"
-            (click)="onThumbnailClick()"
-        >
+        <div (click)="onThumbnailClick()">
             <img [src]="video.thumbnailUrl" 
                 [style.opacity]="hover ? 0.6 : 1" 
                 [style.position]="relative" 
@@ -17,28 +13,27 @@
             </div>
             
 
-            <div class="playArrow">
+            <!--<div class="playArrow">
                 <i [hidden]="!hover" 
                 [style.z-index]="1" 
                 class="material-icons medium icon-demo">
                     play_circle_outline
                 </i>
-            </div>
+            </div>-->
         </div>
     </div>
-    <div (mouseenter)="onTitleMouseEnter()"
-         (mouseleave)="onTitleMouseLeave()"
-         (click)="onTitleClick()">
-         
-            <!--<span [hidden]="!title">-->
-                <h6 class="title">{{video.title}}</h6>
-            <!--</span>-->
-            
-            <!--<button [hidden]="title" class="btn">
+    <div>
+        <span [hidden]="!showTitle">
+            <h6 class="title">{{video.title}}</h6>
+        </span>
+        
+        <div [hidden]="showTitle">
+            <button class="btn" (click)="addToPlaylist()">
                 <i class="material-icons tiny icon-demo">
                         view_list
                 </i> 
                 Add to playlist
-            </button>-->
+            </button>
+        </div>
     </div>
 </div>
