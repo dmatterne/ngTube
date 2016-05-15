@@ -14,9 +14,9 @@
             
         </div>
     </div>
-    <div class="card-content">
-        <span class="activator grey-text text-darken-4 truncate"> 
-            <h6>{{ video.title }}</h6>
+    <div class="card-content activator">
+        <span class="grey-text text-darken-4 truncate"> 
+            <h6 class="activator">{{ video.title }}</h6>
         </span>
     </div>
     <div class="card-reveal">
@@ -24,8 +24,7 @@
             {{ video.title }}
             <i class="material-icons right">close</i>
         </span>
-        <p [style.overflow]="'hidden'">
-            {{ video.description }}
+        <p [style.overflow]="'hidden'" [innerHTML]="video.description | newlines | replaceUrl">
         </p>
     </div>
     <div class="card-action">
