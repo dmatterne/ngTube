@@ -32,7 +32,7 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
     disabled: boolean = true;
     subscriptions: any[] = [];
     
-    qualities: string[];
+    qualities: string[] = [];
      
   
     constructor (private store: Store<NgTubeStore>) {
