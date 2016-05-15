@@ -28,6 +28,16 @@ export class SidenavComponent implements OnInit, OnDestroy {
     
     this.currentVideo = this.store.select('currentVideo');
   }
+  
+  private hover: boolean = false;
+  
+  @HostListener('mouseenter') onMouseEnter() {
+    this.hover = true;
+  }
+  
+  @HostListener('mouseleave') onMouseLeave() {
+    this.hover = false;
+  }
 
   ngOnInit() {
   }

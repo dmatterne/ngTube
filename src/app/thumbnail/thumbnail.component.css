@@ -1,14 +1,24 @@
 .playArrow {
     position: absolute;
-    width: 200px;
     text-align: center;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 33%;
+    left: 38%;
+    opacity: 0.5;
 }
 
 .duration {
     position: absolute;
-    right: 0;    
+    right: 0;
+    font-size: 14px;
+    margin-top: -27px;
+    margin-left: 5px;
+    background-color: grey;
+    color: white;
+}
+
+.duration span {
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 .thumb {
@@ -17,11 +27,5 @@
 }
 
 .thumbNail {
-    width: 200px;
     cursor: pointer;
-}
-
-.title {
-    position: relative;
-    top: 10px;
 }

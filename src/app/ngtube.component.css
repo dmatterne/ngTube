@@ -3,6 +3,10 @@
     padding-bottom: 150px;
 }
 
+.progress-loading {
+    position: absolute;
+    top: 56px;
+}
 
 header, footer {
     padding-left: 240px;

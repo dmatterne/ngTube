@@ -1,14 +1,14 @@
-<div *ngIf="show | async">
-    <ul class="row">
+<div *ngIf="(show | async)">
+    <ul class="row" *ngIf="!(loading | async)">
         <li *ngFor="let video of videos" class="col s12 l3 m4">
             <thumbnail 
                 (clickThumbnail)="onThumbnailClick(video)"
-                (clickTitle)="onTitleClick(video)"
+                (clickTitle)="addToPlaylist(video)"
                 [video]="video">
             </thumbnail>
         </li>
     </ul>
-    <div *ngIf="videos?.length === 0">
+    <div *ngIf="videos?.length === 0 && !(loading | async)">
         <p>No results found, maybe try with another spelling?</p>
     </div>
 </div>

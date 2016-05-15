@@ -14,7 +14,8 @@ export class ThumbnailComponent implements OnInit {
     
     @Input() video: Video;
     
-    title: boolean = true;
+    showTitle: boolean = true;
+    hovering: any;
     
     @Output() clickThumbnail: EventEmitter<Video> = new EventEmitter();
     @Output() clickTitle: EventEmitter<Video> = new EventEmitter();
@@ -24,30 +25,31 @@ export class ThumbnailComponent implements OnInit {
     ngOnInit() {
     }
     
-    onThumbnailClick() {
-        this.clickThumbnail.emit(this.video);
-    }
-    
-    onThumbnailEnter() {
-        this.hover = true;
-    }
-    
     onThumbnailLeave() {
         this.hover = false;
     }
     
-    onTitleClick() {
+    addToPlaylist () {
         this.clickTitle.emit(this.video);
     }
     
-    onTitleMouseEnter () {
+    @HostListener('mouseenter') onMouseEnter () {
         
-        this.title = false;
+        if (this.hovering) {
+            clearTimeout(this.hovering);
+        }
+        
+        this.hover = true;
+        this.showTitle = false;
     }
     
-    onTitleMouseLeave () {
+    @HostListener('mouseleave') onMouseLeave () {
         
-        this.title = true;
+        this.hovering = setTimeout(() => {
+            this.showTitle = true;
+            this.hover = false;
+            this.hovering = null;
+        }, 300);
     }
     
     constructor() {

@@ -6,6 +6,7 @@ import { history } from './history';
 import { search } from './search';
 import { currentVideo } from './current-video';
 import { cinemaMode } from './cinema-mode';
+import { loading } from './loading';
 
 export * from './minimize';
 export * from './repeat';
@@ -15,6 +16,7 @@ export * from './history';
 export * from './search';
 export * from './current-video';
 export * from './cinema-mode';
+export * from './loading';
 
 export const reducers = {
     minimize,
@@ -24,5 +26,6 @@ export const reducers = {
     history,
     search,
     currentVideo,
-    cinemaMode
+    cinemaMode,
+    loading
 }
