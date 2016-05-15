@@ -152,8 +152,13 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
                 }
                 
                 if (this.repeat === RepeatState.ALL) {
-                    const next = nextVideo(this.video, this.playlist);
-                    this.changeVideo(next);
+                    
+                    const inPlaylist = this.playlist.filter((x) => x.id === this.video.id).length > 0;
+                    
+                    if (inPlaylist) {
+                        const next = nextVideo(this.video, this.playlist);
+                        this.changeVideo(next);
+                    }
                 }
                 
                 if (this.repeat === RepeatState.ONE) {
