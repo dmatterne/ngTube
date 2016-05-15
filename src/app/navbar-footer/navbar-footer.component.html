@@ -3,33 +3,6 @@
         <div class="nav-wrapper blue-grey darken-4">
             <ul class="left" [class.disabled]="disabled">
                 <li>
-                    <select browser-default [ngModel]="quality" (ngModelChange)="onQuality($event)">
-                        <option>1080p</option>
-                        <option>720p</option>
-                    </select>
-                </li>
-                <li>
-<form action="#">
-    <p>
-      <input name="group1" type="radio" id="test1" />
-      <label for="test1">Red</label>
-    </p>
-    <p>
-      <input name="group1" type="radio" id="test2" />
-      <label for="test2">Yellow</label>
-    </p>
-    <p>
-      <input class="with-gap" name="group1" type="radio" id="test3"  />
-      <label for="test3">Green</label>
-    </p>
-      <p>
-        <input name="group1" type="radio" id="test4" disabled="disabled" />
-        <label for="test4">Brown</label>
-    </p>
-  </form>
-
-                </li>
-                <li>
                     <a class="navbar-icon" [class.disabled]="isStop()" (click)="onStop()">
                         <i class="material-icons">stop</i>
                     </a>
@@ -66,10 +39,31 @@
                 </li>
                 <li class="icon-divider"></li>
                 <li>
-                    <a class="navbar-icon" (click)="onVolume()">
-                        <i class="material-icons">volume_up</i>
+                    <a class="navbar-icon" (click)="onMute()">
+                        <i class="material-icons" *ngIf="mute">volume_off</i>
+                        <span *ngIf="!mute">
+                            <i class="material-icons" *ngIf="volume == 0">volume_mute</i>
+                            <i class="material-icons" *ngIf="volume <= 50 && volume > 0">volume_down</i>
+                            <i class="material-icons" *ngIf="volume > 50">volume_up</i>
+                        </span>
                     </a>
                 </li>
+                <li class="volume-slider" [class.disabled]="mute">
+                    <p class="range-field">
+                        <input type="range" [value]="volume" (change)="setVolume($event.target.value)" min="0" max="100" />
+                    </p>
+                </li>
+                <li>
+                    <select class="browser-default" (change)="onQuality($event.target.value)">
+                        <!--<option *ngFor="#i of devices">{{i}}</option>-->
+                        <option>1080p</option>
+                        <option>720p</option>
+                        <option>480p</option>
+                        <option>360p</option>
+                        <option>240p</option>
+                        <option selected>default</option>
+                    </select>
+                 </li>
                 <li class="icon-divider"></li>
                 <li>
                     <a class="navbar-icon" (click)="onCinemaMode()">
