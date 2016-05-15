@@ -1,25 +1,3 @@
-.signal {
-    border: 5px solid #333;
-    border-radius: 90px;
-    height: 90px;
-    left: 50%;
-    margin: -45px 0 0 -45px;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    width: 90px;
- 
-    animation: pulsate 1.5s ease-out;
-    animation-iteration-count: infinite;
-}
-
-.center-screen {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  width: 90px;
-}
-
 .loading-area {
   position: absolute;
   top: 0;
@@ -46,10 +24,10 @@
 
 .spinner-load {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100px;
-  height: 40px;
+  top: 40%;
+  left: 46%;
+  width: 120px;
+  height: 120px;
   text-align: center;
   font-size: 16px;
 }
@@ -57,7 +35,7 @@
 .spinner-load > div {
   background-color: #1abc9c;
   height: 100%;
-  width: 10px;
+  width: 15px;
   display: inline-block;
   
   -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
