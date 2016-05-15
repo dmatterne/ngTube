@@ -2,10 +2,7 @@
   <div class="removeVideoFromPlaylist" [hidden]="!hover" (click)="onClickDelete()">
     <i class="material-icons">clear</i>
   </div>
-        <span class="upDownArrows" [hidden]="!hover">
-        <i class="material-icons" [class.disable]="first" (click)="moveBackward()">expand_less</i>
-        <i class="material-icons" [class.disable]="last" (click)="moveForward()">expand_more</i>
-      </span>
+
   <div (click)="onClickTile()">
     <div [style.display]="'inline-block'" class="image">
       <img class="z-depth-1 responsive-img" [src]="video.thumbnailUrl" width="40px" height="40px" />
@@ -13,6 +10,10 @@
     <div [style.display]="'inline-block'" class="title">
       <h6>{{video.title}}</h6>
       <label>{{video.duration | isoToHMS}}</label>
+      <span class="upDownArrows" [hidden]="!hover">
+        <i class="material-icons" [class.disable]="first" (click)="moveBackward()">expand_less</i>
+        <i class="material-icons" [class.disable]="last" (click)="moveForward()">expand_more</i>
+      </span>
     </div>
   </div>
 </div>
