@@ -49,7 +49,7 @@ export class NgtubeAppComponent implements OnInit, OnDestroy {
             }),
             
             this.store.select('currentVideo').subscribe((x: Video) => {
-                const title = `Ngtube ${x ? `- ${x.title}` : ''}`
+                const title = `NgTube ${x ? `- ${x.title}` : ''}`
                 this.title.setTitle(title); 
             })
         );

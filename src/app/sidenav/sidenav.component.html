@@ -1,14 +1,14 @@
-<ul id="nav-mobile" class="left side-nav fixed z-depth-3" [style.overflow-y]="hover ? 'auto' : 'hidden'">
+<ul id="nav-mobile" class="left side-nav fixed z-depth-5" [style.overflow-y]="hover ? 'auto' : 'hidden'">
   <li class="brand center-align" >
     <i class="ion-social-youtube brand-logo"></i>
     <span class="brand-title center-align">NgTube</span>
   </li>
   <li class="sidenav-category blue-grey darken-4 valign-wrapper">
     <div class="sidenav-category-icon valign-wrapper valign">
-        <i class="material-icons valign">favorite</i>
+        <i class="material-icons valign playlist-icon">favorite</i>
     </div>
     <div class="sidenav-category-text center-align">
-        Playlist
+        <h5>Playlist</h5>
     </div>
     <div [style.width]="'100%'" *ngIf="hover">
       <button class="btn btn-small btn-del waves-effect waves-light red" (click)="clearPlaylist()" [class.disabled]="videos.length === 0">
