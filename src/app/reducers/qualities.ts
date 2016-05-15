@@ -12,6 +12,9 @@ export const qualities: Reducer<string[]> = (state = [], action) => {
         case 'SET_QUALITIES':
             return action.payload.qualities;
             
+        case 'CLEAR_QUALITIES':
+            return [];
+            
         default:
             return state;
     }

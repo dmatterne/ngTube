@@ -176,23 +176,6 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
         }
     }
 
-    dispatchInformations($event) {
-        
-        // console.log($event.target.getPlayerState());
-        // console.log(this.player.getAvailableQualityLevels());
-        // this.store.dispatch({
-        //     type: 'SET_QUALITIES', 
-        //     payload: {
-        //         qualities: this.player.getAvailableQualityLevels()
-        //     }
-        // });
-        // this.store.dispatch({
-        //     type: 'SET_QUALITY', 
-        //     payload: {
-        //         quality: "default"
-        //     }
-        // });
-    }
     ngOnInit() {
         
     }

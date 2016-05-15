@@ -148,6 +148,7 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
     
     private changeVideo (video: Video) {
         
+        this.store.dispatch({ type: 'CLEAR_QUALITIES' });
         this.store.dispatch({ type: 'PLAY_VIDEO', payload: {
             video: video
         }});
@@ -170,6 +171,7 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
     
     onStop () {
         this.store.dispatch({ type: 'STOP' });
+        this.store.dispatch({ type: 'CLEAR_QUALITIES' });
     }
     
     onMute () {
