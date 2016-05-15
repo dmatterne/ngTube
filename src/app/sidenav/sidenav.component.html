@@ -17,9 +17,11 @@
     </div>
   </li>
   
-  <li class="sidenav-item" *ngFor="let video of videos" [class.active]="(currentVideo | async)?.id === video.id">
+  <li class="sidenav-item" *ngFor="let video of videos; #i = index" [class.active]="(currentVideo | async)?.id === video.id">
     <sidenav-tile 
       [video]="video"
+      [first]="i === 0"
+      [last]="i === videos.length - 1"
       (clickDelete)="onClickDelete(video)"
       (clickTile)="onClickTile(video)"
       (clickArrow)="onClickArrow($event)">
