@@ -1,4 +1,8 @@
-<div *ngIf="(show | async)">
+<div *ngIf="(show | async)" 
+     infiniteScroll (next)="nextPage()" 
+     [infiniteScrollThrottle]="1000"
+     [infiniteScrollDistance]="400">
+     
     <ul class="row" *ngIf="!(loading | async)">
         <li *ngFor="let video of videos" class="col s12 l3 m6">
             <thumbnail 

@@ -33,10 +33,10 @@ export class YoutubeSearchService {
       }
       
       if (options.videoOnly) {
-          search.append('fields', 'items(id/videoId)');
+          search.append('fields', 'nextPageToken,items(id/videoId)');
       }
       else {
-          search.append('fields', 'items(id)');
+          search.append('fields', 'nextPageToken,items(id)');
       }
       
       const url = `${this.config.apiEndpoint}/search`;

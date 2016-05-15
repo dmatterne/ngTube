@@ -4,11 +4,14 @@ import { SearchResult, Video, NgTubeStore } from '../shared';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/pluck';
+import 'rxjs/add/operator/do';
 
 import { ThumbnailComponent } from '../thumbnail';
 import { YoutubeSearchService } from '../youtube-search.service';
 import { PlayState } from '../reducers/play';
 import { SizeState } from '../reducers/minimize';
+
+import { InfiniteScrollDirective } from '../infinite-scroll.directive';
 
 
 @Component({
@@ -16,8 +19,10 @@ import { SizeState } from '../reducers/minimize';
     selector: 'thumbnail-list',
     templateUrl: 'thumbnail-list.component.html',
     styleUrls: ['thumbnail-list.component.css'],
-    directives: [ThumbnailComponent]
+    directives: [ThumbnailComponent, InfiniteScrollDirective]
 })
+
+
 
 export class ThumbnailListComponent implements OnDestroy {
 
@@ -26,13 +31,15 @@ export class ThumbnailListComponent implements OnDestroy {
     current: Video;
     show: Observable<boolean>;
     loading: Observable<boolean>;
-
+    nextPageToken: string;
+    searchField: string;
+   
     constructor(private store: Store<NgTubeStore>, private youtubeSearchService: YoutubeSearchService) {
         this.subscriptions.push(
 
             this.store.select('search').subscribe((search: string) => {
-                search = search || 'Angular 2';
-                this.subscriptions.push(this.search(search));
+                this.searchField = search || 'Angular 2';
+                this.search();
             }),
             this.store.select('currentVideo').subscribe((video: Video) => {
                 this.current = video;
@@ -55,17 +62,37 @@ export class ThumbnailListComponent implements OnDestroy {
             return false;
         });
     }
+    
+    nextPage () {
+        
+        if (this.nextPageToken) {
+            this.search(this.nextPageToken);
+        }
+    }
 
-    search (search: string, thumbnailQuality: string = 'medium') {
+
+    search (pageToken?: string, thumbnailQuality: string = 'medium') {
         
         this.store.dispatch({ type: 'SET_LOADING', payload: { value: true } });
-        this.youtubeSearchService.findIds(search).map((res) => res.json())
-                    .pluck('items').subscribe(
+        this.youtubeSearchService.findIds(this.searchField, { pageToken: pageToken })
+                    .map((res) => res.json())
+                    .do((res) => {
+                        if (res.nextPageToken) {
+                            this.nextPageToken = res.nextPageToken;
+                        }
+                        else {
+                            this.nextPageToken = null;
+                        }
+                        
+                        return res;
+                    })
+                    .pluck('items')
+                    .subscribe(
                 
             (items: any) => {
                 const ids = items.map((x: any) => x.id.videoId);
                 if (ids.length === 0) {
-                    this.videos = [];
+                    this.videos = [...this.videos];
                     this.store.dispatch({ type: 'SET_LOADING', payload: { value: false } });
                     return;
                 }
@@ -78,14 +105,14 @@ export class ThumbnailListComponent implements OnDestroy {
                             })
                             .subscribe(
                     (items: any) => {
-                        this.videos = items.map((x) => {
+                        this.videos = [...this.videos, ...items.map((x) => {
                                 return {
                                     id: x.id,
                                     title: x.snippet.title,
                                     thumbnailUrl: x.snippet.thumbnails[thumbnailQuality].url,
                                     duration: x.contentDetails.duration
                                 }
-                        });
+                        })];
                     }
                 )
             }

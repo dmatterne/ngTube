@@ -9,7 +9,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 
 
 @Directive({
-    selector: '[infinite-scroll]'
+    selector: '[infiniteScroll]'
 })
 export class InfiniteScrollDirective implements OnInit, OnDestroy {
 
