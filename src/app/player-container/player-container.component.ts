@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding, ViewChild } from '@angular/core';
+import { Component, OnInit, HostBinding, ViewChild, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
 import { YoutubePlayerComponent } from '../youtube-player';
@@ -14,7 +14,7 @@ import { RepeatState, PlayState, SizeState } from '../reducers';
   styleUrls: ['player-container.component.css'],
   directives: [YoutubePlayerComponent]
 })
-export class PlayerContainerComponent implements OnInit {
+export class PlayerContainerComponent implements OnInit, AfterViewInit {
   
     @HostBinding('class.minimize') minimize = false;
     @ViewChild(YoutubePlayerComponent) player: YoutubePlayerComponent;
@@ -75,26 +75,6 @@ export class PlayerContainerComponent implements OnInit {
                         this.store.dispatch({ type: 'STOP_VIDEO' });
                         break;
                 } 
-            }),
-            
-            this.store.select('repeat').subscribe((x: RepeatState) => {
-                this.repeat = x;  
-            }),
-            
-            this.store.select('playlist').subscribe((x: Video[]) => {
-                this.playlist = x;
-            }),
-            
-            this.store.select('mute').subscribe((x: boolean) => {
-                if (this.player) {
-                    this.player.mute(x);
-                }
-            }),
-            
-            this.store.select('volume').subscribe((x: number) => {
-                if (this.player) {
-                    this.player.setVolume(x);
-                }
             })
         );
         
@@ -102,6 +82,35 @@ export class PlayerContainerComponent implements OnInit {
         
        
     }
+    
+    ngAfterViewInit () {
+        
+        this.subscriptions.push(
+            
+            Observable.combineLatest(
+                this.store.select('mute'),
+                this.store.select('play'),
+                (mute: boolean, play: PlayState) => {
+                    
+                    if (play !== PlayState.STOP) {
+                        this.player.mute(mute);
+                    }
+                }
+            ).subscribe(),
+            
+            Observable.combineLatest(
+                this.store.select('volume'),
+                this.store.select('play'),
+                (volume: number, play: PlayState) => {
+                    
+                    if (play !== PlayState.STOP) {
+                        this.player.setVolume(volume);
+                    }
+                }
+            ).subscribe()
+        );
+    }
+    
     
     private changeVideo (video: Video) {
         

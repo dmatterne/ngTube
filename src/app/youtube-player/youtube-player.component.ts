@@ -118,7 +118,6 @@ export class YoutubePlayerComponent implements AfterViewInit, OnInit {
     public mute (value: boolean) {
         
         if (this.player) {
-            console.log('test');
             this.player.mute(value);
         }
     }
