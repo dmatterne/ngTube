@@ -27,9 +27,20 @@ h6 {
 
 .disable {
     color: lightslategrey;
+    opacity: 0.5;
+}
+
+.upDownArrows > i:not(.disable):hover {
+    color: #ff4081;
+    font-size: 33px;
+}
+
+
+.material-icons.md-30 {
+    font-size: 30px;
 }
 
 .upDownArrows {
-    right: 10px;
+    right: 25px;
     position: absolute;
 }

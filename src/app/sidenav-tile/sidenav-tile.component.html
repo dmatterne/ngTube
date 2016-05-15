@@ -11,8 +11,8 @@
       <h6>{{video.title}}</h6>
       <label>{{video.duration | isoToHMS}}</label>
       <span class="upDownArrows" [hidden]="!hover">
-        <i class="material-icons" [class.disable]="first" (click)="moveBackward($event)">expand_less</i>
-        <i class="material-icons" [class.disable]="last" (click)="moveForward($event)">expand_more</i>
+        <i class="material-icons md-30" [class.disable]="last" (click)="moveForward($event)">expand_more</i>
+        <i class="material-icons md-30" [class.disable]="first" (click)="moveBackward($event)">expand_less</i>
       </span>
     </div>
   </div>
