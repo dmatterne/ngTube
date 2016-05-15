@@ -2,6 +2,22 @@
     position: fixed;
     bottom: 75px;
     right: 20px;
+    top: auto;
+    left: auto;
+    z-index: 1000;
+}
+
+:host {
+    position: absolute;
+    left: 280px;
+    top: 64px;
+    right: 0;
+    bottom: 64px;
+    z-index: 1000;
+}
+
+:host.cinema {
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 @keyframes mini {
