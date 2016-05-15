@@ -33,12 +33,15 @@ export class ThumbnailListComponent implements OnDestroy {
     loading: Observable<boolean>;
     nextPageToken: string;
     searchField: string;
+    searchChange: boolean = false;
    
     constructor(private store: Store<NgTubeStore>, private youtubeSearchService: YoutubeSearchService) {
         this.subscriptions.push(
 
             this.store.select('search').subscribe((search: string) => {
                 this.searchField = search || 'Angular 2';
+                this.searchChange = true;
+                this.nextPageToken = null;
                 this.search();
             }),
             this.store.select('currentVideo').subscribe((video: Video) => {
@@ -66,6 +69,7 @@ export class ThumbnailListComponent implements OnDestroy {
     nextPage () {
         
         if (this.nextPageToken) {
+            this.searchChange = false;
             this.search(this.nextPageToken);
         }
     }
@@ -92,7 +96,7 @@ export class ThumbnailListComponent implements OnDestroy {
             (items: any) => {
                 const ids = items.map((x: any) => x.id.videoId);
                 if (ids.length === 0) {
-                    this.videos = [...this.videos];
+                    this.setVideos();
                     this.store.dispatch({ type: 'SET_LOADING', payload: { value: false } });
                     return;
                 }
@@ -105,18 +109,31 @@ export class ThumbnailListComponent implements OnDestroy {
                             })
                             .subscribe(
                     (items: any) => {
-                        this.videos = [...this.videos, ...items.map((x) => {
-                                return {
-                                    id: x.id,
-                                    title: x.snippet.title,
-                                    thumbnailUrl: x.snippet.thumbnails[thumbnailQuality].url,
-                                    duration: x.contentDetails.duration
-                                }
-                        })];
+                        
+                        this.setVideos(
+                            items.map((x) => {
+                                    return {
+                                        id: x.id,
+                                        title: x.snippet.title,
+                                        thumbnailUrl: x.snippet.thumbnails[thumbnailQuality].url,
+                                        duration: x.contentDetails.duration
+                                    }
+                            })
+                        );
                     }
                 )
             }
         )
+    }
+    
+    private setVideos (videos: Video[] = []) {
+        
+        if (this.searchChange) {
+            this.videos = videos;
+        }
+        else {
+            this.videos = [...this.videos, ...videos];
+        }
     }
 
     ngOnDestroy() {

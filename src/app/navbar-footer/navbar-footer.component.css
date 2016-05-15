@@ -1,5 +1,13 @@
+.nav-wrapper {
+    border-left: 5px solid #4db5ac;
+}
+
 .navbar-icon {
-    color: #4db6ac;
+    color: #80cbc4
+}
+
+.navbar-icon:hover {
+    background-color: transparent;
 }
 
 .icon-divider {

@@ -61,7 +61,7 @@ export class YoutubeSearchService {
       search.append('key', this.config.apiKey);
       
       search.append('q', query);
-      options.maxResults = options.maxResults || '15';
+      options.maxResults = options.maxResults || '25';
       search.append('maxResults', options.maxResults);
       
       if (options.duration) {
