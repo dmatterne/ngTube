@@ -21,7 +21,8 @@
     <sidenav-tile 
       [video]="video"
       (clickDelete)="onClickDelete(video)"
-      (clickTile)="onClickTile(video)">
+      (clickTile)="onClickTile(video)"
+      (clickArrow)="onClickArrow($event)">
     </sidenav-tile>
   </li>
 </ul>

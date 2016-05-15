@@ -24,3 +24,7 @@ h6 {
     color: red;
     cursor: pointer;
 }
+
+.disable {
+    color: lightslategrey;
+}
