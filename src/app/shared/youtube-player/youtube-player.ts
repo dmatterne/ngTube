@@ -84,6 +84,11 @@ export class YoutubePlayer {
         this.ytPlayer.setVolume(volume);
     }
     
+    setPlaybackQuality (quality: string) {
+        
+        this.ytPlayer.setPlaybackQuality(quality);
+    }
+    
     private _emit (event: string, value: any) {
         
         if (this._subjects[event]) {

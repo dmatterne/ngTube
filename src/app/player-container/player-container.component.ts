@@ -5,7 +5,7 @@ import { YoutubePlayerComponent } from '../youtube-player';
 
 import { Store } from '@ngrx/store';
 import { NgTubeStore, Video, nextVideo } from '../shared';
-import { RepeatState, PlayState, SizeState } from '../reducers';
+import { RepeatState, PlayState, SizeState, QualityState } from '../reducers';
  
 @Component({
   moduleId: module.id,
@@ -107,7 +107,12 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
                         this.player.setVolume(volume);
                     }
                 }
-            ).subscribe()
+            ).subscribe(),
+            
+            this.store.select('quality').subscribe((quality: QualityState) => {
+                console.log(QualityState[quality].toLowerCase());
+                this.player.setPlaybackQuality(QualityState[quality].toLowerCase());
+            })
         );
     }
     

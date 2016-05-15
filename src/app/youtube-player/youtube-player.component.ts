@@ -129,6 +129,13 @@ export class YoutubePlayerComponent implements AfterViewInit, OnInit {
         }
     }
     
+    public setPlaybackQuality(quality: string) {
+        
+        if (this.player) {
+            this.player.setPlaybackQuality(quality);
+        }
+    }
+    
     public destroy () {
         
         if (this.player) {
