@@ -70,48 +70,12 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
             }),
             
             store.select('currentQuality').subscribe((quality: string) => {
-                
+                console.log('subscribe set quality store');
                 this.currentQuality = quality;
             }),
             
             store.select('qualities').subscribe((qualities: string[]) => {
                 this.qualities = qualities;
-                // let quality;
-                // this.qualities = [];
-                
-                // for (let i: number = 0; i < qualities.length; ++i) {
-                //     quality = qualities[i];
-                    
-                //     switch (quality) {
-                //         case 'default':
-                //             this.qualities.push({ value: quality, text: 'Default' });
-                //             break;
-                //         case 'tiny':
-                //             this.qualities.push({ value: quality, text: '144p' });
-                //             break;
-                //         case 'small':
-                //             this.qualities.push({ value: quality, text: '240p' });
-                //             break;
-                //         case 'medium':
-                //             this.qualities.push({ value: quality, text: '360p' });
-                //             break;
-                //         case 'large':
-                //             this.qualities.push({ value: quality, text: '480p' });
-                //             break;
-                //         case 'hd720':
-                //             this.qualities.push({ value: quality, text: '720p' });
-                //             break;
-                //         case 'hd1080':
-                //             this.qualities.push({ value: quality, text: '1080p' });
-                //             break;
-                //         case 'highres':
-                //             this.qualities.push({ value: quality, text: '4K' });
-                //             break;
-
-                //         default:
-                //             break;
-                //     }
-                // } 
             }),
 
             store.select('mute').subscribe((x: boolean) => {
@@ -211,7 +175,6 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
     }
     
     onQuality (quality: string) {
-       
         this.store.dispatch({ type: 'SET_QUALITY', payload: { quality } });
     }
     
