@@ -93,7 +93,6 @@ export class InfiniteScrollDirective implements OnInit, OnDestroy {
 
     private onScroll () {
         
-        console.log('next');
         this.next.emit({});
     }
     

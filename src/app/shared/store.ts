@@ -10,6 +10,9 @@ export interface NgTubeStore {
     search: string; // to save
     currentVideo: Video; // to save,
     cinemaMode: boolean;
+    mute: boolean;
+    loading: boolean;
+    volume: number;
 }
 
 export interface NgTubeStorage {
@@ -18,6 +21,8 @@ export interface NgTubeStorage {
     search: string;
     currentVideo: Video;
     cinemaMode: boolean;
+    mute: boolean;
+    volume: number;
 }
 
 export function mapToStorage (store: NgTubeStore): NgTubeStorage {
@@ -27,6 +32,8 @@ export function mapToStorage (store: NgTubeStore): NgTubeStorage {
         repeat: store.repeat,
         search: store.search,
         currentVideo: store.currentVideo,
-        cinemaMode: store.cinemaMode
+        cinemaMode: store.cinemaMode,
+        mute: store.mute,
+        volume: store.volume
     };
 }

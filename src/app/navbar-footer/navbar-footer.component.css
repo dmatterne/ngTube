@@ -19,6 +19,12 @@
     opacity: 0.4;
 }
 
+.volume-slider > p {
+    position: relative;
+    left: 5px;
+    bottom: 15px;
+}
+
 .white-icon {
     color: white;
 }

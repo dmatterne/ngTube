@@ -69,6 +69,21 @@ export class YoutubePlayer {
         this.ytPlayer.destroy();
     }
     
+    mute (value: boolean) {
+        
+        if (value) {
+            this.ytPlayer.mute();
+        }
+        else {
+            this.ytPlayer.unMute();
+        }
+    }
+    
+    setVolume (volume: number) {
+        
+        this.ytPlayer.setVolume(volume);
+    }
+    
     private _emit (event: string, value: any) {
         
         if (this._subjects[event]) {

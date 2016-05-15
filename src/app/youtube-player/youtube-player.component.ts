@@ -115,6 +115,20 @@ export class YoutubePlayerComponent implements AfterViewInit, OnInit {
         }
     }
     
+    public mute (value: boolean) {
+        
+        if (this.player) {
+            this.player.mute(value);
+        }
+    }
+    
+    public setVolume(volume: number) {
+        
+        if (this.player) {
+            this.player.setVolume(volume);
+        }
+    }
+    
     public destroy () {
         
         if (this.player) {
