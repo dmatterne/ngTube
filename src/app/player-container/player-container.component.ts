@@ -69,7 +69,8 @@ export class PlayerContainerComponent implements OnInit {
                         this.player.pause();
                         break;
                     case PlayState.STOP:
-                        this.player.stop();
+                        this.player.destroy();
+                        this.store.dispatch({ type: 'STOP_VIDEO' });
                         break;
                 } 
             }),
@@ -93,8 +94,6 @@ export class PlayerContainerComponent implements OnInit {
         this.store.dispatch({ type: 'PLAY_VIDEO', payload: {
             video: video
         }});
-        
-        this.store.dispatch({ type: 'SELECT_ITEM', payload: { video: video.id }});
     }
     
     stateChange (state: number) {

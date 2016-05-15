@@ -64,6 +64,11 @@ export class YoutubePlayer {
         this.ytPlayer.stopVideo();
     }
     
+    destroy () {
+        
+        this.ytPlayer.destroy();
+    }
+    
     private _emit (event: string, value: any) {
         
         if (this._subjects[event]) {
