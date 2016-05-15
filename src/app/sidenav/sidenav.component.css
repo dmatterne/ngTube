@@ -71,11 +71,11 @@
  
  .btn-small {
     width: 30px;
-    height: 32px !important;
+    height: 30px !important;
+    line-height: 30px;
     float: right;
     margin-right: 5px;
     padding: 0;
-    line-height: 32px;
  }
 
  
