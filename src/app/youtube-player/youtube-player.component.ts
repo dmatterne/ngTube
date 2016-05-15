@@ -114,6 +114,14 @@ export class YoutubePlayerComponent implements AfterViewInit, OnInit {
             this.player.stop();
         }
     }
+    
+    public destroy () {
+        
+        if (this.player) {
+            this.stop();
+            this.player.destroy();
+        }
+    }
    
     ngOnInit () {
         
