@@ -120,8 +120,10 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
                 this.store.select('play'),
                 (quality: QualityState, play: PlayState) => {
                     
-                    if (play !== PlayState.STOP)
+                    if (play !== PlayState.STOP) {
+                        console.log(QualityState[quality]);
                         this.player.setPlaybackQuality(QualityState[quality].toLowerCase());
+                    }
                 }
             ).subscribe()
         );
@@ -136,9 +138,10 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
     }
     
     qualityChange(state: string) {
-        this.store.dispatch({ type: 'SET_QUALITY', payload: {
-            quality: QualityState[state.toUpperCase()]
-        }});
+        
+        // this.store.dispatch({ type: 'SET_QUALITY', payload: {
+        //     quality: QualityState[state.toUpperCase()]
+        // }});
     }
 
     stateChange (state: number) {

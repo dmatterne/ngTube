@@ -59,8 +59,7 @@ export class NgtubeAppComponent implements OnInit, OnDestroy {
         this.minimize = this.store.select('minimize').map((x) => x === SizeState.MINIMIZE);
     }
     
-    ngOnInit() {
-    }
+    ngOnInit() {}
     
     ngOnDestroy() {
         

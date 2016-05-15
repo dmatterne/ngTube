@@ -1,13 +1,15 @@
 import { Component, Input, OnInit, HostListener, HostBinding, EventEmitter, Output } from '@angular/core';
 import { Video } from '../shared';
 import { IsoToHMSPipe } from '../iso-to-hms.pipe';
+import { NewlinesPipe } from '../newlines.pipe';
+import { ReplaceUrlPipe } from '../replace-url.pipe';
 
 @Component({
   moduleId: module.id,
   selector: 'thumbnail',
   templateUrl: 'thumbnail.component.html',
   styleUrls: ['thumbnail.component.css'],
-  pipes: [IsoToHMSPipe]
+  pipes: [IsoToHMSPipe, NewlinesPipe, ReplaceUrlPipe]
 })
 
 export class ThumbnailComponent implements OnInit {
