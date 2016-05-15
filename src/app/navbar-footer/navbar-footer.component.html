@@ -26,15 +26,10 @@
                         <i class="material-icons">skip_previous</i>
                     </a>
                 </li>
-                <li [hidden]="playing">
+                <li>
                     <a class="navbar-icon" (click)="onPlay()">
                         <i class="material-icons" *ngIf="!isPlay()">play_arrow</i>
                         <i class="material-icons" *ngIf="isPlay()">pause</i>
-                    </a>
-                </li>
-               <li [hidden]="!playing">
-                    <a class="navbar-icon" (click)="onPause()">
-                        <i class="material-icons">pause</i>
                     </a>
                 </li>
                 <li>

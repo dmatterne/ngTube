@@ -3,6 +3,8 @@
 # compiled output
 /dist
 /tmp
+/tmp-gulp
+/dist-gulp
 
 # dependencies
 /node_modules

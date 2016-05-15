@@ -21,8 +21,7 @@ export class YoutubePlayer {
         options.events = {};
         
         if (!this.YTPlayer) {
-            console.error('Youtube IFrame API not loaded...');
-            window.location.reload();
+            console.error('Youtube IFrame API not loaded... Refresh...');
             return;
         }
         

@@ -11,7 +11,7 @@
 <div class="section no-pad-bot" >
   <div class="container">
     <thumbnail-list></thumbnail-list>
-    <player-container [class.cinema]="(cinemaMode | async) && !(minimize | async)"></player-container>
+    <player-container *ngIf="currentVideo" [class.cinema]="(cinemaMode | async) && !(minimize | async)"></player-container>
   </div>
 </div>
 

@@ -21,7 +21,6 @@ export interface NgTubeStorage {
     playlist: any[];
     repeat: RepeatState;
     search: string;
-    currentVideo: Video;
     cinemaMode: boolean;
     mute: boolean;
     volume: number;
@@ -33,7 +32,6 @@ export function mapToStorage (store: NgTubeStore): NgTubeStorage {
         playlist: store.playlist,
         repeat: store.repeat,
         search: store.search,
-        currentVideo: store.currentVideo,
         cinemaMode: store.cinemaMode,
         mute: store.mute,
         volume: store.volume

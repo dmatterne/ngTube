@@ -38,6 +38,7 @@ export class NgtubeAppComponent implements OnInit, OnDestroy {
     cinemaMode: Observable<boolean>;
     minimize: Observable<boolean>;
     loading: Observable<boolean>;
+    currentVideo: Video;
     
     constructor(private store: Store<NgTubeStore>, 
                 private localStorageService: LocalStorageService,
@@ -49,6 +50,7 @@ export class NgtubeAppComponent implements OnInit, OnDestroy {
             }),
             
             this.store.select('currentVideo').subscribe((x: Video) => {
+                this.currentVideo = x;
                 const title = `NgTube ${x ? `- ${x.title}` : ''}`
                 this.title.setTitle(title); 
             })
