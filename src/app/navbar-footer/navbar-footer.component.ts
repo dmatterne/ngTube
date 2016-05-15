@@ -67,7 +67,6 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
             }),
             
             store.select('currentQuality').subscribe((quality: string) => {
-                console.log('subscribe set quality store');
                 this.currentQuality = quality;
             }),
             

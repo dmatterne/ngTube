@@ -52,6 +52,7 @@ export class SidenavTileComponent {
   }
   
   emitArrow(video: Video, arrow: string) {
+    this.hover = false;
     this.clickArrow.emit({
       video,
       arrow
