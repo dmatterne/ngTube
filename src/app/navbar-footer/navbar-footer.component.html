@@ -39,9 +39,19 @@
                 </li>
                 <li class="icon-divider"></li>
                 <li>
-                    <a class="navbar-icon" (click)="onVolume()">
-                        <i class="material-icons">volume_up</i>
+                    <a class="navbar-icon" (click)="onMute()">
+                        <i class="material-icons" *ngIf="mute">volume_off</i>
+                        <span *ngIf="!mute">
+                            <i class="material-icons" *ngIf="volume == 0">volume_mute</i>
+                            <i class="material-icons" *ngIf="volume <= 50 && volume > 0">volume_down</i>
+                            <i class="material-icons" *ngIf="volume > 50">volume_up</i>
+                        </span>
                     </a>
+                </li>
+                <li class="volume-slider" [class.disabled]="mute">
+                    <p class="range-field">
+                        <input type="range" [value]="volume" (change)="setVolume($event.target.value)" min="0" max="100" />
+                    </p>
                 </li>
                 <li class="icon-divider"></li>
                 <li>

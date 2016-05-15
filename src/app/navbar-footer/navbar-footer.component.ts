@@ -18,6 +18,8 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
     repeat: RepeatState;
     minimize: SizeState;
     cinemaMode: Observable<boolean>;
+    mute: boolean;
+    volume: number;
     currentVideo: Video;
     playlist: any[];
     
@@ -55,13 +57,18 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
             store.select('playlist').subscribe((playlist: any[]) => {
                 
                 this.playlist = playlist;  
-            })
+            }),
             
+            store.select('mute').subscribe((x: boolean) => {
+                this.mute = x;
+            }),
+            
+            store.select('volume').subscribe((x: number) => {
+                this.volume = x;  
+            })
         );
         
         this.cinemaMode = this.store.select('cinemaMode');
-        
-        
     }
 
     ngOnInit () {
@@ -110,9 +117,21 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
         this.store.dispatch({ type: 'STOP' });
     }
     
-    onVolume () {
+    onMute () {
         
+        if (this.mute) {
+            this.store.dispatch({ type: 'UNMUTE' });
+        }
+        else {
+            this.store.dispatch({ type: 'MUTE' });
+        }
     }
+    
+    setVolume (volume: string) {
+        
+        this.store.dispatch({ type: 'SET_VOLUME', payload: { volume: parseInt(volume) }});
+    }
+    
     
     onRepeat () {
         

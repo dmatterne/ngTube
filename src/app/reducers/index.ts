@@ -7,6 +7,8 @@ import { search } from './search';
 import { currentVideo } from './current-video';
 import { cinemaMode } from './cinema-mode';
 import { loading } from './loading';
+import { volume } from './volume';
+import { mute } from './mute';
 
 export * from './minimize';
 export * from './repeat';
@@ -17,6 +19,8 @@ export * from './search';
 export * from './current-video';
 export * from './cinema-mode';
 export * from './loading';
+export * from './volume';
+export * from './mute';
 
 export const reducers = {
     minimize,
@@ -27,5 +31,7 @@ export const reducers = {
     search,
     currentVideo,
     cinemaMode,
-    loading
+    loading,
+    volume,
+    mute
 }
