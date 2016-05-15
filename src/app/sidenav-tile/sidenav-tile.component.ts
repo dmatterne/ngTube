@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, HostListener } from '@angular/core';
+import { Component, Input, EventEmitter, Output, HostListener, ChangeDetectionStrategy } from '@angular/core';
 import { Video } from '../shared';
 import { IsoToHMSPipe } from '../iso-to-hms.pipe';
 
@@ -7,7 +7,8 @@ import { IsoToHMSPipe } from '../iso-to-hms.pipe';
   selector: 'sidenav-tile',
   templateUrl: 'sidenav-tile.component.html',
   styleUrls: ['sidenav-tile.component.css'],
-  pipes: [IsoToHMSPipe]
+  pipes: [IsoToHMSPipe],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SidenavTileComponent {
   

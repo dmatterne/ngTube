@@ -21,9 +21,6 @@ import { InfiniteScrollDirective } from '../infinite-scroll.directive';
     styleUrls: ['thumbnail-list.component.css'],
     directives: [ThumbnailComponent, InfiniteScrollDirective]
 })
-
-
-
 export class ThumbnailListComponent implements OnDestroy {
 
     subscriptions: any[] = [];
@@ -34,6 +31,8 @@ export class ThumbnailListComponent implements OnDestroy {
     nextPageToken: string;
     searchField: string;
     searchChange: boolean = false;
+    
+    playlist: string[];
    
     constructor(private store: Store<NgTubeStore>, private youtubeSearchService: YoutubeSearchService) {
         this.subscriptions.push(
@@ -44,8 +43,14 @@ export class ThumbnailListComponent implements OnDestroy {
                 this.nextPageToken = null;
                 this.search();
             }),
+            
             this.store.select('currentVideo').subscribe((video: Video) => {
                 this.current = video;
+            }),
+            
+            this.store.select('playlist').subscribe((playlist: Video[]) => {
+                
+                 this.playlist = playlist.map((x) => x.id);
             })
             
         );
@@ -139,6 +144,11 @@ export class ThumbnailListComponent implements OnDestroy {
 
     ngOnDestroy() {
         this.subscriptions.forEach((subscription) => subscription.unsubscribe());
+    }
+    
+    isInPlaylist (video: Video) {
+        
+        return this.playlist.indexOf(video.id) !== -1;
     }
 
     onThumbnailClick (video: Video) {
