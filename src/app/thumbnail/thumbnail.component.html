@@ -9,7 +9,7 @@
             />
             
             <div class="duration">
-                 {{ video.duration | isoToHMS }}
+                 <span>{{ video.duration | isoToHMS }}</span>
             </div>
             
 
@@ -24,7 +24,7 @@
     </div>
     <div>
         <span [hidden]="!showTitle">
-            <h6 class="title">{{video.title}}</h6>
+            <h6>{{video.title}}</h6>
         </span>
         
         
