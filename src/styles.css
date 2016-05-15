@@ -13,6 +13,13 @@
     animation-iteration-count: infinite;
 }
 
+.center-screen {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 90px;
+}
+
 @keyframes pulsate {
     0% {
       transform: scale(.1);
