@@ -1,10 +1,15 @@
 :host.minimize {
     position: fixed;
-    bottom: 55px;
-    right: 20px;
+    bottom: 60px;
+    right: 25px;
     top: auto;
     left: auto;
+    transform-origin: 50%, 50%;
+    transition: .4s ease-out;
+    transform: translate(35%, 33%) scale(0.3, 0.3) ;
 }
+
+
 
 :host {
     position: absolute;
@@ -14,6 +19,7 @@
     bottom: 64px;
     z-index: 200;
     overflow-x: hidden;
+    transition: 0.4s ease-out;
 }
 
 :host:not(.minimize) > .player-wrapper {
@@ -23,28 +29,4 @@
 
 :host.cinema {
     background-color: rgba(0, 0, 0, 0.9);
-}
-
-@keyframes mini {
-    from {
-        position: static;
-    }
-    
-    to {
-        position: fixed;
-        bottom: 75px;
-        right: 20px;
-    }
-}
-
-
-@keyframes maxi {
-    0% {
-        position: fixed;
-        bottom: 75px;
-        right: 20px;
-    }
-    
-    100% {
-    }
 }

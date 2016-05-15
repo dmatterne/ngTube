@@ -7,9 +7,7 @@ import { YoutubePlayer } from '../shared';
 @Component({
     selector: 'youtube-player',
     template: `
-        <div>
-            <div [id]="playerId"></div>
-        </div>
+        <div [id]="playerId"></div>
     `,
     providers: [YoutubePlayerService],
     changeDetection: ChangeDetectionStrategy.OnPush

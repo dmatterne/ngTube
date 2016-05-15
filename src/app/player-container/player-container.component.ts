@@ -43,16 +43,19 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
             }),
             
             this.store.select('minimize').subscribe((x: SizeState) => {
+                    this.minimize = (x === SizeState.MINIMIZE);
                 
-                this.minimize = (x === SizeState.MINIMIZE);
-                if (this.minimize) {
-                    this.width = this.minimizeWidth;
-                    this.height = this.minimizeHeight;
-                }
-                else {
-                    this.width = this.maximizeWidth;
-                    this.height = this.maximizeHeight;
-                }
+                // setTimeout(() => {
+                    
+                //     if (this.minimize) {
+                //         this.width = this.minimizeWidth;
+                //         this.height = this.minimizeHeight;
+                //     }
+                //     else {
+                //         this.width = this.maximizeWidth;
+                //         this.height = this.maximizeHeight;
+                //     }
+                // }, 400)
             }),
             
             this.store.select('play').subscribe((x: PlayState) => {
