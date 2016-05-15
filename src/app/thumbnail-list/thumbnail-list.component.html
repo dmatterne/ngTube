@@ -1,7 +1,7 @@
 <div *ngIf="(show | async)" 
      infiniteScroll (next)="nextPage()" 
-     [infiniteScrollThrottle]="200"
-     [infiniteScrollDistance]="300">
+     [infiniteScrollThrottle]="100"
+     [infiniteScrollDistance]="500">
      
     <ul class="row" *ngIf="!(loading | async) || videos.length > 0">
         <li *ngFor="let video of videos" class="col s12 l3 m6">
