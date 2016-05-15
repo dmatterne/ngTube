@@ -4,7 +4,7 @@
             <img [src]="video.thumbnailUrl" 
                 [style.position]="relative" 
                 [style.z-index]="0"
-                class="z-depth-1 hoverable responsive-img waves-light"
+                class="z-depth-1 responsive-img waves-light"
             />
             
             <div class="duration valign-wrapper">
@@ -29,8 +29,12 @@
         </p>
     </div>
     <div class="card-action">
-        <a (click)="addToPlaylist()">
-            <i class="material-icons">add</i> Add to playlist
+        <a (click)="addToPlaylist()" 
+           class="valign-wrapper">
+            <i class="material-icons valign">add</i> 
+            <span class="valign"> 
+                Add to playlist
+            </span>
         </a>
     </div>
 </div>
