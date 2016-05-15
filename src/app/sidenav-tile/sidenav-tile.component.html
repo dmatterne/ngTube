@@ -3,8 +3,8 @@
     <i class="material-icons">clear</i>
   </div>
   <div class="upDownArrows">
-      <i class="material-icons ion-arrow-up-a" [class.disable]="first" (click)="moveBackward()"></i>
-      <i class="material-icons ion-arrow-down-a" [class.disable]="last" (click)="moveForward()"></i>
+    <i class="material-icons" [class.disable]="first" (click)="moveBackward()">expand_less</i>
+    <i class="material-icons" [class.disable]="last" (click)="moveForward()">expand_more</i>
   </div>
   <div (click)="onClickTile()">
     <div [style.display]="'inline-block'" class="image">
