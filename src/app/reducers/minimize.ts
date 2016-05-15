@@ -5,7 +5,7 @@ export enum SizeState {
     MAXIMIZE
 }
 
-export const minimize: Reducer<SizeState> = (state: SizeState = SizeState.MAXIMIZE,  action) => {
+export const minimize: Reducer<SizeState> = (state: SizeState = SizeState.MINIMIZE,  action) => {
     
     switch (action.type) {
         
