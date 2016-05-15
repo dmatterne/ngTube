@@ -22,6 +22,7 @@ export class YoutubePlayer {
         
         if (!this.YTPlayer) {
             console.error('Youtube IFrame API not loaded...');
+            window.location.reload();
             return;
         }
         

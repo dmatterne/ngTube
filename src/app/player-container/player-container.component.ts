@@ -75,6 +75,14 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
                         this.store.dispatch({ type: 'STOP_VIDEO' });
                         break;
                 } 
+            }),
+            
+            this.store.select('repeat').subscribe((x: RepeatState) => {
+                this.repeat = x; 
+            }),
+            
+            this.store.select('playlist').subscribe((x: Video[]) => {
+               this.playlist = x; 
             })
         );
         
@@ -123,6 +131,7 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
         
         switch (state) {
             case 0:
+                
                 if (this.repeat === RepeatState.NONE) {
                     this.store.dispatch({ type: 'STOP' });
                 }
