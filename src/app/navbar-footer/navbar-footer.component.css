@@ -55,6 +55,7 @@ select {
     margin-top: 15px;
 }
 
+
 input[type="range"] {
     -moz-appearance: none;
     border: none;

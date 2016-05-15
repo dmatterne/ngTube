@@ -41,12 +41,7 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
                 
                 this.currentVideo = video;
                 
-                if (video) {
-                    this.disabled = false;
-                }
-                else if (!video) {
-                    this.disabled = true;
-                }
+                this.disabled = (video === null);
             }),
             
             store.select('play').subscribe((play: PlayState) => {
