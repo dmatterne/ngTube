@@ -41,6 +41,7 @@ export class YoutubePlayer {
     }
     
     setSize (width: number, height: number) {
+        
         this.ytPlayer.setSize(width, height);
     }
     
@@ -72,20 +73,30 @@ export class YoutubePlayer {
     mute (value: boolean) {
         
         if (value) {
-            this.ytPlayer.mute();
+            if (this.ytPlayer.mute) {
+                this.ytPlayer.mute();
+            }
         }
         else {
-            this.ytPlayer.unMute();
+            if (this.ytPlayer.unMute) {
+                this.ytPlayer.unMute();
+            }
         }
     }
     
     setVolume (volume: number) {
         
-        this.ytPlayer.setVolume(volume);
+        if (this.ytPlayer.setVolume) {
+            this.ytPlayer.setVolume(volume);
+        }
     }
     
     setPlaybackQuality (quality: string) {
-        this.ytPlayer.setPlaybackQuality(quality);
+        
+        
+        if (this.ytPlayer.setPlaybackQuality) {
+            this.ytPlayer.setPlaybackQuality(quality);
+        }
     }
     
     getAvailableQualityLevels (): string[] {
