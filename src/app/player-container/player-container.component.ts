@@ -83,6 +83,18 @@ export class PlayerContainerComponent implements OnInit {
             
             this.store.select('playlist').subscribe((x: Video[]) => {
                 this.playlist = x;
+            }),
+            
+            this.store.select('mute').subscribe((x: boolean) => {
+                if (this.player) {
+                    this.player.mute(x);
+                }
+            }),
+            
+            this.store.select('volume').subscribe((x: number) => {
+                if (this.player) {
+                    this.player.setVolume(x);
+                }
             })
         );
         
