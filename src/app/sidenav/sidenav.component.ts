@@ -46,22 +46,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     const {video, arrow} = tile;
     const index = this.videos.indexOf(video);
     
-    if (arrow === 'up' && index > 0) { 
-        this.videos = [
-          ...this.videos.slice(0, index - 1),
-          this.videos[index],
-          this.videos[index - 1],
-          ...this.videos.slice(index + 1)
-        ]
-    }
-    else if (arrow === 'down' && index < this.videos.length - 1) {
-        this.videos = [
-          ...this.videos.slice(0, index),
-          this.videos[index + 1],
-          this.videos[index],
-          ...this.videos.slice(index + 2)
-        ]
-    }
+    this.store.dispatch({ type: 'MOVE_IN_PLAYLIST', payload: {direction: arrow, video}});
   }
   
   onClickTile(video: Video) {
