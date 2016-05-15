@@ -5,7 +5,7 @@ import { YoutubePlayerComponent } from '../youtube-player';
 
 import { Store } from '@ngrx/store';
 import { NgTubeStore, Video, nextVideo } from '../shared';
-import { RepeatState, PlayState, SizeState, QualityState } from '../reducers';
+import { RepeatState, PlayState, SizeState } from '../reducers';
  
 @Component({
   moduleId: module.id,
@@ -40,11 +40,6 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
         this.subscriptions.push(
             this.store.select('currentVideo').subscribe((x: Video) => {
                 this.video = x;
-                this.store.dispatch({
-                    type: 'SET_QUALITIES', payload: {
-                        qualities: this.player.getAvailableQualityLevels()
-                    }
-                });
             }),
             
             this.store.select('minimize').subscribe((x: SizeState) => {
@@ -121,12 +116,12 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
             ).subscribe(),
 
             Observable.combineLatest(
-                this.store.select('quality'),
+                this.store.select('currentQuality'),
                 this.store.select('play'),
-                (quality: QualityState, play: PlayState) => {
+                (quality: string, play: PlayState) => {
                     
                     if (play !== PlayState.STOP) {
-                        this.player.setPlaybackQuality(QualityState[quality].toLowerCase());
+                        this.player.setPlaybackQuality(quality);
                     }
                 }
             ).subscribe()
@@ -134,23 +129,22 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
     }
     
     
-    private changeVideo (video: Video) {
-        
+    private changeVideo (video: Video) {    
         this.store.dispatch({ type: 'PLAY_VIDEO', payload: {
             video: video
         }});
     }
     
-    qualityChange(state: string) {
-        
+    qualityChange($event) {
         this.store.dispatch({ type: 'SET_QUALITY', payload: {
-            quality: QualityState[state.toUpperCase()]
+            quality: $event.data
         }});
     }
 
     stateChange (state: number) {
         
         switch (state) {
+
             case 0:
                 
                 if (this.repeat === RepeatState.NONE) {
@@ -169,6 +163,12 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
                 break;
             case 1: 
                 this.store.dispatch({ type: 'PLAY' });
+                this.store.dispatch({
+                    type: 'SET_QUALITIES', 
+                    payload: {
+                        qualities: this.player.getAvailableQualityLevels()
+                    }
+                });
                 break;
             case 2: 
                 this.store.dispatch({ type: 'PAUSE' });
@@ -176,6 +176,23 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
         }
     }
 
+    dispatchInformations($event) {
+        
+        // console.log($event.target.getPlayerState());
+        // console.log(this.player.getAvailableQualityLevels());
+        // this.store.dispatch({
+        //     type: 'SET_QUALITIES', 
+        //     payload: {
+        //         qualities: this.player.getAvailableQualityLevels()
+        //     }
+        // });
+        // this.store.dispatch({
+        //     type: 'SET_QUALITY', 
+        //     payload: {
+        //         quality: "default"
+        //     }
+        // });
+    }
     ngOnInit() {
         
     }

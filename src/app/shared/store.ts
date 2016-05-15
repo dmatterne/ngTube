@@ -1,4 +1,4 @@
-import { SizeState, PlayState, RepeatState, QualityState } from '../reducers';
+import { SizeState, PlayState, RepeatState } from '../reducers';
 import { Video } from './video';
 
 export interface NgTubeStore {
@@ -13,7 +13,8 @@ export interface NgTubeStore {
     mute: boolean;
     loading: boolean;
     volume: number;
-    quality: QualityState;
+    currentQuality: string;
+    qualities: string[];
 }
 
 export interface NgTubeStorage {

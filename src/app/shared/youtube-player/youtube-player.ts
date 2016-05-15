@@ -86,7 +86,6 @@ export class YoutubePlayer {
     }
     
     setPlaybackQuality (quality: string) {
-        console.log('setPQ', quality);
         this.ytPlayer.setPlaybackQuality(quality);
     }
     

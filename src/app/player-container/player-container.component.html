@@ -7,7 +7,7 @@
         [width]="width"
         [height]="height"
         (stateChange)="stateChange($event.data)"
-        (playbackQualityChange)="qualityChange($event.data)">
+        (playbackQualityChange)="qualityChange($event)">
     </youtube-player>
     <h4 class="col offset-s2 s8" [hidden]="(cinemaMode | async) || minimize">{{video.title}}</h4>
 </div>
