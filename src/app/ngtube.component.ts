@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy, provide, HostBinding  } from '@angular/core';
+import { Component, OnInit, OnDestroy, provide, HostBinding } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
-import { NgTubeStore, mapToStorage, config, APP_CONFIG } from './shared';
+import { NgTubeStore, mapToStorage, config, APP_CONFIG, Video } from './shared';
 import { NavbarComponent } from './navbar';
 import { NavbarFooterComponent } from './navbar-footer';
 import { SidenavComponent } from './sidenav';
@@ -37,14 +38,18 @@ export class NgtubeAppComponent implements OnInit, OnDestroy {
     private cinemaMode: Observable<boolean>;
     private minimize: Observable<boolean>;
     
-    constructor(private store: Store<NgTubeStore>, private localStorageService: LocalStorageService) {
+    constructor(private store: Store<NgTubeStore>, 
+                private localStorageService: LocalStorageService,
+                private title: Title) {
         
         this.subscriptions.push(
             this.store.map((state: NgTubeStore) => mapToStorage(state)).subscribe((state) => {
                 this.localStorageService.set('ngtube', state);
             }),
             
-            this.store.select('minimize')
+            this.store.select('currentVideo').subscribe((x: Video) => {
+                this.title.setTitle(x.title); 
+            })
         );
         
         this.cinemaMode = this.store.select('cinemaMode');

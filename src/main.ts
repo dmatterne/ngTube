@@ -1,4 +1,5 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
+import { Title } from '@angular/platform-browser';
 import { enableProdMode } from '@angular/core';
 import { NgtubeAppComponent, environment, youtubePlayerProvider } from './app/';
 import { provideStore } from '@ngrx/store';
@@ -25,5 +26,6 @@ if (localStorage.getItem('ngtube')) {
 
 bootstrap(NgtubeAppComponent, [
   youtubePlayerProvider(),
-  provideStore(reducers, initialStore)
+  provideStore(reducers, initialStore),
+  Title
 ]);
