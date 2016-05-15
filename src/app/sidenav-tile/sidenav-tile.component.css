@@ -28,3 +28,8 @@ h6 {
 .disable {
     color: lightslategrey;
 }
+
+.upDownArrows {
+    right: 10px;
+    position: absolute;
+}
