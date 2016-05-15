@@ -40,6 +40,11 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
         this.subscriptions.push(
             this.store.select('currentVideo').subscribe((x: Video) => {
                 this.video = x;
+                this.store.dispatch({
+                    type: 'SET_QUALITIES', payload: {
+                        qualities: this.player.getAvailableQualityLevels()
+                    }
+                });
             }),
             
             this.store.select('minimize').subscribe((x: SizeState) => {
@@ -139,9 +144,9 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
     
     qualityChange(state: string) {
         
-        // this.store.dispatch({ type: 'SET_QUALITY', payload: {
-        //     quality: QualityState[state.toUpperCase()]
-        // }});
+        this.store.dispatch({ type: 'SET_QUALITY', payload: {
+            quality: QualityState[state.toUpperCase()]
+        }});
     }
 
     stateChange (state: number) {

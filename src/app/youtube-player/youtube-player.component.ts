@@ -135,6 +135,15 @@ export class YoutubePlayerComponent implements AfterViewInit, OnInit {
         }
     }
     
+    public getAvailableQualityLevels(): string[] {
+        
+        if (this.player) {
+            return this.player.getAvailableQualityLevels();
+        } else {
+            return [];
+        }
+    }
+    
     public destroy () {
         
         if (this.player) {

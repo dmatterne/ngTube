@@ -86,10 +86,15 @@ export class YoutubePlayer {
     }
     
     setPlaybackQuality (quality: string) {
-        
+        console.log('setPQ', quality);
         this.ytPlayer.setPlaybackQuality(quality);
     }
     
+    getAvailableQualityLevels (): string[] {
+
+        return this.ytPlayer.getAvailableQualityLevels();
+    }
+
     private _emit (event: string, value: any) {
         
         if (this._subjects[event]) {
