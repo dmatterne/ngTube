@@ -26,18 +26,19 @@
             </div>
         </div>
     </div>
-    <div>
-        <h6 class="title" (mouseenter)="onTitleMouseEnter()"
-            (mouseleave)="onTitleMouseLeave()"
-            (click)="onTitleClick()">
-            <span [hidden]="!title">
-                {{video.title}}
-            </span>
-            <span [hidden]="title">
-                <i [style.z-index]="1" class="material-icons tiny icon-demo">
+    <div (mouseenter)="onTitleMouseEnter()"
+         (mouseleave)="onTitleMouseLeave()"
+         (click)="onTitleClick()">
+         
+            <!--<span [hidden]="!title">-->
+                <h6 class="title">{{video.title}}</h6>
+            <!--</span>-->
+            
+            <!--<button [hidden]="title" class="btn">
+                <i class="material-icons tiny icon-demo">
                         view_list
-                </i> Add to playlist
-            </span>
-        </h6>
+                </i> 
+                Add to playlist
+            </button>-->
     </div>
 </div>

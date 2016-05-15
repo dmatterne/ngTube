@@ -1,16 +1,16 @@
 <header>
   <navbar></navbar>
-  <!--<div class="container">
-    <a class="button-collapse top-nav full hide-on-large-only" data-activates="nav-mobile">
-      <i class="material-icons">menu</i>
-    </a>
-  </div>-->
+  
   <sidenav></sidenav>
 </header>
 
+<div *ngIf="loading | async" class="progress progress-loading">
+    <div class="indeterminate"></div>
+</div>
+
 <div class="section no-pad-bot" [class.cinema]="(cinemaMode | async) && !(minimize | async)">
   <div class="container">
-    <thumbnail-list [videos]="research"></thumbnail-list>
+    <thumbnail-list></thumbnail-list>
     <player-container></player-container>
   </div>
 </div>

@@ -21,11 +21,11 @@ import { SizeState } from '../reducers/minimize';
 
 export class ThumbnailListComponent implements OnDestroy {
 
-
     subscriptions: any[] = [];
     videos: Video[] = [];
     current: Video;
     show: Observable<boolean>;
+    loading: Observable<boolean>;
 
     constructor(private store: Store<NgTubeStore>, private youtubeSearchService: YoutubeSearchService) {
         this.subscriptions.push(
@@ -39,6 +39,8 @@ export class ThumbnailListComponent implements OnDestroy {
             })
             
         );
+        
+        this.loading = this.store.select('loading');
         
         this.show = Observable.combineLatest(this.store.select('minimize'),
                                              this.store.select('currentVideo'), 
@@ -55,6 +57,8 @@ export class ThumbnailListComponent implements OnDestroy {
     }
 
     search (search: string, thumbnailQuality: string = 'medium') {
+        
+        this.store.dispatch({ type: 'SET_LOADING', payload: { value: true } });
         this.youtubeSearchService.findIds(search).map((res) => res.json())
                     .pluck('items').subscribe(
                 
@@ -62,12 +66,16 @@ export class ThumbnailListComponent implements OnDestroy {
                 const ids = items.map((x: any) => x.id.videoId);
                 if (ids.length === 0) {
                     this.videos = [];
+                    this.store.dispatch({ type: 'SET_LOADING', payload: { value: false } });
                     return;
                 }
                 
                 this.youtubeSearchService.findByIds(ids)
                             .map((res) => res.json())
                             .pluck('items')
+                            .finally(() => {
+                                this.store.dispatch({ type: 'SET_LOADING', payload: { value: false } });
+                            })
                             .subscribe(
                     (items: any) => {
                         this.videos = items.map((x) => {

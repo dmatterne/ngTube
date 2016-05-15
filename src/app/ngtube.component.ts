@@ -35,8 +35,9 @@ import { SizeState } from './reducers/minimize';
 export class NgtubeAppComponent implements OnInit, OnDestroy {
     
     private subscriptions: any[] = [];
-    private cinemaMode: Observable<boolean>;
-    private minimize: Observable<boolean>;
+    cinemaMode: Observable<boolean>;
+    minimize: Observable<boolean>;
+    loading: Observable<boolean>;
     
     constructor(private store: Store<NgTubeStore>, 
                 private localStorageService: LocalStorageService,
@@ -54,6 +55,7 @@ export class NgtubeAppComponent implements OnInit, OnDestroy {
         );
         
         this.cinemaMode = this.store.select('cinemaMode');
+        this.loading = this.store.select('loading');
         this.minimize = this.store.select('minimize').map((x) => x === SizeState.MINIMIZE);
     }
     

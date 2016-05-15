@@ -65,9 +65,11 @@ export class PlayerContainerComponent implements OnInit {
                     case PlayState.PLAY:
                         this.player.play();
                         break;
+                        
                     case PlayState.PAUSE:
                         this.player.pause();
                         break;
+                        
                     case PlayState.STOP:
                         this.player.destroy();
                         this.store.dispatch({ type: 'STOP_VIDEO' });
