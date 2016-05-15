@@ -5,6 +5,7 @@ import { Directive, ElementRef,
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/throttleTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 
@@ -49,8 +50,8 @@ export class InfiniteScrollDirective implements OnInit, OnDestroy {
     
     ngOnInit () {
         
-        this.scrollEvent = Observable.fromEvent(this.container, 'scroll')
-            .debounceTime(this.infiniteScrollDistance)
+        this.scrollEvent = Observable.fromEvent(this.windowElement, 'scroll')
+            .throttleTime(this.infiniteScrollThrottle)
             .distinctUntilChanged();
             
         this.subscribe();
