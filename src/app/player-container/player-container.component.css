@@ -10,9 +10,15 @@
     position: absolute;
     left: 280px;
     top: 64px;
-    right: 0;
+    right: 0px;
     bottom: 64px;
     z-index: 200;
+    overflow-x: hidden;
+}
+
+:host:not(.minimize) > .player-wrapper {
+    position: relative;
+    top: 50px;
 }
 
 :host.cinema {
