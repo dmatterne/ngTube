@@ -39,9 +39,9 @@ gulp.task('copy-base-dist', function () {
 gulp.task('copy-base-folder', ['copy-base-dist'], function () {
     
     return gulp.src(
-        ['favicon.ico',
-         'preloader.css',
-         'icon.png',
+        ['tmp-gulp/favicon.ico',
+         'tmp-gulp/preloader.css',
+         'tmp-gulp/icon.png',
          'CNAME'])
     
     

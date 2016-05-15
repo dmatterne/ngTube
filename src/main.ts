@@ -11,11 +11,11 @@ if (environment.production) {
 
 
 // Security if the schema of the local storage changes
-if (!localStorage.getItem('ngtube.storage-v2')) {
+if (!localStorage.getItem('ngtube.storage-v3')) {
   localStorage.clear();
 }
 
-localStorage.setItem('ngtube.storage-v2', 'true');
+localStorage.setItem('ngtube.storage-v3', 'true');
 
 let initialStore;
 

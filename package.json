@@ -19,12 +19,13 @@
   "angular-cli": {},
   "scripts": {
     "start": "ng server",
+    "build": "ng build && gulp clean && gulp build",
     "postinstall": "typings install",
     "lint": "tslint \"src/**/*.ts\"",
     "format": "clang-format -i -style=file --glob=src/**/*.ts",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
-    "deploy": "cp CNAME dist/CNAME && surge ./dist"
+    "deploy": "surge ./dist-gulp"
   },
   "private": true,
   "dependencies": {

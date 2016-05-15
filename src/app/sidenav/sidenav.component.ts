@@ -44,6 +44,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   onClickTile(video: Video) {
       
       this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: video } });
+      this.store.dispatch({ type: 'MAXIMIZE' });
   }
   
   onClickDelete(video: Video) {

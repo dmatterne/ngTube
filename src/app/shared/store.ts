@@ -20,7 +20,6 @@ export interface NgTubeStorage {
     playlist: any[];
     repeat: RepeatState;
     search: string;
-    currentVideo: Video;
     cinemaMode: boolean;
     mute: boolean;
     volume: number;
