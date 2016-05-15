@@ -1,6 +1,6 @@
 import {Reducer, Action} from '@ngrx/store';
 
-export const currentQuality = (state = null, action) => {
+export const currentQuality = (state = 'auto', action) => {
     
     switch (action.type) {
         
