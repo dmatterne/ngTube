@@ -55,7 +55,7 @@
                 </li>
                 <li>
                     <select class="browser-default" [ngModel]="currentQuality" (ngModelChange)="onQuality($event)">
-                        <option *ngFor="let quality of qualities" [value]="quality" [attr.selected]="quality === currentQuality">{{quality}}</option>
+                        <option *ngFor="let quality of qualities" [value]="quality" [attr.selected]="quality === currentQuality">{{quality | quality}}</option>
                     </select>
                  </li>
                 <li class="icon-divider"></li>

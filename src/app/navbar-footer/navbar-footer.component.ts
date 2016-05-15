@@ -5,6 +5,7 @@ import 'rxjs/add/observable/combineLatest';
 import { NgTubeStore, Video, nextVideo, previousVideo } from '../shared';
 
 import { PlayState, RepeatState, SizeState } from '../reducers';
+import { Quality } from '../quality.pipe';
 
 declare var $: any;
 
@@ -13,7 +14,8 @@ declare var $: any;
   moduleId: module.id,
   selector: 'navbar-footer',
   templateUrl: 'navbar-footer.component.html',
-  styleUrls: ['navbar-footer.component.css']
+  styleUrls: ['navbar-footer.component.css'],
+  pipes: [Quality]
 })
 export class NavbarFooterComponent implements OnInit, OnDestroy {
 
@@ -41,12 +43,7 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
                 
                 this.currentVideo = video;
                 
-                if (video) {
-                    this.disabled = false;
-                }
-                else if (!video) {
-                    this.disabled = true;
-                }
+                this.disabled = !video;
             }),
             
             store.select('play').subscribe((play: PlayState) => {
