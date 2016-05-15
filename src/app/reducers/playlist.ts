@@ -28,7 +28,6 @@ export const playlist: Reducer<Video[]> = (state = [], action) => {
 
 const move = (state = [], direction, video) => {
     const index = state.indexOf(video);
-console.log(video);
     switch (direction) {
         case 'up':
             return moveUp(state, index);
@@ -39,22 +38,37 @@ console.log(video);
     }
 }
 
-const moveUp = (state = [], index) => {
-    return (index > 0)
-        ? [ ...state.slice(0, index - 1),
-            state[index],
-            state[index - 1],
-            ...(state.slice(index + 1).filter(video => video)) ]
-        : state;
+const moveUp = (state: any[] = [], index: number) => {
+    
+    if (index === 0) {
+        return state;
+    }
+    
+    const firstPart = [...state.slice(0, index - 1)];
+    
+    const element = state[index];
+    const secondElement = state[index - 1];
+    const rest = index + 1 <= state.length - 1 ? state.slice(index + 1) : [];
+    
+    return [...firstPart, element, secondElement, ...rest];
 }
 
-const moveDown = (state = [], index) => {
-    return (index < state.length - 1)
-        ? [ ...state.slice(0, index),
-            state[index + 1],
-            state[index],
-            ...(state.slice(index + 2).filter(video => video)) ]
-        : state;
+
+
+const moveDown = (state: any[] = [], index: number) => {
+    
+    if (index >= state.length - 1) {
+        return state;
+    }
+    
+    const firstPart = state.slice(0, index);
+    const element = state[index];
+    const secondElement = state[index + 1];
+    const rest = index + 2 <= state.length - 1  ? state.slice(index + 2) : [];
+    
+    
+    
+    return [...firstPart, secondElement, element, ...rest];
 }
 
 const addIfUnique = (state = [], video) => {

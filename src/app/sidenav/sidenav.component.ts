@@ -43,15 +43,15 @@ export class SidenavComponent implements OnInit, OnDestroy {
   }
   
   onClickArrow(tile: any) {
+    
     const {video, arrow} = tile;
     const index = this.videos.indexOf(video);
     
-    this.store.dispatch({ type: 'MOVE_IN_PLAYLIST', payload: {direction: arrow, video}});
+    this.store.dispatch({ type: 'MOVE_IN_PLAYLIST', payload: {direction: arrow, video: video}});
   }
   
   onClickTile(video: Video) {
-    
-      this.videos = this.videos.map(v => Object.assign({}, v, {selected: v.id === video.id}));
+      
       this.store.dispatch({ type: 'PLAY_VIDEO', payload: { video: video } });
   }
   
