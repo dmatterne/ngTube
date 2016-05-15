@@ -3,6 +3,33 @@
         <div class="nav-wrapper blue-grey darken-4">
             <ul class="left" [class.disabled]="disabled">
                 <li>
+                    <select browser-default [ngModel]="quality" (ngModelChange)="onQuality($event)">
+                        <option>1080p</option>
+                        <option>720p</option>
+                    </select>
+                </li>
+                <li>
+<form action="#">
+    <p>
+      <input name="group1" type="radio" id="test1" />
+      <label for="test1">Red</label>
+    </p>
+    <p>
+      <input name="group1" type="radio" id="test2" />
+      <label for="test2">Yellow</label>
+    </p>
+    <p>
+      <input class="with-gap" name="group1" type="radio" id="test3"  />
+      <label for="test3">Green</label>
+    </p>
+      <p>
+        <input name="group1" type="radio" id="test4" disabled="disabled" />
+        <label for="test4">Brown</label>
+    </p>
+  </form>
+
+                </li>
+                <li>
                     <a class="navbar-icon" [class.disabled]="isStop()" (click)="onStop()">
                         <i class="material-icons">stop</i>
                     </a>

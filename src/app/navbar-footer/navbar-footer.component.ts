@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/combineLatest';
 import { NgTubeStore, Video, nextVideo, previousVideo } from '../shared';
 
-import { PlayState, RepeatState, SizeState } from '../reducers';
+import { PlayState, RepeatState, SizeState, QualityState } from '../reducers';
 
 @Component({
   moduleId: module.id,
@@ -17,6 +17,7 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
     play: PlayState;
     repeat: RepeatState;
     minimize: SizeState;
+    quality: QualityState;
     cinemaMode: Observable<boolean>;
     currentVideo: Video;
     playlist: any[];
@@ -55,13 +56,16 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
             store.select('playlist').subscribe((playlist: any[]) => {
                 
                 this.playlist = playlist;  
+            }),
+            
+            store.select('quality').subscribe((quality: QualityState) => {
+                
+                this.quality = quality;
             })
             
         );
         
         this.cinemaMode = this.store.select('cinemaMode');
-        
-        
     }
 
     ngOnInit () {
@@ -132,6 +136,11 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
         }
         
         this.store.dispatch({ type: action, payload: payload });
+    }
+    
+    onQuality () {
+
+        this.store.dispatch({ type: 'SET_QUALITY', payload: { quality: this.quality } });
     }
     
     onMinimize () {
