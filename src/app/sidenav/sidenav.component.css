@@ -1,8 +1,4 @@
-/*ul {
-    margin-top: 64px;
-    margin-right: 120px;
-    width: 200px;
-}*/
+
 
 #logo-container {
     height: 57px;
@@ -53,15 +49,16 @@
     cursor: pointer;
 }
 
-.sidenav-item.active, .sidenav-item:hover {
-    border-right: 8px solid #b3e5fc ;
+.sidenav-item.active {
+    border-right: 8px solid #ff4081 ;
 }
 
-.sidenav-item:hover {
-    opacity: 0.7;
+.sidenav-item:not(.active):hover {
+    border-right: 8px solid #b3e5fc;
+    opacity: 0.8;
     color: white;
-    /*background-color: rgba(0,0,0,0.00);*/
 }
+
 
 
 .sidenav-category > *, .sidenav-item > * {
