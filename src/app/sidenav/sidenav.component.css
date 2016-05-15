@@ -75,18 +75,6 @@
     padding: 0;
  }
 
- 
- 
- /*.sidenav-item {
-     font-size: 17px;
-     text-align: center;
- }
- 
- .sidenav-category-text {
-    font-size: 20px;
-    text-align: center;
- }*/
- 
  sidenav-tile {
     width: 100%;
 }
@@ -95,4 +83,8 @@
     color: #444;     
     display: block;     
     font-size: 1rem;
+}
+
+.half-transparent:not(.active) {
+    background-color: rgba(0, 0, 0, 0.7);
 }
