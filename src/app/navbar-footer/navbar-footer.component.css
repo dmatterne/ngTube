@@ -30,3 +30,11 @@ li {
 a {
     padding: 0;
 }
+
+li a:hover {
+    background: initial;
+}
+
+li a i:hover {
+    opacity: 0.6;
+}
