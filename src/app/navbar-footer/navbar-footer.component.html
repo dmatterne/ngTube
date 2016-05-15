@@ -38,7 +38,7 @@
                     </a>
                 </li>
                 <li class="icon-divider"></li>
-                <li [class.disabled]="!isStop()">
+                <li [class.disabled]="isStop()">
                     <a class="navbar-icon" (click)="onMute()">
                         <i class="material-icons" *ngIf="mute">volume_off</i>
                         <span *ngIf="!mute">
@@ -48,12 +48,12 @@
                         </span>
                     </a>
                 </li>
-                <li class="volume-slider" [class.disabled]="mute || !isStop()">
+                <li class="volume-slider" [class.disabled]="mute || isStop()">
                     <p class="range-field">
                         <input type="range" [value]="volume" (change)="setVolume($event.target.value)" min="0" max="100" />
                     </p>
                 </li>
-                <li [class.disabled]="!isStop()">
+                <li [class.disabled]="isStop()">
                     <select class="browser-default" [ngModel]="currentQuality" (ngModelChange)="onQuality($event)">
                         <option *ngFor="let quality of qualities" [value]="quality" [attr.selected]="quality === currentQuality">{{quality | quality}}</option>
                     </select>
