@@ -70,10 +70,12 @@
  }
  
  .btn-small {
-     width: 80px;
-     height: 35px !important;
-     float: right;
-     margin-right: 25px;
+    width: 30px;
+    height: 32px !important;
+    float: right;
+    margin-right: 5px;
+    padding: 0;
+    line-height: 32px;
  }
 
  
