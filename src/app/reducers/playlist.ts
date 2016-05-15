@@ -44,17 +44,16 @@ const moveUp = (state = [], index) => {
         ? [ ...state.slice(0, index - 1),
             state[index],
             state[index - 1],
-            ...state.slice(index + 1) ]
+            ...(state.slice(index + 1).filter(video => video)) ]
         : state;
 }
 
 const moveDown = (state = [], index) => {
     return (index < state.length - 1)
-        ? [
-            ...state.slice(0, index),
+        ? [ ...state.slice(0, index),
             state[index + 1],
             state[index],
-            ...state.slice(index + 2) ]
+            ...(state.slice(index + 2).filter(video => video)) ]
         : state;
 }
 
