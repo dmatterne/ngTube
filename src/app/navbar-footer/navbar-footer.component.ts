@@ -30,17 +30,8 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
     disabled: boolean = true;
     subscriptions: any[] = [];
     
-    
-     qualities = [
-            { value: QualityState.DEFAULT, text: 'Default' },
-            { value: QualityState.SMALL, text: '240p' },
-            { value: QualityState.MEDIUM, text: '360p' },
-            { value: QualityState.LARGE, text: '480p' },
-            { value: QualityState.HD720, text: '720p' },
-            { value: QualityState.HD1080, text: '1080p' },
-            { value: QualityState.HIGHRES, text: '4K' }
-     ];
-        
+    qualities: any;
+     
   
     constructor (private store: Store<NgTubeStore>) {
       
@@ -81,6 +72,45 @@ export class NavbarFooterComponent implements OnInit, OnDestroy {
             store.select('quality').subscribe((quality: QualityState) => {
                 
                 this.quality = quality;
+            }),
+            
+            store.select('qualities').subscribe((qualities: string[]) => {
+                let quality;
+                this.qualities = [];
+                
+                for (let i: number = 0; i < qualities.length; ++i) {
+                    quality = qualities[i];
+                    
+                    switch (quality) {
+                        case 'default':
+                            this.qualities.push({ value: quality, text: 'Default' });
+                            break;
+                        case 'tiny':
+                            this.qualities.push({ value: quality, text: '144p' });
+                            break;
+                        case 'small':
+                            this.qualities.push({ value: quality, text: '240p' });
+                            break;
+                        case 'medium':
+                            this.qualities.push({ value: quality, text: '360p' });
+                            break;
+                        case 'large':
+                            this.qualities.push({ value: quality, text: '480p' });
+                            break;
+                        case 'hd720':
+                            this.qualities.push({ value: quality, text: '720p' });
+                            break;
+                        case 'hd1080':
+                            this.qualities.push({ value: quality, text: '1080p' });
+                            break;
+                        case 'highres':
+                            this.qualities.push({ value: quality, text: '4K' });
+                            break;
+
+                        default:
+                            break;
+                    }
+                } 
             }),
 
             store.select('mute').subscribe((x: boolean) => {
