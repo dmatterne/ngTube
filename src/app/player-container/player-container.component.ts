@@ -135,6 +135,12 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
         }});
     }
     
+    qualityChange(state: string) {
+        this.store.dispatch({ type: 'SET_QUALITY', payload: {
+            quality: QualityState[state.toUpperCase()]
+        }});
+    }
+
     stateChange (state: number) {
         
         switch (state) {
