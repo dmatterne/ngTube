@@ -102,17 +102,23 @@ export class PlayerContainerComponent implements OnInit, AfterViewInit {
                 this.store.select('volume'),
                 this.store.select('play'),
                 (volume: number, play: PlayState) => {
-                    
+
                     if (play !== PlayState.STOP) {
                         this.player.setVolume(volume);
                     }
                 }
             ).subscribe(),
-            
-            this.store.select('quality').subscribe((quality: QualityState) => {
-                console.log(QualityState[quality].toLowerCase());
-                this.player.setPlaybackQuality(QualityState[quality].toLowerCase());
-            })
+
+            Observable.combineLatest(
+                this.store.select('quality'),
+                this.store.select('play'),
+                (quality: QualityState, play: PlayState) => {
+                    console.log(QualityState[quality].toLowerCase());
+
+                    if (play !== PlayState.STOP)
+                        this.player.setPlaybackQuality(QualityState[quality].toLowerCase());
+                }
+            ).subscribe()
         );
     }
     
