@@ -28,11 +28,16 @@
         </p>
     </div>
     <div class="card-action">
-        <a (click)="addToPlaylist()" 
+        <a (click)="addToPlaylist()" [class.disabled]="isInPlaylist" 
            class="valign-wrapper">
-            <i class="material-icons valign">add</i> 
+            <i *ngIf="!isInPlaylist" class="material-icons valign">add</i> 
             <span class="valign"> 
-                Add to playlist
+                <span *ngIf="!isInPlaylist">
+                    Add to playlist
+                </span>
+                <span *ngIf="isInPlaylist">
+                    Already in playlist
+                </span>
             </span>
         </a>
     </div>

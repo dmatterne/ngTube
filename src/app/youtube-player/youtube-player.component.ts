@@ -1,4 +1,6 @@
-import { Component, Input, Output, Inject, AfterViewInit, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output,
+         Inject, AfterViewInit, EventEmitter, OnInit,
+         ChangeDetectionStrategy } from '@angular/core';
 import { YoutubePlayerService } from '../youtube-player.service';
 import { YoutubePlayer } from '../shared'; 
 
@@ -9,7 +11,8 @@ import { YoutubePlayer } from '../shared';
             <div [id]="playerId"></div>
         </div>
     `,
-    providers: [YoutubePlayerService]
+    providers: [YoutubePlayerService],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YoutubePlayerComponent implements AfterViewInit, OnInit {
     

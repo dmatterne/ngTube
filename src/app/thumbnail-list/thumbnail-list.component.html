@@ -8,7 +8,9 @@
             <thumbnail 
                 (clickThumbnail)="onThumbnailClick(video)"
                 (clickTitle)="addToPlaylist(video)"
-                [video]="video">
+                [video]="video"
+                [isInPlaylist]="isInPlaylist(video)"
+            >
             </thumbnail>
         </li>
     </ul>
