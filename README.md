@@ -42,6 +42,7 @@ You can now select:
 
 ## Libraries
 
+* [angular2](https://angular.io)/
 * [materializecss](http://materializecss.com)
 * [ionicon](http://ionicons.com)
 * [material-icons](https://design.google.com/icons/)
@@ -59,9 +60,9 @@ You can now select:
     
 ## Why this project ?
 
-Ngtube is a simplified youtube browser application made for [Angular attack](https://www.angularattack.com)
+Ngtube is a simplified youtube browser application made for [Angular attack](https://www.angularattack.com/entries/2956-gangoffive-minus-1)
 
-![Angularattack](https://rumblex-angularattack.s3.amazonaws.com/images/knight.png)
+[![Angularattack](https://rumblex-angularattack.s3.amazonaws.com/images/knight.png)](https://www.angularattack.com)
  
 ## Team contact
 
